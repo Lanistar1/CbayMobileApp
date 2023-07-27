@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                 xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+                 xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+                 CloseWhenBackgroundIsClicked="False"  
+                 x:Class="CBayMobileApp.Popup.LoaderPop">
+
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation DurationIn="200"
+                                   DurationOut="150"
+                                   EasingIn="SinOut"
+                                   EasingOut="SinIn"
+                                   HasBackgroundAnimation="True"
+                                   PositionIn="Center"
+                                   PositionOut="Center"
+                                   ScaleIn="1.2"
+                                   ScaleOut="0.8" />
+    </pages:PopupPage.Animation>
+
+    <!--  You can use any elements here which are extended from Xamarin.Forms.View  -->
+    <Frame Padding="20,20,20,5"
+                 BackgroundColor="#0088C3"
+                 HorizontalOptions="Fill"
+                 VerticalOptions="Fill">
+        <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand">
+
+            <Grid  VerticalOptions="CenterAndExpand"
+                  HorizontalOptions="CenterAndExpand">
+                <ActivityIndicator Color="{StaticResource SecondaryColor}"
+                                   IsRunning="True"
+                                   IsVisible="True"
+                                   HeightRequest="250"
+                                   WidthRequest="250"
+                                   VerticalOptions="CenterAndExpand"
+                                   HorizontalOptions="CenterAndExpand"/>
+                <!--<ff:CachedImage Source="loadergif.gif"   
+                                HeightRequest="200"  
+                            VerticalOptions="CenterAndExpand"
+                                WidthRequest="200"/>-->
+
+                <Image Source="spinner.gif"   
+                                HeightRequest="250"  
+                                HorizontalOptions="CenterAndExpand"
+                                VerticalOptions="CenterAndExpand"
+                                Aspect="AspectFit"
+                                WidthRequest="250"/>
+                <StackLayout Orientation="Vertical"
+                             HorizontalOptions="Center"
+                             Spacing="2"
+                             VerticalOptions="Center">
+
+                    <Label HorizontalOptions="Center" VerticalOptions="Center" Text="Processing"
+                       x:Name="topLabel"
+                       TextColor="White" 
+                       FontAttributes="Bold"/>
+                    <Label Text="Transaction" HorizontalOptions="Center" VerticalOptions="Center" 
+                       TextColor="White" 
+                       x:Name="bottomLabel"
+                      />
+                </StackLayout>
+            </Grid>
+
+
+            <Label LineBreakMode="WordWrap"
+                   VerticalOptions="End"
+                       HorizontalOptions="CenterAndExpand">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Powered By:"
+                                  />
+                        <Span Text=" ASTRAPOLARIS MFB"
+                                   
+                                />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+        </Grid>
+
+    </Frame>
+</pages:PopupPage>

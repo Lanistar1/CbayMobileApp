@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CBayMobileApp.Views.Onboarding.Onboard"
+             BackgroundImageSource="cbayonboarding1.png"
+             NavigationPage.HasNavigationBar="False">
+
+    <StackLayout Margin="20">
+        <Image Source="cbaylogo.png" HorizontalOptions="StartAndExpand" HeightRequest="60" WidthRequest="60"/>
+
+        <StackLayout VerticalOptions="CenterAndExpand">
+            <Label Text="Earn While" TextColor="#ffffff" FontSize="24" FontFamily="DMSans-Medium"/>
+            <Label Text="you Shop" TextColor="#ffffff" FontSize="24" FontFamily="DMSans-Medium" Margin="0,-10,0,0"/>
+
+            <Frame HasShadow="False" CornerRadius="10" BackgroundColor="{StaticResource PrimaryColor}" Margin="0,30,0,0" Padding="0,12" >
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="To_Login"/>
+                </Frame.GestureRecognizers>
+                <Label Text="Login" TextColor="#ffffff" FontFamily="DMSans-Medium" FontSize="16"  Margin="0,0,0,0" 
+                   HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+            </Frame>
+
+            <Frame HasShadow="False" CornerRadius="10" BackgroundColor="#E3E2E6" Margin="0,10,0,0" Padding="0,12" >
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer />
+                </Frame.GestureRecognizers>
+                <Label Text="Get Started" TextColor="#000000" FontFamily="DMSans-Medium" FontSize="16"  Margin="0,0,0,0" 
+                   HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+            </Frame>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

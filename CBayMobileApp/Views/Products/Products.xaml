@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CBayMobileApp.Views.Products.Products"
+             BackgroundColor="White">
+
+    <StackLayout Margin="20">
+        <FlexLayout JustifyContent="SpaceBetween">
+            <StackLayout>
+                <Image Source="cbaysearch.png"/>
+            </StackLayout>
+            <Label Text="Products" TextColor="#000000" FontSize="16" Margin="0,0,0,0" FontFamily="DMSans-Bold" HorizontalTextAlignment="Center"/>
+
+            <StackLayout>
+                <Image Source="cbaycart.png"/>
+            </StackLayout>
+        </FlexLayout>
+
+        <CollectionView ItemsSource="{Binding CbayProducts}" Margin="0,20">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout VerticalItemSpacing="15" HorizontalItemSpacing="5" Orientation="Vertical" Span="2"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="To_productdetails"/>
+                        </StackLayout.GestureRecognizers>
+
+                        <Image Source="{Binding PlusImage}"/>
+                        <Label Text="{Binding title}" TextColor="#272728" FontSize="14" Margin="10,0,0,0" FontFamily="DMSans-Regular" HorizontalTextAlignment="Start"/>
+                        <Label Text="{Binding amount}" TextColor="#272728" FontSize="14" Margin="10,0,0,0" FontFamily="DMSans-Bold" HorizontalTextAlignment="Start"/>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+            <!--<CollectionView.EmptyView>
+                    <StackLayout VerticalOptions="Center"  HorizontalOptions="Center">
+                        <Image Source="blank3.png" HeightRequest="70" VerticalOptions="Center" HorizontalOptions="Center"/>
+                        <Label  Margin="0,4,0,0" HorizontalOptions="Center" HorizontalTextAlignment="Center" FontAttributes="Bold">No transaction found</Label>
+                    </StackLayout>
+                </CollectionView.EmptyView>-->
+        </CollectionView>
+
+    </StackLayout>
+    
+    
+    <!--<Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        
+
+    </Grid>-->
+</ContentPage>

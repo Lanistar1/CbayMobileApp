@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CBayMobileApp.Views.Account.Account"
+             BackgroundColor="White">
+
+
+    <ScrollView Margin="20" VerticalScrollBarVisibility="Never">
+        <StackLayout>
+            <Label Text="Hi, Abdulbai!" TextColor="#000000" FontSize="20" FontFamily="DMSans-Regular"/>
+
+            <Frame Padding="10,5" BackgroundColor="#D7FAF4" HorizontalOptions="StartAndExpand" CornerRadius="5" HasShadow="False">
+                <Label Text="Ref Code: 123456" TextColor="#19594D" FontSize="12" FontFamily="DMSans-Regular"/>
+            </Frame>
+
+            <StackLayout>
+                <Label Text="Profile" TextColor="#000000" FontSize="18" Margin="0,15,0,7" FontFamily="DMSans-Medium" HorizontalTextAlignment="Start"/>
+
+                <Frame BorderColor="#C4C6CF" BackgroundColor="White" HasShadow="False">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="To_Membership"/>
+                    </Frame.GestureRecognizers>
+                    <FlexLayout JustifyContent="SpaceBetween" AlignContent="Center" AlignItems="Center">
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="cbaymembership.png" Margin="0,0,20,0"/>
+                            <StackLayout>
+                                <Label Text="Membership" TextColor="#000000" FontSize="18" Margin="0,0,0,0" FontFamily="DMSans-Medium" HorizontalTextAlignment="Center"/>
+                            </StackLayout>
+                        </StackLayout>
+
+                        <StackLayout>
+                            <Image Source="cbayforwardarrow.png"/>
+                        </StackLayout>
+                    </FlexLayout>
+                </Frame>
+                <Frame  BorderColor="#C4C6CF" BackgroundColor="White" HasShadow="False" Margin="0,-10">
+                    <FlexLayout JustifyContent="SpaceBetween" AlignContent="Center" AlignItems="Center">
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="cbaypersonaldetail.png" Margin="0,0,20,0"/>
+                            <StackLayout>
+                                <Label Text="Personal Details" TextColor="#000000" FontSize="18" Margin="0,0,0,0" FontFamily="DMSans-Medium" HorizontalTextAlignment="Center"/>
+                            </StackLayout>
+                        </StackLayout>
+
+                        <StackLayout>
+                            <Image Source="cbayforwardarrow.png"/>
+                        </StackLayout>
+                    </FlexLayout>
+                </Frame>
+                <Frame BorderColor="#C4C6CF" BackgroundColor="White" HasShadow="False">
+                    <FlexLayout JustifyContent="SpaceBetween" AlignContent="Center" AlignItems="Center">
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="cbayorder.png" Margin="0,0,20,0"/>
+                            <StackLayout>
+                                <Label Text="Orders" TextColor="#000000" FontSize="18" Margin="0,0,0,0" FontFamily="DMSans-Medium" HorizontalTextAlignment="Center"/>
+                            </StackLayout>
+                        </StackLayout>
+
+                        <StackLayout>
+                            <Image Source="cbayforwardarrow.png"/>
+                        </StackLayout>
+                    </FlexLayout>
+                </Frame>
+            </StackLayout>
+
+            <StackLayout>
+                <Label Text="Actions" TextColor="#000000" FontSize="18" Margin="0,15,0,7" FontFamily="DMSans-Medium" HorizontalTextAlignment="Start"/>
+
+                <Frame BorderColor="#C4C6CF" BackgroundColor="White" HasShadow="False">
+                    <FlexLayout JustifyContent="SpaceBetween" AlignContent="Center" AlignItems="Center">
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="cbaymembership.png" Margin="0,0,20,0"/>
+                            <StackLayout>
+                                <Label Text="Invite your friends" TextColor="#000000" FontSize="18" Margin="0,0,0,0" FontFamily="DMSans-Medium" HorizontalTextAlignment="Center"/>
+                            </StackLayout>
+                        </StackLayout>
+
+                        <StackLayout>
+                            <Image Source="cbayforwardarrow.png"/>
+                        </StackLayout>
+                    </FlexLayout>
+                </Frame>
+                
+            </StackLayout>
+
+            <StackLayout>
+                <Label Text="Settings" TextColor="#000000" FontSize="18" Margin="0,15,0,7" FontFamily="DMSans-Medium" HorizontalTextAlignment="Start"/>
+
+                <Frame BorderColor="#C4C6CF" BackgroundColor="White" HasShadow="False">
+                    <FlexLayout JustifyContent="SpaceBetween" AlignContent="Center" AlignItems="Center">
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="cbaysettings.png" Margin="0,0,20,0"/>
+                            <StackLayout>
+                                <Label Text="App settings" TextColor="#000000" FontSize="18" Margin="0,0,0,0" FontFamily="DMSans-Medium" HorizontalTextAlignment="Center"/>
+                            </StackLayout>
+                        </StackLayout>
+
+                        <StackLayout>
+                            <Image Source="cbayforwardarrow.png"/>
+                        </StackLayout>
+                    </FlexLayout>
+                </Frame>
+                <Frame  BorderColor="#C4C6CF" BackgroundColor="White" HasShadow="False" Margin="0,-10">
+                    <FlexLayout JustifyContent="SpaceBetween" AlignContent="Center" AlignItems="Center">
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="cbaysecurity.png" Margin="0,0,20,0"/>
+                            <StackLayout>
+                                <Label Text="Security" TextColor="#000000" FontSize="18" Margin="0,0,0,0" FontFamily="DMSans-Medium" HorizontalTextAlignment="Center"/>
+                            </StackLayout>
+                        </StackLayout>
+
+                        <StackLayout>
+                            <Image Source="cbayforwardarrow.png"/>
+                        </StackLayout>
+                    </FlexLayout>
+                </Frame>
+               
+            </StackLayout>
+
+            <StackLayout Margin="0,0,0,40">
+                <Label Text="Legal" TextColor="#000000" FontSize="18" Margin="0,15,0,7" FontFamily="DMSans-Medium" HorizontalTextAlignment="Start"/>
+
+                <Frame BorderColor="#C4C6CF" BackgroundColor="White" HasShadow="False">
+                    <FlexLayout JustifyContent="SpaceBetween" AlignContent="Center" AlignItems="Center">
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="cbayterms.png" Margin="0,0,20,0"/>
+                            <StackLayout>
+                                <Label Text="Terms and Conditions" TextColor="#000000" FontSize="18" Margin="0,0,0,0" FontFamily="DMSans-Medium" HorizontalTextAlignment="Center"/>
+                            </StackLayout>
+                        </StackLayout>
+
+                        <StackLayout>
+                            <Image Source="cbayforwardarrow.png"/>
+                        </StackLayout>
+                    </FlexLayout>
+                </Frame>
+                <Frame  BorderColor="#C4C6CF" BackgroundColor="White" HasShadow="False" Margin="0,-10">
+                    <FlexLayout JustifyContent="SpaceBetween" AlignContent="Center" AlignItems="Center">
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="cbaypolicy.png" Margin="0,0,20,0"/>
+                            <StackLayout>
+                                <Label Text="Privacy policies" TextColor="#000000" FontSize="18" Margin="0,0,0,0" FontFamily="DMSans-Medium" HorizontalTextAlignment="Center"/>
+                            </StackLayout>
+                        </StackLayout>
+
+                        <StackLayout>
+                            <Image Source="cbayforwardarrow.png"/>
+                        </StackLayout>
+                    </FlexLayout>
+                </Frame>
+
+            </StackLayout>
+
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CBayMobileApp.Views.Cart.DeliveryAddress"
+             BackgroundColor="#FAFBFF"
+             Title="Delivery address">
+
+    <ScrollView Margin="20" VerticalScrollBarVisibility="Never">
+        <StackLayout>
+            <Label Text="Select or add a shipping address" TextColor="#272728" FontSize="18" Margin="0,0,0,10" FontFamily="DMSans-Regular" HorizontalTextAlignment="Center"/>
+
+            <Frame HasShadow="True" CornerRadius="15" Padding="0,15" BackgroundColor="#D6E3FF">
+                <StackLayout>
+                    <FlexLayout JustifyContent="SpaceBetween" AlignContent="Center" AlignItems="Center" Margin="20,0">
+                        <StackLayout>
+                            <Label Text="Abdulbaki Shuaib - Work" TextColor="#272728" FontSize="18" Margin="0,10,0,10" FontFamily="DMSans-Medium" HorizontalTextAlignment="Start"/>
+                            <Label Text="House 32, ikoyi drive road, Lagos," TextColor="#575758" FontSize="16" Margin="0,0,0,0" FontFamily="DMSans-Regular" HorizontalTextAlignment="Start"/>
+                            <Label Text=" Nigeria." TextColor="#575758" FontSize="16" Margin="0,0,0,0" FontFamily="DMSans-Regular" HorizontalTextAlignment="Start"/>
+                            <Label Text="Arrival est: Apr 15  Free Shipping" TextColor="#272728" FontSize="16" Margin="0,10,0,0" FontFamily="DMSans-Regular" HorizontalTextAlignment="Start"/>
+                        </StackLayout>
+                        <StackLayout>
+                            <Image Source="cbayaddship.png"/>
+                        </StackLayout>
+                    </FlexLayout>
+                    <Line X1="0"
+                          Y1="0"
+                          X2="400"
+                          Y2="0"
+                          Margin="0,20,0,10"
+                          Stroke="#333333"
+                          StrokeDashArray="0,0"
+                          StrokeDashOffset="2"/>
+
+                    <Label Text="EDIT" TextColor="#285EA7" FontSize="16" Margin="0,0,0,0" FontFamily="DMSans-Regular" HorizontalTextAlignment="Center"/>
+
+                </StackLayout>
+            </Frame>
+
+            <Frame HasShadow="True" CornerRadius="15" Padding="0,15" BackgroundColor="#ffffff" Margin="0,10,0,0">
+                <StackLayout>
+                    <FlexLayout JustifyContent="SpaceBetween" AlignContent="Center" AlignItems="Center" Margin="20,0">
+                        <StackLayout>
+                            <Label Text="Abdulbaki Shuaib - Work" TextColor="#272728" FontSize="18" Margin="0,10,0,10" FontFamily="DMSans-Medium" HorizontalTextAlignment="Start"/>
+                            <Label Text="House 32, ikoyi drive road, Lagos," TextColor="#575758" FontSize="16" Margin="0,0,0,0" FontFamily="DMSans-Regular" HorizontalTextAlignment="Start"/>
+                            <Label Text=" Nigeria." TextColor="#575758" FontSize="16" Margin="0,0,0,0" FontFamily="DMSans-Regular" HorizontalTextAlignment="Start"/>
+                            <Label Text="Arrival est: Apr 15  Free Shipping" TextColor="#272728" FontSize="16" Margin="0,10,0,0" FontFamily="DMSans-Regular" HorizontalTextAlignment="Start"/>
+                        </StackLayout>
+                        <StackLayout>
+                            <Image Source="cbayunaddship.png"/>
+                        </StackLayout>
+                    </FlexLayout>
+                    <Line X1="0"
+                          Y1="0"
+                          X2="400"
+                          Y2="0"
+                          Margin="0,20,0,10"
+                          Stroke="#333333"
+                          StrokeDashArray="0,0"
+                          StrokeDashOffset="2"/>
+
+                    <!--<Label Text="Edit" TextColor="#272728" FontSize="16" Margin="0,0,0,0" FontFamily="DMSans-Regular" HorizontalTextAlignment="Center"/>-->
+                </StackLayout>
+            </Frame>
+
+            <Frame CornerRadius="10" Padding="10,15" BorderColor="#E7E7E8" Margin="0,10" HasShadow="False">
+                <Label Text="Add address" TextColor="#272728" FontSize="16" Margin="0,0,0,0" FontFamily="DMSans-Regular" HorizontalTextAlignment="Center"/>
+            </Frame>
+
+            <StackLayout Margin="0,20">
+                <FlexLayout JustifyContent="SpaceBetween">
+                    <Label Text="Subtotal (VAT included)" TextColor="#272728" FontSize="16" Margin="0,0,0,0" FontFamily="DMSans-Regular" HorizontalTextAlignment="Center"/>
+                    <Label Text="NGN40,000.00" TextColor="#272728" FontSize="18" Margin="0,0,0,0" FontFamily="DMSans-Bold" HorizontalTextAlignment="Center"/>
+                </FlexLayout>
+
+                <Frame HasShadow="False" CornerRadius="10" BackgroundColor="{StaticResource PrimaryColor}" Margin="0,10,0,0" Padding="0,10" >
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer />
+                    </Frame.GestureRecognizers>
+                    <Label Text="Confirm and pay" TextColor="#ffffff" FontFamily="Rubik-Regular" FontSize="18"  Margin="0,0,0,0" 
+                   HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                </Frame>
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

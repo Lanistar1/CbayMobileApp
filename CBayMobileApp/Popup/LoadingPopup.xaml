@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:PopupBasePage  xmlns:views="clr-namespace:CBayMobileApp.Helpers" 
+                      xmlns="http://xamarin.com/schemas/2014/forms"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                      xmlns:pages="http://rotorgames.com"
+                      x:Class="CBayMobileApp.Popup.LoadingPopup">
+
+
+    <pages:PopupPage.Animation>
+        <pages:ScaleAnimation DurationIn="200"
+                                   DurationOut="200"
+                                   EasingIn="CubicOut"
+                                   EasingOut="CubicOut"
+                                   HasBackgroundAnimation="True"
+                                   PositionIn="Right"
+                                   PositionOut="Right"
+                                   ScaleIn="1.2"
+                                   ScaleOut="0.8" />
+    </pages:PopupPage.Animation>
+
+    <!--  Make Grid full screen to prevent user to dismiss popup when touch outside  -->
+    <!--  Fill background color for Grid to make the prevention works  -->
+    <!--  The touch-outside-prevention cannot work with completely transparent background color  -->
+    <Grid
+        BackgroundColor="#01ffffff"
+        HorizontalOptions="FillAndExpand"
+        VerticalOptions="FillAndExpand">
+        <Frame
+            Padding="10"
+            BackgroundColor="#88000000"
+            CornerRadius="12"
+            HasShadow="False"
+            HorizontalOptions="Center"
+            VerticalOptions="Center">
+            <StackLayout>
+                <ActivityIndicator
+                    x:Name="LoadingIndicator"
+                    HeightRequest="45"
+                    HorizontalOptions="CenterAndExpand"
+                    WidthRequest="45"
+                    Color="#e3f3ff" />
+                <Label
+                    x:Name="LabelLoadingMessage"
+                    HorizontalOptions="CenterAndExpand"
+                    HorizontalTextAlignment="Center"
+                    Text="Please wait..."
+                    FontSize="14"
+                    FontFamily="Poppins-Regular"
+                    TextColor="White" />
+                <StackLayout
+                    x:Name="BottomButton"
+                    IsVisible="false"
+                    Orientation="Horizontal">
+                    <Button
+                        Clicked="ClosePopupEvent"
+                        HeightRequest="40"
+                        HorizontalOptions="Center"
+                        Text="Cancel"
+                        FontFamily="Poppins-Regular"
+                        VerticalOptions="CenterAndExpand"
+                        WidthRequest="100" />
+                    <Button
+                        Clicked="HidePopupEvent"
+                        HeightRequest="40"
+                        HorizontalOptions="Center"
+                        Text="Hide"
+                   FontFamily="Poppins-Regular"
+                        VerticalOptions="CenterAndExpand"
+                        WidthRequest="100" />
+                </StackLayout>
+            </StackLayout>
+        </Frame>
+    </Grid>
+</views:PopupBasePage>

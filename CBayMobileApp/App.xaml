@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:Styles="clr-namespace:CBayMobileApp.Styles"
+             x:Class="CBayMobileApp.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <Styles:Colors/>
+                <ResourceDictionary>
+                    <Color x:Key="Primary">#285EA7</Color>
+                    <Style TargetType="NavigationPage">
+                        <Setter Property="BarBackgroundColor" Value="{StaticResource Primary}" />
+                        <Setter Property="BarTextColor" Value="White" />
+                    </Style>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

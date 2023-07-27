@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            x:Class="CBayMobileApp.Views.Tabbed"
+            xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core" 
+            xmlns:Pages="clr-namespace:CBayMobileApp.Views.Home" 
+            xmlns:Pages1="clr-namespace:CBayMobileApp.Views.Products"
+            xmlns:Pages2="clr-namespace:CBayMobileApp.Views.Cart" 
+            xmlns:Pages3="clr-namespace:CBayMobileApp.Views.Account"
+            android:TabbedPage.ToolbarPlacement="Bottom"
+            NavigationPage.HasNavigationBar="False"
+            BarBackgroundColor="{StaticResource PrimaryColor}"
+            android:TabbedPage.BarItemColor="#B2B2B2"
+            android:TabbedPage.BarSelectedItemColor="{StaticResource TertiaryColor}">
+
+
+    <!--Pages can be added as references or inline-->
+    <Pages:Dashboard Title="Home" IconImageSource="harborActive.png"></Pages:Dashboard>
+    <Pages1:Products Title="Products" IconImageSource="newcbay.png"></Pages1:Products>
+    <Pages2:Cart Title="Cart" IconImageSource="cbaynavcart.png"></Pages2:Cart>
+    <Pages3:Account Title="Account" IconImageSource="cbaynavaccount.png"></Pages3:Account>
+</TabbedPage>

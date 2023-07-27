@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CBayMobileApp.Views.Account.Membership"
+             BackgroundColor="White"
+             Title="Membership">
+
+    <ScrollView Margin="20" VerticalScrollBarVisibility="Never">
+        <StackLayout>
+            <StackLayout>
+                <Label Text="Abdulbaki Shuaib" TextColor="#000000" FontSize="20" FontFamily="DMSans-Bold"/>
+
+                <Label Text="Member since March, 2023" TextColor="#000000" FontSize="14" FontFamily="DMSans-Regular"/>
+
+                <Frame BackgroundColor="{StaticResource PrimaryColor}" Padding="20,15,20,10" HorizontalOptions="FillAndExpand" CornerRadius="10" Margin="0,10" HasShadow="False">
+                    <StackLayout Margin="0,0,0,0">
+                        <Label Text="Jade" TextColor="#ffffff" FontSize="32" FontFamily="DMSans-Medium"/>
+                        <Label Text="CURRENT PLAN" TextColor="#ffffff" FontSize="14" FontFamily="DMSans-Medium" Margin="0,0,0,0"/>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+
+            <StackLayout Margin="0,20,0,0">
+                <Label Text="Level Timeline" TextColor="#000000" FontSize="16" FontFamily="DMSans-Medium"/>
+
+                <FlexLayout JustifyContent="SpaceBetween" AlignContent="Center" AlignItems="Center" Margin="0,20,0,10">
+                    <StackLayout Orientation="Horizontal" Spacing="20">
+                        <Image Source="cbaypoint"/>
+                        <Label Text="Jade" TextColor="#000000" FontSize="18" FontFamily="DMSans-Medium"/>
+                    </StackLayout>
+
+                    <CheckBox Color="#2CB117"/>
+                </FlexLayout>
+
+                <FlexLayout JustifyContent="SpaceBetween" AlignContent="Center" AlignItems="Center" Margin="0,10">
+                    <StackLayout Orientation="Horizontal" Spacing="20">
+                        <Image Source="cbaypoint"/>
+                        <Label Text="Pearl" TextColor="#000000" FontSize="18" FontFamily="DMSans-Medium"/>
+                    </StackLayout>
+
+                    <CheckBox Color="#2CB117"/>
+                </FlexLayout>
+
+                <FlexLayout JustifyContent="SpaceBetween" AlignContent="Center" AlignItems="Center" Margin="0,10">
+                    <StackLayout Orientation="Horizontal" Spacing="20">
+                        <Image Source="cbaypoint"/>
+                        <Label Text="Ruby" TextColor="#000000" FontSize="18" FontFamily="DMSans-Medium"/>
+                    </StackLayout>
+
+                    <CheckBox Color="#2CB117"/>
+                </FlexLayout>
+
+                <FlexLayout JustifyContent="SpaceBetween" AlignContent="Center" AlignItems="Center" Margin="0,10">
+                    <StackLayout Orientation="Horizontal" Spacing="20">
+                        <Image Source="cbaypoint"/>
+                        <Label Text="Diamond" TextColor="#000000" FontSize="18" FontFamily="DMSans-Medium"/>
+                    </StackLayout>
+
+                    <CheckBox Color="#2CB117"/>
+                </FlexLayout>
+
+            </StackLayout>
+
+            <StackLayout Margin="0,0,0,40">
+                <Label Text="Downlines" TextColor="#000000" FontSize="18" Margin="0,15,0,7" FontFamily="DMSans-Medium" HorizontalTextAlignment="Start"/>
+
+                <Frame BorderColor="#C4C6CF" BackgroundColor="White" HasShadow="False">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="To_Downlines"/>
+                    </Frame.GestureRecognizers>
+                    <FlexLayout JustifyContent="SpaceBetween" AlignContent="Center" AlignItems="Center">
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="cbaydirect.png" Margin="0,0,20,0"/>
+                            <StackLayout>
+                                <Label Text="Direct Downlines" TextColor="#000000" FontSize="18" Margin="0,0,0,0" FontFamily="DMSans-Medium" HorizontalTextAlignment="Center"/>
+                            </StackLayout>
+                        </StackLayout>
+
+                        <StackLayout>
+                            <Image Source="cbayforwardarrow.png"/>
+                        </StackLayout>
+                    </FlexLayout>
+                </Frame>
+                <Frame  BorderColor="#C4C6CF" BackgroundColor="White" HasShadow="False" Margin="0,-10">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="To_teamDownlines"/>
+                    </Frame.GestureRecognizers>
+                    <FlexLayout JustifyContent="SpaceBetween" AlignContent="Center" AlignItems="Center">
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="cbaymembership.png" Margin="0,0,20,0"/>
+                            <StackLayout>
+                                <Label Text="Team Downlines" TextColor="#000000" FontSize="18" Margin="0,0,0,0" FontFamily="DMSans-Medium" HorizontalTextAlignment="Center"/>
+                            </StackLayout>
+                        </StackLayout>
+
+                        <StackLayout>
+                            <Image Source="cbayforwardarrow.png"/>
+                        </StackLayout>
+                    </FlexLayout>
+                </Frame>
+
+            </StackLayout>
+
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CBayMobileApp.Views.Home.AddMoney"
+             BackgroundColor="White"
+             Title="Add Money">
+
+    <StackLayout Margin="20,40">
+        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+            <Label Text="10,000" TextColor="#000000" FontSize="28" Margin="0,0,0,0" FontFamily="DMSans-Bold" HorizontalTextAlignment="Center"/>
+            <Label Text="NGN" TextColor="#000000" FontSize="16" Margin="0,0,0,0" FontFamily="DMSans-Medium" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+        </StackLayout>
+
+        <Label Text="Your first top up is completely free!" TextColor="#000000" FontSize="14" Margin="0,5,0,0" FontFamily="DMSans-Regular" HorizontalTextAlignment="Center"/>
+
+        <StackLayout Margin="0,20,0,10">
+            <Label Text="Selected Method" TextColor="#000000" FontSize="14" Margin="0,5,0,0" FontFamily="DMSans-Medium" HorizontalTextAlignment="Start"/>
+
+            <Frame CornerRadius="5" BorderColor="#C4C6CF" BackgroundColor="White" HasShadow="False">
+                <FlexLayout JustifyContent="SpaceBetween" AlignContent="Center" AlignItems="Center">
+                    <StackLayout Orientation="Horizontal">
+                        <Image Source="cbaycard.png" Margin="0,0,20,0"/>
+                        <StackLayout>
+                            <Label Text="Pay with Card" TextColor="#000000" FontSize="18" Margin="0,0,0,0" FontFamily="DMSans-Medium" HorizontalTextAlignment="Center"/>
+                            <Label Text="Top up instantly" TextColor="#000000" FontSize="14" Margin="0,-5,0,0" FontFamily="DMSans-Regular" HorizontalTextAlignment="Center"/>
+                        </StackLayout>
+                    </StackLayout>
+
+                    <StackLayout>
+                        <Image Source="cbayforwardarrow.png"/>
+                    </StackLayout>
+                </FlexLayout>
+            </Frame>
+        </StackLayout>
+
+        <Frame HasShadow="False" CornerRadius="10" BackgroundColor="{StaticResource PrimaryColor}" Margin="0,20,0,0" Padding="0,10" >
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer />
+            </Frame.GestureRecognizers>
+            <Label Text="Continue" TextColor="#ffffff" FontFamily="Rubik-Regular" FontSize="18"  Margin="0,0,0,0" 
+                       HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+        </Frame>
+    </StackLayout>
+</ContentPage>

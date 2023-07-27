@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:PopupBasePage  xmlns:views="clr-namespace:CBayMobileApp.Helpers" 
+                      xmlns="http://xamarin.com/schemas/2014/forms"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                      xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup" 
+                      xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+                      x:Class="CBayMobileApp.Utils.MessagePopup">
+
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation DurationIn="200"
+                                   DurationOut="200"
+                                   EasingIn="CubicOut"
+                                   EasingOut="CubicOut"
+                                   HasBackgroundAnimation="True"
+                                   PositionIn="Right"
+                                   PositionOut="Right"
+                                   ScaleIn="1.2"
+                                   ScaleOut="0.8" />
+    </pages:PopupPage.Animation>
+
+
+    <Grid
+        BackgroundColor="#01ffffff"
+        HorizontalOptions="FillAndExpand"
+        VerticalOptions="FillAndExpand">
+        <Frame
+            Margin="20"
+            Padding="0"
+            BackgroundColor="White"
+            CornerRadius="8"
+            HasShadow="False"
+            VerticalOptions="CenterAndExpand">
+            <StackLayout Spacing="0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <StackLayout Grid.Row="0">
+                        <Grid Margin="20,15,32,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label
+                                x:Name="LabelTitle"
+                                Grid.Column="0"
+                                FontFamily="Poppins-Regular"
+                                FontSize="16"
+                                Text="Message"
+                                TextColor="{StaticResource Primary}"/>
+
+                            <Image
+                                Grid.Column="1"
+                                HeightRequest="20"
+                                HorizontalOptions="Center"
+                                Scale="1.65"
+                                Source="alertIcon.png"
+                                WidthRequest="20" />
+                        </Grid>
+                        <BoxView
+                            Margin="20,0,20,5"
+                            BackgroundColor="#d0d0d0"
+                            HeightRequest="0.5" />
+                    </StackLayout>
+
+                    <ScrollView Grid.Row="1">
+
+                        <Label
+                            x:Name="LabelMessage"
+                            Margin="20,0,20,25"
+                            FontFamily="Poppins-Regular"
+                            FontSize="14"
+                            TextColor="Black" />
+                    </ScrollView>
+
+                    <Grid
+                        Grid.Row="2"
+                        BackgroundColor="{StaticResource Primary}"
+                        HeightRequest="50">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Image
+                            Grid.Column="0"
+                            VerticalOptions="Center"
+                            Margin="10,0,0,0"
+                            HorizontalOptions="Start"
+                            Scale="0.75"
+                            Source="layers.png" />
+                        <Button
+                            x:Name="ButtonClose"
+                            Grid.Column="1"
+                            Clicked="ClosePopupEvent"
+                            FontSize="13"
+                            TextTransform="Uppercase"
+                            Padding="0"
+                            Margin="0,0,10,0"
+                            HorizontalOptions="EndAndExpand"
+                            BackgroundColor="White"
+                            CornerRadius="5"
+                            HeightRequest="30"
+                            FontFamily="Poppins-Regular"
+                            TextColor="Black"
+                            VerticalOptions="CenterAndExpand"
+                            WidthRequest="75" />
+                    </Grid>
+                </Grid>
+            </StackLayout>
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Tapped="DoNothingEvent" />
+            </Frame.GestureRecognizers>
+        </Frame>
+    </Grid>
+</views:PopupBasePage>

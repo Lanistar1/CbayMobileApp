@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CBayMobileApp.Views.Home.RecentEarning"
+             BackgroundColor="White"
+             Title="Recent Earnings">
+
+    <CollectionView ItemsSource="{Binding Transaction}" Margin="20">
+        <CollectionView.ItemsLayout>
+            <GridItemsLayout VerticalItemSpacing="0" HorizontalItemSpacing="10" Orientation="Vertical"/>
+        </CollectionView.ItemsLayout>
+        <CollectionView.ItemTemplate>
+            <DataTemplate>
+                <StackLayout>
+                    <Label Text="{Binding newDate}" FontSize="14" TextColor="#000000" FontAttributes="Bold" FontFamily="Poppins-Medium"/>
+
+                    <FlexLayout JustifyContent="SpaceBetween" VerticalOptions="Center">
+                        <StackLayout Orientation="Horizontal" Spacing="10">
+                            <Image Source="{Binding PlusImage}"/>
+
+                            <StackLayout>
+                                <Label Text="{Binding description}" FontSize="14" TextColor="#333333" FontAttributes="Bold"/>
+                                <Label Text="{Binding time}" FontSize="14" TextColor="#333333"  FontFamily="Poppins-Medium"/>
+                            </StackLayout>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" Spacing="2">
+                            <Label Text="{Binding amount}" FontSize="15" TextColor="#333333" FontAttributes="Bold" FontFamily="Poppins-Medium"/>
+                        </StackLayout>
+
+                    </FlexLayout>
+                    <Line X1="0"
+                          Y1="0"
+                          X2="400"
+                          Y2="0"
+                          Margin="0,0"
+                          Stroke="#524344"
+                          StrokeDashArray="0,0"
+                          StrokeDashOffset="2"/>
+
+                </StackLayout>
+
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+        <!--<CollectionView.EmptyView>
+                    <StackLayout VerticalOptions="Center"  HorizontalOptions="Center">
+                        <Image Source="blank3.png" HeightRequest="70" VerticalOptions="Center" HorizontalOptions="Center"/>
+                        <Label  Margin="0,4,0,0" HorizontalOptions="Center" HorizontalTextAlignment="Center" FontAttributes="Bold">No transaction found</Label>
+                    </StackLayout>
+                </CollectionView.EmptyView>-->
+    </CollectionView>
+
+</ContentPage>

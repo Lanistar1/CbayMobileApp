@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CBayMobileApp.Views.Home.Dashboard"
+             BackgroundColor="White">
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackLayout Grid.Row="0">
+            <Label Text="Hi, Abdulbai!" TextColor="#000000" FontSize="20" FontFamily="DMSans-Regular"/>
+
+            <Frame Padding="10,5" BackgroundColor="#D7FAF4" HorizontalOptions="StartAndExpand" CornerRadius="5" HasShadow="False">
+                <Label Text="Ref Code: 123456" TextColor="#19594D" FontSize="12" FontFamily="DMSans-Regular"/>
+            </Frame>
+
+            <Frame BackgroundColor="{StaticResource PrimaryColor}" HorizontalOptions="FillAndExpand" CornerRadius="10" Margin="0,5" HasShadow="False">
+                <StackLayout>
+                    <Label Text="WALLET BALANCE" TextColor="#ffffff" FontSize="14" FontFamily="DMSans-Medium" Margin="0,10,0,0"/>
+                    <StackLayout Orientation="Horizontal" Margin="0,0,0,0">
+                        <Label Text="NGN 90,000.00" TextColor="#ffffff" FontSize="20" FontFamily="DMSans-Medium"/>
+
+                        <Image Source="cbayeye.png" VerticalOptions="CenterAndExpand" WidthRequest="35" HeightRequest="20" Margin="10,0,0,0"/>
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Frame Padding="10" BackgroundColor="{StaticResource PrimaryColor}" HorizontalOptions="FillAndExpand" CornerRadius="10" Grid.Column="0" HasShadow="False">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="To_addMoney"/>
+                    </Frame.GestureRecognizers>
+                    <Label Text="Add Money" TextColor="#ffffff" FontSize="16" FontFamily="DMSans-Regular" HorizontalTextAlignment="Center"/>
+                </Frame>
+
+                <Frame Padding="10" BackgroundColor="#E7E7E8" HorizontalOptions="FillAndExpand" CornerRadius="10" Grid.Column="1" HasShadow="False">
+                    <Label Text="Withdraw" TextColor="#000000" FontSize="16" FontFamily="DMSans-Regular" HorizontalTextAlignment="Center"/>
+                </Frame>
+            </Grid>
+
+           
+        </StackLayout>
+
+        <StackLayout Grid.Row="1" Margin="0,0,0,10">
+            <Frame Padding="20,15" BackgroundColor="#FFF8F5" HorizontalOptions="FillAndExpand" CornerRadius="10"  Margin="0,10" HasShadow="False">
+                <StackLayout Orientation="Horizontal">
+                    <StackLayout Margin="0,0,10,0" VerticalOptions="CenterAndExpand">
+                        <Label Text="Products" TextColor="#000000" FontSize="18" FontFamily="DMSans-Bold" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                        <Label Text="4 products" TextColor="#868687" FontSize="14" FontFamily="DMSans-Regular" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                    </StackLayout>
+
+                    <Image Source="cbayproduct.png" HeightRequest="100" WidthRequest="100" HorizontalOptions="EndAndExpand" Margin="0,0,-20,0"/>
+                    <Image Source="cbayproduct1.png" HeightRequest="100" WidthRequest="100" Margin="0,0,0,0" HorizontalOptions="EndAndExpand"/>
+                </StackLayout>
+            </Frame>
+
+            <FlexLayout JustifyContent="SpaceBetween" AlignItems="Center">
+                <Label Text="Recent Earning" TextColor="#212121" FontSize="16" Margin="0,0,0,0" FontFamily="DMSans-Medium" HorizontalTextAlignment="Center"/>
+                <Label Text="View All" TextColor="{StaticResource PrimaryColor}" FontSize="16" Margin="0,0,0,0" FontFamily="DMSans-Medium" HorizontalTextAlignment="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="To_recentEarning"/>
+                    </Label.GestureRecognizers>
+                </Label>
+            </FlexLayout>
+
+            <CollectionView ItemsSource="{Binding Transaction}" Margin="0,0">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout VerticalItemSpacing="0" HorizontalItemSpacing="10" Orientation="Vertical"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <Label Text="{Binding newDate}" FontSize="14" TextColor="#000000" FontAttributes="Bold" FontFamily="DMSans-Medium"/>
+
+                            <FlexLayout JustifyContent="SpaceBetween" VerticalOptions="Center">
+                                <StackLayout Orientation="Horizontal" Spacing="10">
+                                    <Image Source="{Binding PlusImage}"/>
+
+                                    <StackLayout>
+                                        <Label Text="{Binding description}" FontSize="14" TextColor="#333333" FontAttributes="Bold"/>
+                                        <Label Text="{Binding time}" FontSize="14" TextColor="#333333"  FontFamily="DMSans-Medium"/>
+                                    </StackLayout>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal" Spacing="2">
+                                    <Label Text="{Binding amount}" FontSize="15" TextColor="#333333" FontAttributes="Bold" FontFamily="DMSans-Medium"/>
+                                </StackLayout>
+
+                            </FlexLayout>
+                            <Line X1="0"
+                                  Y1="0"
+                                  X2="400"
+                                  Y2="0"
+                                  Margin="0,0"
+                                  Stroke="#524344"
+                                  StrokeDashArray="0,0"
+                                  StrokeDashOffset="2"/>
+
+                        </StackLayout>
+
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                <!--<CollectionView.EmptyView>
+                    <StackLayout VerticalOptions="Center"  HorizontalOptions="Center">
+                        <Image Source="blank3.png" HeightRequest="70" VerticalOptions="Center" HorizontalOptions="Center"/>
+                        <Label  Margin="0,4,0,0" HorizontalOptions="Center" HorizontalTextAlignment="Center" FontAttributes="Bold">No transaction found</Label>
+                    </StackLayout>
+                </CollectionView.EmptyView>-->
+            </CollectionView>
+        </StackLayout>
+
+
+        <!--<ScrollView  VerticalScrollBarVisibility="Never">
+        </ScrollView>-->
+    </Grid>
+</ContentPage>

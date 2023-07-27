@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CBayMobileApp.Views.Account.TeamDownline"
+             BackgroundColor="White"
+             Title="Team Downlines">
+
+    <StackLayout Margin="20">
+        <Frame HasShadow="False" CornerRadius="0" BackgroundColor="{StaticResource PrimaryColor}" Margin="0,10,0,-10" Padding="10" >
+
+            <FlexLayout JustifyContent="SpaceBetween" AlignItems="Center">
+                <StackLayout>
+                    <Label Text="Abdulbaki Shuaib" TextColor="#ffffff" FontSize="18" Margin="0,0,0,0" FontFamily="DMSans-Medium" HorizontalTextAlignment="Center"/>
+                    <Frame Padding="5" CornerRadius="10" BackgroundColor="#A9C7FF">
+                        <Label Text="6 Members" TextColor="#ffffff" FontSize="12" Margin="0,0,0,0" FontFamily="DMSans-Medium" HorizontalTextAlignment="Center"/>
+                    </Frame>
+                </StackLayout>
+                <StackLayout>
+                    <Image Source="cbaywhitearrow.png"/> 
+                </StackLayout>
+            </FlexLayout>
+        </Frame>
+        <Frame BorderColor="#C4C6CF" BackgroundColor="White" HasShadow="False">
+            <FlexLayout JustifyContent="SpaceBetween" AlignContent="Center" AlignItems="Center">
+                <StackLayout Orientation="Horizontal">
+                    <Image Source="cbayterms.png" Margin="0,0,20,0"/>
+                    <StackLayout>
+                        <Label Text="Terms and Conditions" TextColor="#000000" FontSize="18" Margin="0,0,0,0" FontFamily="DMSans-Medium" HorizontalTextAlignment="Center"/>
+                    </StackLayout>
+                </StackLayout>
+
+                <StackLayout>
+                    <Image Source="cbayforwardarrow.png"/>
+                </StackLayout>
+            </FlexLayout>
+        </Frame>
+        <Frame  BorderColor="#C4C6CF" BackgroundColor="White" HasShadow="False" Margin="0,-10">
+            <FlexLayout JustifyContent="SpaceBetween" AlignContent="Center" AlignItems="Center">
+                <StackLayout Orientation="Horizontal">
+                    <Image Source="cbaypolicy.png" Margin="0,0,20,0"/>
+                    <StackLayout>
+                        <Label Text="Privacy policies" TextColor="#000000" FontSize="18" Margin="0,0,0,0" FontFamily="DMSans-Medium" HorizontalTextAlignment="Center"/>
+                    </StackLayout>
+                </StackLayout>
+
+                <StackLayout>
+                    <Image Source="cbayforwardarrow.png"/>
+                </StackLayout>
+            </FlexLayout>
+        </Frame>
+
+        <Frame  BorderColor="#C4C6CF" BackgroundColor="White" HasShadow="False" Margin="0,-10">
+            <FlexLayout JustifyContent="SpaceBetween" AlignContent="Center" AlignItems="Center">
+                <StackLayout Orientation="Horizontal">
+                    <Image Source="cbaypolicy.png" Margin="0,0,20,0"/>
+                    <StackLayout>
+                        <Label Text="Privacy policies" TextColor="#000000" FontSize="18" Margin="0,0,0,0" FontFamily="DMSans-Medium" HorizontalTextAlignment="Center"/>
+                    </StackLayout>
+                </StackLayout>
+
+                <StackLayout>
+                    <Image Source="cbayforwardarrow.png"/>
+                </StackLayout>
+            </FlexLayout>
+        </Frame>
+        <Frame  BorderColor="#C4C6CF" BackgroundColor="White" HasShadow="False" Margin="0,-10">
+            <FlexLayout JustifyContent="SpaceBetween" AlignContent="Center" AlignItems="Center">
+                <StackLayout Orientation="Horizontal">
+                    <Image Source="cbaypolicy.png" Margin="0,0,20,0"/>
+                    <StackLayout>
+                        <Label Text="Privacy policies" TextColor="#000000" FontSize="18" Margin="0,0,0,0" FontFamily="DMSans-Medium" HorizontalTextAlignment="Center"/>
+                    </StackLayout>
+                </StackLayout>
+
+                <StackLayout>
+                    <Image Source="cbayforwardarrow.png"/>
+                </StackLayout>
+            </FlexLayout>
+        </Frame>
+
+        <Frame HasShadow="False" CornerRadius="10" BackgroundColor="{StaticResource PrimaryColor}" Margin="0,10,0,0" Padding="10" >
+
+            <FlexLayout JustifyContent="SpaceBetween" AlignItems="Center">
+                <StackLayout>
+                    <Label Text="Abdulbaki Shuaib" TextColor="#ffffff" FontSize="18" Margin="0,0,0,0" FontFamily="DMSans-Medium" HorizontalTextAlignment="Center"/>
+                    <Frame Padding="5" CornerRadius="10" BackgroundColor="#A9C7FF">
+                        <Label Text="10 Members" TextColor="#ffffff" FontSize="12" Margin="0,0,0,0" FontFamily="DMSans-Medium" HorizontalTextAlignment="Center"/>
+                    </Frame>
+                </StackLayout>
+                <StackLayout>
+                    <Image Source="cbaywhitearrow.png"/>
+                </StackLayout>
+            </FlexLayout>
+        </Frame>
+
+        <Frame HasShadow="False" CornerRadius="10" BackgroundColor="{StaticResource PrimaryColor}" Margin="0,0,0,0" Padding="10" >
+
+            <FlexLayout JustifyContent="SpaceBetween" AlignItems="Center">
+                <StackLayout>
+                    <Label Text="Abdulbaki Shuaib" TextColor="#ffffff" FontSize="18" Margin="0,0,0,0" FontFamily="DMSans-Medium" HorizontalTextAlignment="Center"/>
+                    <Frame Padding="5" CornerRadius="10" BackgroundColor="#A9C7FF">
+                        <Label Text="10 Members" TextColor="#ffffff" FontSize="12" Margin="0,0,0,0" FontFamily="DMSans-Medium" HorizontalTextAlignment="Center"/>
+                    </Frame>
+                </StackLayout>
+                <StackLayout>
+                    <Image Source="cbaywhitearrow.png"/>
+                </StackLayout>
+            </FlexLayout>
+        </Frame>
+    </StackLayout>
+</ContentPage>
