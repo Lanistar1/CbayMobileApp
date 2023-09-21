@@ -1,5 +1,4 @@
 ﻿using CBayMobileApp.ViewModels.AuthFlow;
-using CBayMobileApp.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,20 +11,15 @@ using Xamarin.Forms.Xaml;
 namespace CBayMobileApp.Views.Identity
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class SignupPage : ContentPage
+    public partial class UpdateProfile : ContentPage
     {
-        RegisterViewModel pageViewModel = null;
+        UpdateProfileViewModel pageViewModel = null;
 
-        public SignupPage()
+        public UpdateProfile()
         {
-            pageViewModel = new RegisterViewModel(Navigation);
+            pageViewModel = new UpdateProfileViewModel(Navigation);
             InitializeComponent();
             BindingContext = pageViewModel;
-        }
-
-        private void To_Login(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new LoginPage());
         }
     }
 }

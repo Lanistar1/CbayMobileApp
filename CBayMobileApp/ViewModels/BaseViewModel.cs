@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CBayMobileApp.Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -9,7 +10,7 @@ namespace CBayMobileApp.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        //public ScamAppService _scamAppService = new ScamAppService();
+        public CbayServices _cbayServices = new CbayServices();
 
         public INavigation Navigation;
         public event PropertyChangedEventHandler PropertyChanged;

@@ -18,6 +18,14 @@ namespace CBayMobileApp.Models.AuthFlow
         public string Gender { get; set; }
         public string DOB { get; set; }
         public string country { get; set; }
+
+        public string name
+        {
+            get
+            {
+                return firstName + " " + lastName;
+            }
+        }
     }
 
     public class GetProfileResponseModel

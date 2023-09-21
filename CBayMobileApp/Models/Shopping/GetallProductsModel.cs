@@ -4,17 +4,29 @@ using System.Text;
 
 namespace CBayMobileApp.Models.Shopping
 {
-    public class GetallProductsModel
+    public class GetAllProductData
     {
         public string productID { get; set; }
-        public string description { get; set; }
-        public string vendorID { get; set; }
-        public double weightKG { get; set; }
-        public string sizeLBHcm { get; set; }
-        public int price { get; set; }
+        public string name { get; set; }
+        public int productPrice { get; set; }
+        public int listingPrice { get; set; }
+        public object description { get; set; }
+        public bool isVerified { get; set; }
         public string defaultPictureLocation { get; set; }
-        public string otherPictureLocation { get; set; }
-        public int quantityAvailable { get; set; }
+        public object otherPictureLocationCSV { get; set; }
+        public string restuarantID { get; set; }
+        public object currency { get; set; }
+        public string categoryID { get; set; }
+        public int weightKG { get; set; }
+        public int discountPer { get; set; }
+        public int timeToPrepMins { get; set; }
+        public bool isSelected { get; set; }
+    }
+
+
+    public class GetallProductsModel
+    {
+        public List<GetAllProductData> data { get; set; }
     }
 
 

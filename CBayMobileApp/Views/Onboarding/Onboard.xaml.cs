@@ -22,5 +22,10 @@ namespace CBayMobileApp.Views.Onboarding
         {
             Navigation.PushAsync(new LoginPage());
         }
+
+        private void To_Signup(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new SignupPage());
+        }
     }
 }

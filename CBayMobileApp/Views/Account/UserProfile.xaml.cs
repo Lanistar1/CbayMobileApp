@@ -9,23 +9,18 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace CBayMobileApp.Views.Identity
+namespace CBayMobileApp.Views.Account
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class SignupPage : ContentPage
+    public partial class UserProfile : ContentPage
     {
-        RegisterViewModel pageViewModel = null;
+        GetProfileViewModel pageViewModel = null;
 
-        public SignupPage()
+        public UserProfile()
         {
-            pageViewModel = new RegisterViewModel(Navigation);
+            pageViewModel = new GetProfileViewModel(Navigation);
             InitializeComponent();
             BindingContext = pageViewModel;
-        }
-
-        private void To_Login(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new LoginPage());
         }
     }
 }

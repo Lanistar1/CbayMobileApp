@@ -19,7 +19,7 @@
                        TextColor="Black"/>
             </StackLayout>
 
-            <StackLayout Margin="0,10" Spacing="0">
+            <!--<StackLayout Margin="0,10" Spacing="0">
                 <StackLayout Orientation="Horizontal">
                     <Label  Text="Referral Code"
                             FontFamily="Rubik-Regular"
@@ -72,7 +72,7 @@
                       Stroke="#285EA7"
                       StrokeDashArray="0,0"
                       StrokeDashOffset="2"/>
-            </StackLayout>
+            </StackLayout>-->
 
 
             <StackLayout Margin="0,10" Spacing="0">
@@ -157,6 +157,62 @@
                       StrokeDashOffset="2"/>
             </StackLayout>
 
+            <StackLayout Margin="0,10" Spacing="0">
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Password"
+                           FontFamily="Rubik-Regular"
+                           FontSize="14"
+                           Margin="0,0,0,-5"
+                           TextColor="#285EA7"/>
+
+                    <Label Text="*" TextColor="Red" Margin="0,-5,0,0"/>
+
+                </StackLayout>
+
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="7*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Controls:CustomEntry 
+                                    VerticalOptions="CenterAndExpand"
+                                    FontFamily="Poppins-Light"
+                                    Placeholder="**************"
+                                    FontSize="16"
+                                    Text="{Binding ConfirmPassword}"
+                                    Grid.Column="0"
+                                    TextColor="Black"
+                                    IsPassword="{Binding Source={x:Reference ShowComfirmPasswordActualTrigger}, Path=HidePassword}"
+                                    />
+
+                    <ImageButton Grid.Column="1"
+                                 BackgroundColor="Transparent"
+                                 Margin="0,0,10,0"
+                                 HeightRequest="20"
+                                 HorizontalOptions="End"
+                                 Source="eyez">
+                        <ImageButton.Triggers>
+                            <EventTrigger Event="Clicked">
+                                <local:ShowPasswordTriggerAction ShowIcon="eyed"
+                                                                 HideIcon="eyez"
+                                                                 x:Name="ShowComfirmPasswordActualTrigger"/>
+                            </EventTrigger>
+                        </ImageButton.Triggers>
+                    </ImageButton>
+                </Grid>
+                <Line X1="0"
+                      Y1="5"
+                      X2="400"
+                      Y2="5"
+                      Margin="0,-7,0,0"
+                      Stroke="#285EA7"
+                      StrokeDashArray="0,0"
+                      StrokeDashOffset="2"/>
+            </StackLayout>
+
+
             <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand" Margin="0,10" Spacing="10">
                 <Image Source="cbaymark.png"/>
                 <Label Text="Get emails about rewards and promotional items." TextColor="#000000" FontSize="12" />
@@ -164,7 +220,7 @@
 
             <Frame HasShadow="False" CornerRadius="10" BackgroundColor="{StaticResource PrimaryColor}" Margin="0,20,0,0" Padding="0,10" >
                 <Frame.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="To_Login"/>
+                    <TapGestureRecognizer Command="{Binding RegisterCommand}"/>
                 </Frame.GestureRecognizers>
                 <Label Text="Sign up" TextColor="#ffffff" FontFamily="Rubik-Regular" FontSize="18"  Margin="0,0,0,0" 
                        HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>

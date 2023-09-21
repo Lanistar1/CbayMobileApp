@@ -11,25 +11,25 @@ using Xamarin.Forms.Xaml;
 namespace CBayMobileApp.Views.Identity
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class LoginPage : ContentPage
+    public partial class OTPVerification : ContentPage
     {
-        LoginViewModel pageViewModel = null;
+        Verify2FAViewModel pageViewModel = null;
 
-        public LoginPage()
+        public OTPVerification()
         {
-            pageViewModel = new LoginViewModel(Navigation);
+            pageViewModel = new Verify2FAViewModel(Navigation);
             InitializeComponent();
             BindingContext = pageViewModel;
         }
 
-        private void To_ForgotPassword(object sender, EventArgs e)
+        private async void Back(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new ForgotPasswordPage());
-        }
-
-        private void To_Signup(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new SignupPage());
+            int backCount = 1;
+            for (var counter = 1; counter < backCount; counter++)
+            {
+                Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count - 1]);
+            }
+            await Navigation.PopAsync();
         }
 
         private void To_Tabbed(object sender, EventArgs e)
