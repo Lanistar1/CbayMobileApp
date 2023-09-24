@@ -5,14 +5,87 @@
              BackgroundColor="White"
              Title="Product detail">
 
-    <ScrollView Margin="0,20" VerticalScrollBarVisibility="Never">
+    <StackLayout x:Name="cvBanner" BindableLayout.ItemsSource="{Binding ProductDetail}" Spacing="2" Margin="20,20,20,10" Grid.Row="1">
+        <BindableLayout.ItemTemplate>
+            <DataTemplate>
+                <StackLayout>
+                    <StackLayout Margin="0,0">
+                        <Image Source="cbaydetails.png"/>
+                    </StackLayout>
+                    <FlexLayout JustifyContent="SpaceBetween" Margin="20,10">
+                        <StackLayout>
+                            <Label Text="{Binding name}" TextColor="#212121" FontSize="16" Margin="0,0,0,0" FontFamily="DMSans-Regular" HorizontalTextAlignment="Start"/>
+                            <StackLayout Orientation="Horizontal" Spacing="0" Margin="0,0,0,0">
+                                <Label Text="NGN" TextColor="#212121" FontSize="14" FontFamily="DMSans-Regular"/>
+                                <Label Text="{Binding productPrice}" TextColor="#212121" FontSize="14" FontFamily="DMSans-Regular"/>
+                                <Label Text=".00" TextColor="#212121" FontSize="14" FontFamily="DMSans-Regular"/>
+                            </StackLayout>
+                        </StackLayout>
+                        <Frame Padding="5" CornerRadius="50" BorderColor="#E7E7E8" HeightRequest="50" WidthRequest="40" HasShadow="False">
+                            <Label Text="Bershka" TextColor="#212121" FontSize="10" Margin="0,0,0,0" FontFamily="DMSans-Regular" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                        </Frame>
+                    </FlexLayout>
+                    <Line X1="0"
+                          Y1="0"
+                          X2="400"
+                          Y2="0"
+                          Margin="0,0"
+                          Stroke="#cccccc"
+                          StrokeDashArray="0,0"
+                          StrokeDashOffset="2"/>
+
+                    <StackLayout Margin="20,0">
+                        <Label Text="Description" TextColor="#212121" FontSize="16" Margin="0,0,0,0" FontFamily="DMSans-Bold" HorizontalTextAlignment="Start"/>
+                        <Label Text="ies mauris aScelerisque erat rhoncus arcu scelerisque facilisi eu scelerisque congue.
+                               Etiam in curar cursus malesuada. Sit sit orci pharetra enim elementum dictum facilisi et phasellus. Feugiat eu ut lacus diam hac mauris et pellentesque sed." 
+                               TextColor="#212121" FontSize="16" Margin="0,0,0,0" FontFamily="DMSans-Regular" HorizontalTextAlignment="Start"/>
+                    </StackLayout>
+                    <Frame HasShadow="False" CornerRadius="10" BackgroundColor="{StaticResource PrimaryColor}" Padding="0,10" Margin="0,20">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Path=BindingContext.NextCommand, Source={x:Reference cvBanner}}" CommandParameter="{Binding .}"/>
+                        </Frame.GestureRecognizers>
+                        <Label Text="Buy Now" TextColor="#ffffff" FontFamily="Rubik-Regular" FontSize="18"  
+                                   HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                    </Frame>
+                    <!--<Grid Margin="20,20,20,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Frame HasShadow="False" CornerRadius="10" BackgroundColor="{StaticResource PrimaryColor}"   Padding="0,10" Grid.Column="0">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer />
+                            </Frame.GestureRecognizers>
+                            <Label Text="Add to Cart" TextColor="#ffffff" FontFamily="Rubik-Regular" FontSize="18"  
+                                   HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                        </Frame>
+                        <Frame HasShadow="False" CornerRadius="10" BackgroundColor="#EE7617" Padding="0,10" Grid.Column="1">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Path=BindingContext.NextCommand, Source={x:Reference cvBanner}}" CommandParameter="{Binding .}"/>
+                            </Frame.GestureRecognizers>
+                            <Label Text="Buy Now" TextColor="#ffffff" FontFamily="Rubik-Regular" FontSize="18"  
+                                   HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                        </Frame>
+                    </Grid>-->
+                </StackLayout>
+            </DataTemplate>
+        </BindableLayout.ItemTemplate>
+    </StackLayout>
+
+
+    <!--<ScrollView Margin="0,20" VerticalScrollBarVisibility="Never">
         <StackLayout>
             <Image Source="cbaydetails.png"/>
 
             <FlexLayout JustifyContent="SpaceBetween" Margin="20,10">
                 <StackLayout>
-                    <Label Text="Adidas Sport Tights" TextColor="#212121" FontSize="16" Margin="0,0,0,0" FontFamily="DMSans-Regular" HorizontalTextAlignment="Start"/>
-                    <Label Text="NGN3,400.00" TextColor="#212121" FontSize="16" Margin="0,0,0,0" FontFamily="DMSans-Bold" HorizontalTextAlignment="Start"/>
+                    <Label Text="{Binding ProductName}" TextColor="#212121" FontSize="16" Margin="0,0,0,0" FontFamily="DMSans-Regular" HorizontalTextAlignment="Start"/>
+                    <StackLayout Orientation="Horizontal" Spacing="0" Margin="0,0,0,0">
+                        <Label Text="NGN" TextColor="#212121" FontSize="14" FontFamily="DMSans-Regular"/>
+                        <Label Text="{Binding ProductPrice}" TextColor="#212121" FontSize="14" FontFamily="DMSans-Regular"/>
+                        <Label Text=".00" TextColor="#212121" FontSize="14" FontFamily="DMSans-Regular"/>
+                    </StackLayout>
+                    --><!--<Label Text="{Binding ProductPrice}" TextColor="#212121" FontSize="16" Margin="0,0,0,0" FontFamily="DMSans-Bold" HorizontalTextAlignment="Start"/>--><!--
                 </StackLayout>
                 <Frame Padding="5" CornerRadius="50" BorderColor="#E7E7E8" HeightRequest="50" WidthRequest="40" HasShadow="False">
                     <Label Text="Bershka" TextColor="#212121" FontSize="10" Margin="0,0,0,0" FontFamily="DMSans-Regular" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
@@ -27,40 +100,61 @@
                   StrokeDashArray="0,0"
                   StrokeDashOffset="2"/>
 
-            <Label Text="Details" TextColor="#212121" FontSize="16" Margin="20,0,20,0" FontFamily="DMSans-Regular" HorizontalTextAlignment="Start"/>
+            --><!--<Label Text="Details" TextColor="#212121" FontSize="16" Margin="20,0,20,0" FontFamily="DMSans-Regular" HorizontalTextAlignment="Start"/>--><!--
 
-            <StackLayout Margin="20,10">
+            <StackLayout Margin="20,0">
                 <Label Text="Description" TextColor="#212121" FontSize="16" Margin="0,0,0,0" FontFamily="DMSans-Bold" HorizontalTextAlignment="Start"/>
                 <Label Text="ies mauris aScelerisque erat rhoncus arcu scelerisque facilisi eu scelerisque congue.
                        Etiam in curar cursus malesuada. Sit sit orci pharetra enim elementum dictum facilisi et phasellus. Feugiat eu ut lacus diam hac mauris et pellentesque sed." 
                        TextColor="#212121" FontSize="16" Margin="0,0,0,0" FontFamily="DMSans-Regular" HorizontalTextAlignment="Start"/>
             </StackLayout>
 
-            <StackLayout Margin="20,0">
+            --><!--<StackLayout Margin="20,0">
                 <Label Text="How it Fits" TextColor="#212121" FontSize="16" Margin="0,0,0,0" FontFamily="DMSans-Bold" HorizontalTextAlignment="Start"/>
                 <Label Text="- Loose through your hip and thigh" TextColor="#212121" FontSize="16" Margin="0,0,0,0" FontFamily="DMSans-Regular" HorizontalTextAlignment="Start"/>
                 <Label Text="- Super high rise" TextColor="#212121" FontSize="16" Margin="0,0,0,0" FontFamily="DMSans-Regular" HorizontalTextAlignment="Start"/>
                 <Label Text="- Model is 5'9 and is wearing a size 27" TextColor="#212121" FontSize="16" Margin="0,0,0,0" FontFamily="DMSans-Regular" HorizontalTextAlignment="Start"/>
-            </StackLayout>
+            </StackLayout>-->
 
-            <Frame HasShadow="False" CornerRadius="10" BackgroundColor="{StaticResource PrimaryColor}" Margin="20,20,20,0"  Padding="0,10" >
+            <!--<Frame HasShadow="False" CornerRadius="10" BackgroundColor="{StaticResource PrimaryColor}" Margin="20,20,20,0"  Padding="0,10" >
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer />
                 </Frame.GestureRecognizers>
                 <Label Text="Add to Cart" TextColor="#ffffff" FontFamily="Rubik-Regular" FontSize="18"  
                    HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
-            </Frame>
+            </Frame>--><!--
 
-            <Line X1="0"
+            <Grid Margin="20,20,20,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Frame HasShadow="False" CornerRadius="10" BackgroundColor="{StaticResource PrimaryColor}"   Padding="0,10" Grid.Column="0">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer />
+                    </Frame.GestureRecognizers>
+                    <Label Text="Add to Cart" TextColor="#ffffff" FontFamily="Rubik-Regular" FontSize="18"  
+                   HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                </Frame>
+                <Frame HasShadow="False" CornerRadius="10" BackgroundColor="#EE7617" Padding="0,10" Grid.Column="1">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer />
+                    </Frame.GestureRecognizers>
+                    <Label Text="Buy Now" TextColor="#ffffff" FontFamily="Rubik-Regular" FontSize="18"  
+                   HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                </Frame>
+            </Grid>
+
+            --><!--<Line X1="0"
                   Y1="0"
                   X2="400"
                   Y2="0"
                   Margin="0,20,0,0"
                   Stroke="#cccccc"
                   StrokeDashArray="0,0"
-                  StrokeDashOffset="2"/>
+                  StrokeDashOffset="2"/>-->
 
-            <FlexLayout Margin="20,10" JustifyContent="SpaceBetween" AlignItems="Center" >
+            <!--<FlexLayout Margin="20,10" JustifyContent="SpaceBetween" AlignItems="Center" >
                 <Label Text="Tags" TextColor="#212121" FontSize="16" Margin="0,0,0,0" FontFamily="DMSans-Bold" HorizontalTextAlignment="Start"/>
 
                 <StackLayout>
@@ -127,7 +221,10 @@
                 <StackLayout>
                     <Image Source="cbayarrowdown.png"/>
                 </StackLayout>
-            </FlexLayout>
+            </FlexLayout>--><!--
         </StackLayout>
-    </ScrollView>
+    </ScrollView>-->
+
+
+
 </ContentPage>

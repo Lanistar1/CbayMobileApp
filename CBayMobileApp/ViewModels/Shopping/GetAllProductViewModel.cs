@@ -81,7 +81,7 @@ namespace CBayMobileApp.ViewModels.Shopping
                 }
                 SelectedItems.Add(model);
 
-                //await Navigation.PushAsync(new ProductDetails(SelectedItems), true);
+                await Navigation.PushAsync(new ProductDetail(SelectedItems), true);
             }
             catch (Exception ex)
             {

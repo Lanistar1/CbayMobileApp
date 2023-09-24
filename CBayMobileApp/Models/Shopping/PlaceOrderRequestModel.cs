@@ -15,6 +15,8 @@ namespace CBayMobileApp.Models.Shopping
         public List<Orderdetail> orderdetails { get; set; }
         public OrderShippingAddress ShippingAddress { get; set; }
         public string DeliveryInstruction { get; set; }
+        public string WalletID { get; set; }
+
     }
 
     public class OrderShippingAddress

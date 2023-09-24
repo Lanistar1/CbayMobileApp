@@ -19,17 +19,17 @@ namespace CBayMobileApp.ViewModels.Shopping
 {
     public class OrderConfirmationViewModel : BaseViewModel
     {
-        //public List<GetShippingAddressData> shippingAddress;
-        //public List<GetShippingAddressData> ShippingAddress
-        //{
-        //    get => shippingAddress;
-        //    set
-        //    {
-        //        shippingAddress = value;
-        //        OnPropertyChanged(nameof(ShippingAddress));
+        public List<AddressData> shippingAddress;
+        public List<AddressData> ShippingAddress
+        {
+            get => shippingAddress;
+            set
+            {
+                shippingAddress = value;
+                OnPropertyChanged(nameof(ShippingAddress));
 
-        //    }
-        //}
+            }
+        }
 
 
         //public List<WalletData> buyerWalletData;
@@ -145,8 +145,8 @@ namespace CBayMobileApp.ViewModels.Shopping
         }
 
 
-        private int quantity;
-        public int Quantity
+        private string quantity;
+        public string Quantity
         {
             get => quantity;
             set
@@ -175,15 +175,7 @@ namespace CBayMobileApp.ViewModels.Shopping
 
             Task _tasks = GetMyWalletExecute();
 
-            //Task _task = GetMyShippingAddressExecute();
-
             PlaceOrderCommand = new Command(async () => await PlaceOrderCommandExecute());
-            //FilterCommand = new Command(async () => await FilterCommandExecute());
-
-
-
-            //AddShippingAddressCommand = new Command(async () => await AddShippingAddressCommandExecute());
-            //UpdateShippingAddressCommand = new Command(async () => await UpdateShippingAddressCommandExecute());
 
             SelectedItems = selectedItems;
 
@@ -197,54 +189,54 @@ namespace CBayMobileApp.ViewModels.Shopping
         public Command PlaceOrderCommand { get; }
         public Command FilterCommand { get; }
 
-        //public Command AddShippingAddressCommand { get; }
-        //public Command UpdateShippingAddressCommand { get; }
+        public Command AddShippingAddressCommand { get; }
+        public Command UpdateShippingAddressCommand { get; }
 
-        //public async Task GetMyShippingAddressExecute()
-        //{
-        //    try
-        //    {
-        //        await LoadingPopup.Instance.Show("Loading...");
+        public async Task GetMyShippingAddressExecute()
+        {
+            try
+            {
+                await LoadingPopup.Instance.Show("Loading...");
 
-        //        HttpClient client = new HttpClient();
+                HttpClient client = new HttpClient();
 
-        //        string url = Global.GetShippingAddressUrl;
+                string url = Global.GetMyShippingAddressUrl;
 
-        //        Console.WriteLine(url);
+                Console.WriteLine(url);
 
-        //        client.DefaultRequestHeaders.Add("Authorization", $"Bearer {Helpers.Global.token}");
+                client.DefaultRequestHeaders.Add("Authorization", $"Bearer {Helpers.Global.token}");
 
-        //        HttpResponseMessage response = await client.GetAsync(url);
+                HttpResponseMessage response = await client.GetAsync(url);
 
-        //        response = await client.GetAsync(url);
+                response = await client.GetAsync(url);
 
-        //        Console.WriteLine(response);
+                Console.WriteLine(response);
 
-        //        string result = await response.Content.ReadAsStringAsync();
-        //        Console.WriteLine(result);
-        //        if (response.StatusCode == System.Net.HttpStatusCode.OK)
-        //        {
-        //            GetMyShippingAddressModel data = JsonConvert.DeserializeObject<GetMyShippingAddressModel>(result);
-        //            // Console.WriteLine("passedjiojiojiojio");
-        //            Console.WriteLine(data);
+                string result = await response.Content.ReadAsStringAsync();
+                Console.WriteLine(result);
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    GetMyShippingAddressModel data = JsonConvert.DeserializeObject<GetMyShippingAddressModel>(result);
+                    // Console.WriteLine("passedjiojiojiojio");
+                    Console.WriteLine(data);
 
-        //            ShippingAddress = data.data;
+                    ShippingAddress = data.data;
 
-        //        }
-        //        else
-        //        {
-        //            Console.WriteLine("Someting went wrong");
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Console.WriteLine(ex);
-        //    }
-        //    finally
-        //    {
-        //        await LoadingPopup.Instance.Hide();
-        //    }
-        //}
+                }
+                else
+                {
+                    Console.WriteLine("Someting went wrong");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            finally
+            {
+                await LoadingPopup.Instance.Hide();
+            }
+        }
 
 
         public async Task GetMyWalletExecute()
@@ -277,12 +269,12 @@ namespace CBayMobileApp.ViewModels.Shopping
 
                     
 
-                    //var test = data.data.walletID;
-                    //Global.WalletId = test;
-                    //WalletNo = data.data.walletNo;
+                    var test = data.data.walletID;
+                    Global.WalletId = test;
+                    WalletNo = data.data.walletNo;
 
-                    //AvailableBalance = data.data.balance;
-                    //Global.Balance = AvailableBalance;
+                    AvailableBalance = data.data.balance;
+                    Global.Balance = AvailableBalance;
 
                     //await GetMyWalletBalanceExecute(Approval);
                 }
@@ -314,16 +306,25 @@ namespace CBayMobileApp.ViewModels.Shopping
 
                 HttpClient client = new HttpClient();
 
-                //var newBalance = Global.Balance;
+                var newBalance = Global.Balance;
                 //var newPrice = Global.PriceTag;
 
-                //if (newBalance < newPrice)
-                //{
-                //    await MessagePopup.Instance.Show("Insufficient fund.");
-                //    return;
-                //}
+                if (newBalance < ProductPrice)
+                {
+                    await MessagePopup.Instance.Show("Insufficient fund.");
+                    return;
+                }
 
                 var details = ProductDetail;
+
+                if (Quantity == null)
+                {
+                    await MessagePopup.Instance.Show("Please enter quantity.");
+                    return;
+                }
+
+                int newQuantity = int.Parse(Quantity);
+
 
                 List<string> detailLot = new List<string>();
                 var newOrder = new List<Orderdetail>();
@@ -334,7 +335,7 @@ namespace CBayMobileApp.ViewModels.Shopping
                     detailLot.Add(productID);
                     Orderdetail neworderDetail = new Orderdetail()
                     {
-                        Quantity = 1,
+                        Quantity = newQuantity,
                         ProductID = productID,
 
                     };
@@ -342,36 +343,32 @@ namespace CBayMobileApp.ViewModels.Shopping
 
                 }
 
-                //var Name = Global.FullName;
-                //var Address = Global.Address;
-                //var City = Global.City;
-                //var Country = Global.Country;
-                //var Phone = Global.Phone;
+                var Address = Global.Address;
+                var City = Global.City;
+                var Country = Global.Country;
+                var Phone = Global.Phone;
 
-                ShippingAddress shippingAddress = new ShippingAddress()
+                OrderShippingAddress shippingAddress = new OrderShippingAddress()
                 {
-                    //Address = Address,
-                    //City = City,
-                    //Country = "Nigeria",
-                    //PhoneNo = Phone,
-                    //Name = Name
+                    Address = Address,
+                    City = City,
+                    Country = "Nigeria",
+                    PhoneNo = Phone,
+                    Name = ""
                 };
 
                 Orderdetail orderdetail = new Orderdetail() { ProductID = "8354354347", Quantity = 222 };
 
-                //var walletID = Global.WalletId;
-
+                var walletID = Global.WalletId;
 
                 PlaceOrderRequestModel requestPayload = new PlaceOrderRequestModel()
-                { };
+                { orderdetails = newOrder, DeliveryInstruction = DeliveryInstruction, ShippingAddress = shippingAddress, WalletID = walletID };
 
                 string payloadJson = JsonConvert.SerializeObject(requestPayload);
-
                 Console.WriteLine(payloadJson);
 
-                //string url = Global.PlaceOrderUrl;
+                string url = Global.PlaceOrderUrl;
 
-                string url = Global.WalletUrl;
                 Console.WriteLine(url);
                 StringContent content = new StringContent(payloadJson, Encoding.UTF8, "application/json");
                 client.DefaultRequestHeaders.Add("Authorization", $"Bearer {Helpers.Global.token}");
@@ -384,19 +381,20 @@ namespace CBayMobileApp.ViewModels.Shopping
 
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
-                    //await Application.Current.MainPage.DisplayAlert("Order placed Successfully", "", "OK");
                     await MessagePopup.Instance.Show("Order placed Successfully.");
 
                     Application.Current.MainPage = new NavigationPage(new Tabbed());
                 }
                 else if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
                 {
-                    await Application.Current.MainPage.DisplayAlert("Order not successfully ", "Please fill all fields", "OK");
+                    await MessagePopup.Instance.Show("Session expired.");
+
+                    Application.Current.MainPage = new NavigationPage(new LoginPage());
 
                 }
                 else
                 {
-                    await Application.Current.MainPage.DisplayAlert("Something went wrong", "Please try again later", "OK");
+                    await MessagePopup.Instance.Show("Insufficient wallet balance.");
                 }
 
             }

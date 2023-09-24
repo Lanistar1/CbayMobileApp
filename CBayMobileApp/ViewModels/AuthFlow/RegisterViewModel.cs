@@ -18,7 +18,7 @@ namespace CBayMobileApp.ViewModels.AuthFlow
         {
             Navigation = navigation;
 
-            RegisterCommand = new Command(async () => await RegisterCommandsExecute(username, password));
+            RegisterCommand = new Command(async () => await RegisterCommandsExecute(username, password, refCode));
         }
 
         #region Bindings
@@ -34,14 +34,14 @@ namespace CBayMobileApp.ViewModels.AuthFlow
         }
 
 
-        private bool textButton = true;
-        public bool TextButton
+        private string refCode;
+        public string RefCode
         {
-            get => textButton;
+            get => refCode;
             set
             {
-                textButton = value;
-                OnPropertyChanged(nameof(TextButton));
+                refCode = value;
+                OnPropertyChanged(nameof(RefCode));
             }
         }
 
@@ -95,7 +95,7 @@ namespace CBayMobileApp.ViewModels.AuthFlow
         #endregion
 
         #region functions, methods, navigations, events
-        private async Task RegisterCommandsExecute(string username, string password)
+        private async Task RegisterCommandsExecute(string username, string password, string refCode)
         {
             if (string.IsNullOrWhiteSpace(Username))
             {
@@ -139,7 +139,7 @@ namespace CBayMobileApp.ViewModels.AuthFlow
 
                 await LoadingPopup.Instance.Show("Registering user...");
 
-                var (ResponseData, ErrorData, StatusCode) = await _cbayServices.SignupUserAsync(username, password);
+                var (ResponseData, ErrorData, StatusCode) = await _cbayServices.SignupUserAsync(username, password, refCode);
 
 
                 if (ResponseData != null)

@@ -7,10 +7,13 @@
 
     <ScrollView Margin="20" VerticalScrollBarVisibility="Never">
         <StackLayout>
-            <Label Text="Hi, Abdulbai!" TextColor="#000000" FontSize="20" FontFamily="DMSans-Regular"/>
+            <StackLayout Orientation="Horizontal" Spacing="0">
+                <Label Text="Hi, " TextColor="#000000" FontSize="20" FontFamily="DMSans-Regular"/>
+                <Label Text="{Binding Name}" TextColor="#000000" FontSize="20" FontFamily="DMSans-Regular"/>
+            </StackLayout>
 
             <Frame Padding="10,5" BackgroundColor="#D7FAF4" HorizontalOptions="StartAndExpand" CornerRadius="5" HasShadow="False">
-                <Label Text="Ref Code: 123456" TextColor="#19594D" FontSize="12" FontFamily="DMSans-Regular"/>
+                <!--<Label Text="Ref Code: 123456" TextColor="#19594D" FontSize="12" FontFamily="DMSans-Regular"/>-->
             </Frame>
 
             <StackLayout>

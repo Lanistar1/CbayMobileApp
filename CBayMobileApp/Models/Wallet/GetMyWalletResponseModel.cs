@@ -4,13 +4,17 @@ using System.Text;
 
 namespace CBayMobileApp.Models.Wallet
 {
-
-    public class GetMyWalletResponseModel
+    public class WalletData
     {
+        public int balance { get; set; }
         public string walletID { get; set; }
         public string walletNo { get; set; }
         public string currency { get; set; }
-        public string status { get; set; }
+    }
+
+    public class GetMyWalletResponseModel
+    {
+        public WalletData data { get; set; }
     }
 
 

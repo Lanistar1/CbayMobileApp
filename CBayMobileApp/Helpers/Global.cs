@@ -22,12 +22,23 @@ namespace CBayMobileApp.Helpers
         public static string GetMembershipDownlineUrl => $"{BaseUrl}/membership/downlines/{memberID}";
         public static string GetMembershipDetailUrl => $"{BaseUrl}/membership/profile";
         public static string GetProductsUrl => $"{BaseUrl}/shopping/products";
-        
+        public static string AddShippingAddressUrl => $"{BaseUrl}/shopping/address";
+        public static string GetMyShippingAddressUrl => $"{BaseUrl}/shopping/addresses";
+        public static string PlaceOrderUrl => $"{BaseUrl}/shopping/order";
+
+
 
 
         public static ProfileData UserProfileData { get; set; }
-        public static GetMyWalletResponseModel UserWalletData { get; set; }
+        public static WalletData UserWalletData { get; set; }
         public static string memberID { get; set; }
+        public static string FullName { get; set; }
+        public static string Address { get; set; }
+        public static string City { get; set; }
+        public static string Country { get; set; }
+        public static string Phone { get; set; }
+        public static string WalletId { get; set; }
+        public static int Balance { get; set; }
 
 
         public static bool Contains(this string target, string value, StringComparison comparison)

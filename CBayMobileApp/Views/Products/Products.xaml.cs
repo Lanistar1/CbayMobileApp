@@ -21,9 +21,9 @@ namespace CBayMobileApp.Views.Products
             BindingContext = new GetAllProductViewModel(Navigation);
         }
 
-        private void To_productdetails(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new ProductDetail());
-        }
+        //private void To_productdetails(object sender, EventArgs e)
+        //{
+        //    Navigation.PushAsync(new ProductDetail());
+        //}
     }
 }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CBayMobileApp.Models.Shopping.Shipping
 {
-    public class GetMyShippingAddressModel
+    public class AddressData
     {
         public string firstName { get; set; }
         public string lastName { get; set; }
@@ -15,5 +15,18 @@ namespace CBayMobileApp.Models.Shopping.Shipping
         public string city { get; set; }
         public string country { get; set; }
         public string maplocation { get; set; }
+
+        public string fullName
+        {
+            get
+            {
+                return this.firstName + " " + this.lastName;
+            }
+        }
+    }
+
+    public class GetMyShippingAddressModel
+{
+        public List<AddressData> data { get; set; }
     }
 }

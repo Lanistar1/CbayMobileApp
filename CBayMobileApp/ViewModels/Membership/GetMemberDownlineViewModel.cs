@@ -158,7 +158,7 @@ namespace CBayMobileApp.ViewModels.Membership
                     }
                     else
                     {
-                        await MessagePopup.Instance.Show(ErrorData.errors.FirstOrDefault());
+                        //await MessagePopup.Instance.Show(ErrorData.errors.FirstOrDefault());
                     }
                 }
                 else if (ErrorData != null)

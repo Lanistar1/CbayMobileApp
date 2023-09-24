@@ -31,8 +31,8 @@ namespace CBayMobileApp.ViewModels.Membership
 
 
         #region Bindings
-        private List<Downline> membershipDetailData;
-        public List<Downline> MembershipDetailData
+        private MembershipData membershipDetailData;
+        public MembershipData MembershipDetailData
         {
             get => membershipDetailData;
             set
@@ -140,13 +140,14 @@ namespace CBayMobileApp.ViewModels.Membership
                 var (ResponseData, ErrorData, StatusCode) = await _cbayServices.GetMembershipDetailAsync();
                 if (ResponseData != null)
                 {
-                    if (ResponseData.downlines != null)
+                    if (ResponseData.data != null)
                     {
-                        MembershipDetailData = ResponseData.downlines;
+                        MembershipDetailData = ResponseData.data;
 
-                        JoinedDate = ResponseData.joinedDate;
+                        JoinedDate = ResponseData.data.refCode;
+                        //Name = ResponseData.data.memberName;
 
-                        MemberID = ResponseData.memberID;
+                        MemberID = ResponseData.data.memberID;
                         Global.memberID = MemberID;
                     }
                     else

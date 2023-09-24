@@ -7,9 +7,9 @@
 
 
     <StackLayout Margin="20">
-        <Label Text="My Downlines" TextColor="#000000" FontSize="18" Margin="0,15,0,7" FontFamily="DMSans-Medium" HorizontalTextAlignment="Start"/>
+        <!--<Label Text="My Downlines" TextColor="#000000" FontSize="18" Margin="0,15,0,7" FontFamily="DMSans-Medium" HorizontalTextAlignment="Start"/>-->
 
-        <CollectionView x:Name="membership" ItemsSource="{Binding MembershipData}">
+        <CollectionView x:Name="membership" ItemsSource="{Binding MembershipData}" Margin="0,10">
             <CollectionView.ItemsLayout>
                 <GridItemsLayout VerticalItemSpacing="20" HorizontalItemSpacing="20" Orientation="Vertical" Span="2"/>
             </CollectionView.ItemsLayout>
@@ -29,56 +29,14 @@
                             </StackLayout>
                         </FlexLayout>
                     </Frame>
-                    
-                    <!--<StackLayout>
-                        <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding Path=BindingContext.TappedCommand, Source={x:Reference products}}" CommandParameter="{Binding .}"/>
-                        </StackLayout.GestureRecognizers>
-                        <Grid>
-                            <Grid>
-                                <StackLayout>
-                                    <Image Source="{Binding defaultPictureLocation}" HeightRequest="200" WidthRequest="500" HorizontalOptions="FillAndExpand"/>
-                                </StackLayout>
-                            </Grid>
-                            <Grid>
-                                <FlexLayout Margin="10,20,10,0" JustifyContent="SpaceBetween">
-                                    <Frame Padding="5,0" HeightRequest="20" WidthRequest="50" CornerRadius="10" Margin="0,0,5,0">
-                                        <Label Text="{Binding time}" FontSize="14" TextColor="#000000"/>
-                                    </Frame>
-                                    <StackLayout VerticalOptions="CenterAndExpand">
-                                        <Image Source="Heartred.png" WidthRequest="15" HeightRequest="15"/>
-                                    </StackLayout>
-                                </FlexLayout>
-                                <Frame Padding="5,0" HeightRequest="20" WidthRequest="70" CornerRadius="10" Margin="0,0,10,30" VerticalOptions="EndAndExpand" HorizontalOptions="EndAndExpand">
-                                    <StackLayout Orientation="Horizontal" Spacing="0" HorizontalOptions="CenterAndExpand">
-                                        <Label Text="NGN" FontSize="14" TextColor="#000000"/>
-                                        <Label Text="{Binding productPrice}" FontSize="14" TextColor="#000000"/>
-                                        <Label Text=".00" FontSize="14" TextColor="#000000"/>
-                                    </StackLayout>
-                                </Frame>
-                            </Grid>
-
-                        </Grid>
-                        <Frame CornerRadius="0" BackgroundColor="White" Padding="0,0,0,10" Margin="0,-25,0,0">
-                            <Frame.GestureRecognizers>
-                                <TapGestureRecognizer/>
-                            </Frame.GestureRecognizers>
-                            <StackLayout>
-
-                                <StackLayout Orientation="Horizontal" Spacing="5" Margin="10,0,0,0">
-                                    <StackLayout>
-                                        <Image Source="cancelRed.png" WidthRequest="14" HeightRequest="14"/>
-                                    </StackLayout>
-                                    <StackLayout>
-                                        <Label Text="{Binding name}" TextColor="#191919" FontSize="14" HorizontalTextAlignment="Center"/>
-                                        <Label Text="{Binding description}" TextColor="#8C8C8C" FontSize="8" HorizontalTextAlignment="Start"/>
-                                    </StackLayout>
-                                </StackLayout>
-                            </StackLayout>
-                        </Frame>
-                    </StackLayout>-->
                 </DataTemplate>
             </CollectionView.ItemTemplate>
+            <CollectionView.EmptyView>
+                <StackLayout VerticalOptions="Center"  HorizontalOptions="Center">
+                    <Image Source="blank3.png" HeightRequest="70" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    <Label  Margin="0,4,0,0" HorizontalOptions="Center" TextColor="#333333" HorizontalTextAlignment="Center" FontAttributes="Bold">No downline found</Label>
+                </StackLayout>
+            </CollectionView.EmptyView>
         </CollectionView>
     </StackLayout>
 

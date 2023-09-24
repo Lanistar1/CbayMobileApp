@@ -15,8 +15,7 @@
                 <Image Source="cbaycart.png"/>
             </StackLayout>
         </FlexLayout>
-
-        <CollectionView ItemsSource="{Binding CbayProducts}" Margin="0,20">
+        <CollectionView x:Name="cvBanners" ItemsSource="{Binding ProductData}" Margin="0,20">
             <CollectionView.ItemsLayout>
                 <GridItemsLayout VerticalItemSpacing="15" HorizontalItemSpacing="5" Orientation="Vertical" Span="2"/>
             </CollectionView.ItemsLayout>
@@ -24,12 +23,15 @@
                 <DataTemplate>
                     <StackLayout>
                         <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="To_productdetails"/>
+                            <TapGestureRecognizer Command="{Binding Path=BindingContext.TappedCommand, Source={x:Reference cvBanners}}" CommandParameter="{Binding .}"/>
                         </StackLayout.GestureRecognizers>
-
-                        <Image Source="{Binding PlusImage}"/>
-                        <Label Text="{Binding title}" TextColor="#272728" FontSize="14" Margin="10,0,0,0" FontFamily="DMSans-Regular" HorizontalTextAlignment="Start"/>
-                        <Label Text="{Binding amount}" TextColor="#272728" FontSize="14" Margin="10,0,0,0" FontFamily="DMSans-Bold" HorizontalTextAlignment="Start"/>
+                        <Image Source="{Binding defaultPictureLocation}" WidthRequest="100" HeightRequest="100"/>
+                        <Label Text="{Binding name}" TextColor="#272728" FontSize="14" Margin="10,0,0,0" FontFamily="DMSans-Regular" HorizontalTextAlignment="Start"/>
+                        <StackLayout Orientation="Horizontal" Spacing="0" Margin="10,0,0,0">
+                            <Label Text="NGN" TextColor="#272728" FontSize="14" FontFamily="DMSans-Regular"/>
+                            <Label Text="{Binding productPrice}" TextColor="#272728" FontSize="14" FontFamily="DMSans-Regular"/>
+                            <Label Text=".00" TextColor="#272728" FontSize="14" FontFamily="DMSans-Regular"/>
+                        </StackLayout>
                     </StackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>

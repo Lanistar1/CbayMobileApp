@@ -3,6 +3,7 @@ using CBayMobileApp.Models.Shopping;
 using CBayMobileApp.Popup;
 using CBayMobileApp.Utils;
 using CBayMobileApp.Views;
+using CBayMobileApp.Views.Products;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -120,7 +121,7 @@ namespace CBayMobileApp.ViewModels.Shopping
             ProductImage = ProductDetail.FirstOrDefault().defaultPictureLocation;
             ProductName = ProductDetail.FirstOrDefault().name;
             ProductPrice = ProductDetail.FirstOrDefault().productPrice;
-            VendorID = ProductDetail.FirstOrDefault().restuarantID;
+            //VendorID = ProductDetail.FirstOrDefault().restuarantID;
             ProductID = ProductDetail.FirstOrDefault().productID;
 
             //Global.VendorID = vendorID;
@@ -146,7 +147,7 @@ namespace CBayMobileApp.ViewModels.Shopping
                 }
                 SelectedItems.Add(model);
 
-                //await Navigation.PushAsync(new OrderConfirmation(SelectedItems), true);
+                await Navigation.PushAsync(new OrderConfirmation(SelectedItems), true);
             }
             catch (Exception ex)
             {

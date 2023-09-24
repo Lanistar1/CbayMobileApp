@@ -1,4 +1,4 @@
-﻿using CBayMobileApp.Models.Shopping;
+﻿using CBayMobileApp.Helpers;
 using CBayMobileApp.ViewModels.Shopping;
 using System;
 using System.Collections.Generic;
@@ -12,13 +12,16 @@ using Xamarin.Forms.Xaml;
 namespace CBayMobileApp.Views.Products
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ProductDetail : ContentPage
+    public partial class NewAddress : ContentPage
     {
-        public ProductDetail(List<GetAllProductData> selectedItems)
+
+        public NewAddress()
         {
             InitializeComponent();
-            BindingContext = new ProductDetailViewModel(Navigation, selectedItems);
+            BindingContext = new AddressViewModel(Navigation);
 
         }
+
+      
     }
 }

@@ -22,7 +22,7 @@ namespace CBayMobileApp.Services
         //ProfileData userProfileDetails = Global.UserProfileData == null ? null : Global.UserProfileData;
         //string token = Global.token;
 
-        public async Task<(RegisterResponseModel ResponseData, ErrorResponseModel ErrorData, int StatusCode)> SignupUserAsync(string username, string password)
+        public async Task<(RegisterResponseModel ResponseData, ErrorResponseModel ErrorData, int StatusCode)> SignupUserAsync(string username, string password, String refCode)
         {
             try
             {
@@ -31,7 +31,8 @@ namespace CBayMobileApp.Services
                 var RegisterData = new RegisterRequestModel
                 {
                     Password = password,
-                    Username = username
+                    Username = username, 
+                    RefCode = refCode
                 };
                 var json = JsonConvert.SerializeObject(RegisterData);
                 StringContent content = new StringContent(json, Encoding.UTF8, "application/json");

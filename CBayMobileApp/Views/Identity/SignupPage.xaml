@@ -19,62 +19,6 @@
                        TextColor="Black"/>
             </StackLayout>
 
-            <!--<StackLayout Margin="0,10" Spacing="0">
-                <StackLayout Orientation="Horizontal">
-                    <Label  Text="Referral Code"
-                            FontFamily="Rubik-Regular"
-                            FontSize="14"
-                            Margin="0,0,0,-5"
-                            TextColor="#285EA7"/>
-
-                </StackLayout>
-
-
-                <Controls:CustomEntry 
-                    FontFamily="Rubik-Regular"
-                    FontSize="16"
-                    Text="{Binding Username}"
-                    Keyboard="Numeric"
-                    Placeholder="123456"
-                    TextColor="Black"/>
-                <Line X1="0"
-                      Y1="5"
-                      X2="400"
-                      Y2="5"
-                      Margin="0,-7,0,0"
-                      Stroke="#285EA7"
-                      StrokeDashArray="0,0"
-                      StrokeDashOffset="2"/>
-            </StackLayout>
-
-            <StackLayout Margin="0,10" Spacing="0">
-                <StackLayout Orientation="Horizontal">
-                    <Label  Text="Full Name"
-                            FontFamily="Rubik-Regular"
-                            FontSize="14"
-                            Margin="0,0,0,-5"
-                            TextColor="#285EA7"/>
-
-                </StackLayout>
-
-
-                <Controls:CustomEntry 
-                    FontFamily="Rubik-Regular"
-                    FontSize="16"
-                    Text="{Binding Username}"
-                    Placeholder="Abdulbaki Shuaib"
-                    TextColor="Black"/>
-                <Line X1="0"
-                      Y1="5"
-                      X2="400"
-                      Y2="5"
-                      Margin="0,-7,0,0"
-                      Stroke="#285EA7"
-                      StrokeDashArray="0,0"
-                      StrokeDashOffset="2"/>
-            </StackLayout>-->
-
-
             <StackLayout Margin="0,10" Spacing="0">
                 <StackLayout Orientation="Horizontal">
                     <Label  Text="Email"
@@ -122,15 +66,15 @@
                     </Grid.ColumnDefinitions>
 
                     <Controls:CustomEntry 
-                                    VerticalOptions="CenterAndExpand"
-                                    FontFamily="Poppins-Light"
-                                    Placeholder="**************"
-                                    FontSize="16"
-                                    Text="{Binding Password}"
-                                    Grid.Column="0"
-                                    TextColor="Black"
-                                    IsPassword="{Binding Source={x:Reference ShowPasswordActualTrigger}, Path=HidePassword}"
-                                    />
+                            VerticalOptions="CenterAndExpand"
+                            FontFamily="Poppins-Light"
+                            Placeholder="**************"
+                            FontSize="16"
+                            Text="{Binding Password}"
+                            Grid.Column="0"
+                            TextColor="Black"
+                            IsPassword="{Binding Source={x:Reference ShowPasswordActualTrigger}, Path=HidePassword}"
+                            />
 
                     <ImageButton Grid.Column="1"
                                  BackgroundColor="Transparent"
@@ -177,15 +121,15 @@
                     </Grid.ColumnDefinitions>
 
                     <Controls:CustomEntry 
-                                    VerticalOptions="CenterAndExpand"
-                                    FontFamily="Poppins-Light"
-                                    Placeholder="**************"
-                                    FontSize="16"
-                                    Text="{Binding ConfirmPassword}"
-                                    Grid.Column="0"
-                                    TextColor="Black"
-                                    IsPassword="{Binding Source={x:Reference ShowComfirmPasswordActualTrigger}, Path=HidePassword}"
-                                    />
+                            VerticalOptions="CenterAndExpand"
+                            FontFamily="Poppins-Light"
+                            Placeholder="**************"
+                            FontSize="16"
+                            Text="{Binding ConfirmPassword}"
+                            Grid.Column="0"
+                            TextColor="Black"
+                            IsPassword="{Binding Source={x:Reference ShowComfirmPasswordActualTrigger}, Path=HidePassword}"
+                            />
 
                     <ImageButton Grid.Column="1"
                                  BackgroundColor="Transparent"
@@ -202,6 +146,32 @@
                         </ImageButton.Triggers>
                     </ImageButton>
                 </Grid>
+                <Line X1="0"
+                      Y1="5"
+                      X2="400"
+                      Y2="5"
+                      Margin="0,-7,0,0"
+                      Stroke="#285EA7"
+                      StrokeDashArray="0,0"
+                      StrokeDashOffset="2"/>
+            </StackLayout>
+
+            <StackLayout Margin="0,10" Spacing="0">
+                <StackLayout Orientation="Horizontal">
+                    <Label  Text="Referral code"
+                            FontFamily="Rubik-Regular"
+                            FontSize="14"
+                            Margin="0,0,0,-5"
+                            TextColor="#285EA7"/>
+
+                </StackLayout>
+
+
+                <Controls:CustomEntry 
+                    FontFamily="Rubik-Regular"
+                    FontSize="16"
+                    Text="{Binding RefCode}"
+                    TextColor="Black"/>
                 <Line X1="0"
                       Y1="5"
                       X2="400"
@@ -243,20 +213,6 @@
                 <Label Text="Sign up with Facebook" TextColor="#000000" FontFamily="Rubik-Regular" FontSize="16"  Margin="0,0,0,0" 
                        HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
             </Frame>
-
-            <!--<StackLayout Orientation="Horizontal" Spacing="0" HorizontalOptions="CenterAndExpand" Margin="0,10,0,0">
-            <Label Text="New here? " TextColor="#000000" FontSize="16" />
-            <Label HorizontalOptions="CenterAndExpand" TextColor="{StaticResource PrimaryColor}" Margin="2,0,0,0" FontSize="16">
-                <Label.FormattedText>
-                    <FormattedString>
-                        <Span Text="Create an account" />
-                    </FormattedString>
-                </Label.FormattedText>
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="To_Signup"/>
-                </Label.GestureRecognizers>
-            </Label>
-        </StackLayout>-->
         </StackLayout>
 
     </ScrollView>
