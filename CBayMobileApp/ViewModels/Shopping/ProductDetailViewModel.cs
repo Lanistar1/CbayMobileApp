@@ -5,13 +5,16 @@ using CBayMobileApp.Utils;
 using CBayMobileApp.Views;
 using CBayMobileApp.Views.Products;
 using Newtonsoft.Json;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using static CBayMobileApp.Helpers.Global;
 
 namespace CBayMobileApp.ViewModels.Shopping
 {
@@ -114,6 +117,8 @@ namespace CBayMobileApp.ViewModels.Shopping
 
             NextCommand = new Command<GetAllProductData>(async (model) => await NextCommandExecute(model));
 
+            AddCartCommand = new Command<GetAllProductData>(async (model) => await AddCartCommandExecute(model));
+
             ProductDetail = new List<GetAllProductData>(SelectedItems);
 
             var articleUrl = ProductDetail;
@@ -158,6 +163,42 @@ namespace CBayMobileApp.ViewModels.Shopping
                 await LoadingPopup.Instance.Hide();
             }
         }
+
+        private async Task AddCartCommandExecute(GetAllProductData model)
+        {
+            try
+            {
+
+                var mod = model;
+                if (Helpers.Global.myCarts == null) { Helpers.Global.myCarts = new ObservableCollection<CartItem>(); }
+                Helpers.Global.myCarts.Add(new CartItem
+                {
+                    productID = model.productID,
+                    quantity = 1,
+                    productName = model.name,
+                    defaultPictureLocation = model.defaultPictureLocation,
+                    productPrice = model.productPrice
+                });
+                Console.WriteLine("kcsgcahjgha");
+
+
+                //await Navigation.PushPopupAsync(new AddToCartPopup());
+
+                await PopupNavigation.Instance.PushAsync(new AddToCartPopup());
+
+
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            finally
+            {
+                //await LoadingPopup.Instance.Hide();
+            }
+        }
+
 
     }
 

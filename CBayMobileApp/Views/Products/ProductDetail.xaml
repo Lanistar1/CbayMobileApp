@@ -40,21 +40,21 @@
                                Etiam in curar cursus malesuada. Sit sit orci pharetra enim elementum dictum facilisi et phasellus. Feugiat eu ut lacus diam hac mauris et pellentesque sed." 
                                TextColor="#212121" FontSize="16" Margin="0,0,0,0" FontFamily="DMSans-Regular" HorizontalTextAlignment="Start"/>
                     </StackLayout>
-                    <Frame HasShadow="False" CornerRadius="10" BackgroundColor="{StaticResource PrimaryColor}" Padding="0,10" Margin="0,20">
+                    <!--<Frame HasShadow="False" CornerRadius="10" BackgroundColor="{StaticResource PrimaryColor}" Padding="0,10" Margin="0,20">
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding Path=BindingContext.NextCommand, Source={x:Reference cvBanner}}" CommandParameter="{Binding .}"/>
                         </Frame.GestureRecognizers>
                         <Label Text="Buy Now" TextColor="#ffffff" FontFamily="Rubik-Regular" FontSize="18"  
                                    HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
-                    </Frame>
-                    <!--<Grid Margin="20,20,20,0">
+                    </Frame>-->
+                    <Grid Margin="20,20,20,0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <Frame HasShadow="False" CornerRadius="10" BackgroundColor="{StaticResource PrimaryColor}"   Padding="0,10" Grid.Column="0">
                             <Frame.GestureRecognizers>
-                                <TapGestureRecognizer />
+                                <TapGestureRecognizer Command="{Binding Path=BindingContext.AddCartCommand, Source={x:Reference cvBanner}}" CommandParameter="{Binding .}"/>
                             </Frame.GestureRecognizers>
                             <Label Text="Add to Cart" TextColor="#ffffff" FontFamily="Rubik-Regular" FontSize="18"  
                                    HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
@@ -66,7 +66,7 @@
                             <Label Text="Buy Now" TextColor="#ffffff" FontFamily="Rubik-Regular" FontSize="18"  
                                    HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                         </Frame>
-                    </Grid>-->
+                    </Grid>
                 </StackLayout>
             </DataTemplate>
         </BindableLayout.ItemTemplate>

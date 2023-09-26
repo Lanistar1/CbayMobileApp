@@ -2,6 +2,7 @@
 using CBayMobileApp.Models.Wallet;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 
 namespace CBayMobileApp.Helpers
@@ -39,6 +40,22 @@ namespace CBayMobileApp.Helpers
         public static string Phone { get; set; }
         public static string WalletId { get; set; }
         public static int Balance { get; set; }
+        public static string ProductQuantity { get; set; }
+        public static int PriceTag { get; set; }
+
+
+        public static ObservableCollection<CartItem> myCarts { get; set; }
+        public class CartItem
+        {
+            public string productID { get; set; }
+
+            public string productName { get; set; }
+            public string defaultPictureLocation { get; set; }
+            public Int32 quantity { get; set; }
+            public Int32 productPrice { get; set; }
+            public Int32 ProductQantity { get; set; }
+
+        }
 
 
         public static bool Contains(this string target, string value, StringComparison comparison)
