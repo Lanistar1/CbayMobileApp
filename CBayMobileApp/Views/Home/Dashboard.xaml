@@ -75,31 +75,33 @@
                 <Label Text="Recent Earning" TextColor="#212121" FontSize="16" Margin="0,0,0,0" FontFamily="DMSans-Medium" HorizontalTextAlignment="Center"/>
                 <Label Text="View All" TextColor="{StaticResource PrimaryColor}" FontSize="16" Margin="0,0,0,0" FontFamily="DMSans-Medium" HorizontalTextAlignment="Center">
                     <Label.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="To_recentEarning"/>
+                        <TapGestureRecognizer />
                     </Label.GestureRecognizers>
                 </Label>
             </FlexLayout>
 
-            <CollectionView ItemsSource="{Binding Transaction}" Margin="0,0">
+            <CollectionView ItemsSource="{Binding WalletTransaction}" Margin="0,10">
                 <CollectionView.ItemsLayout>
                     <GridItemsLayout VerticalItemSpacing="0" HorizontalItemSpacing="10" Orientation="Vertical"/>
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <StackLayout>
-                            <Label Text="{Binding newDate}" FontSize="14" TextColor="#000000" FontAttributes="Bold" FontFamily="DMSans-Medium"/>
+                            <!--<Label Text="{Binding newDate}" FontSize="14" TextColor="#000000" FontAttributes="Bold" FontFamily="DMSans-Medium"/>-->
 
-                            <FlexLayout JustifyContent="SpaceBetween" VerticalOptions="Center">
+                            <FlexLayout JustifyContent="SpaceBetween" VerticalOptions="Center" Margin="0,5">
                                 <StackLayout Orientation="Horizontal" Spacing="10">
-                                    <Image Source="{Binding PlusImage}"/>
+                                    <Image Source="{Binding TransImage}"/>
 
                                     <StackLayout>
-                                        <Label Text="{Binding description}" FontSize="14" TextColor="#333333" FontAttributes="Bold"/>
-                                        <Label Text="{Binding time}" FontSize="14" TextColor="#333333"  FontFamily="DMSans-Medium"/>
+                                        <Label Text="{Binding narration}" FontSize="14" TextColor="#333333" FontAttributes="Bold"/>
+                                        <Label Text="{Binding newDate}" FontSize="14" TextColor="#333333"  FontFamily="Poppins-Medium"/>
                                     </StackLayout>
                                 </StackLayout>
                                 <StackLayout Orientation="Horizontal" Spacing="2">
-                                    <Label Text="{Binding amount}" FontSize="15" TextColor="#333333" FontAttributes="Bold" FontFamily="DMSans-Medium"/>
+                                    <Label Text="₦" FontSize="15" TextColor="{Binding SubColor}" FontAttributes="Bold"/>
+                                    <Label Text="{Binding Amount}" FontSize="15" TextColor="{Binding SubColor}" FontAttributes="Bold" FontFamily="Poppins-Medium"/>
+                                    <Label Text=".00" FontSize="15" TextColor="{Binding SubColor}" FontAttributes="Bold" FontFamily="Poppins-Medium"/>
                                 </StackLayout>
 
                             </FlexLayout>

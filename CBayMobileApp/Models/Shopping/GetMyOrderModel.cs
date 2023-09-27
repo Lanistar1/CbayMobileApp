@@ -10,6 +10,8 @@ namespace CBayMobileApp.Models.Shopping
         public string productID { get; set; }
         public int quantity { get; set; }
         public string productName { get; set; }
+        public int unitPrice { get; set; }
+
     }
 
     public class GetMyOrderModel

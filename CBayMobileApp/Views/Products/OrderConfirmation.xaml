@@ -15,66 +15,42 @@
         <StackLayout Grid.Row="0">
         </StackLayout>
 
-        <ScrollView Grid.Row="1" Margin="20,10" VerticalScrollBarVisibility="Never">
+        <ScrollView Grid.Row="1" Margin="20,30" VerticalScrollBarVisibility="Never">
             <StackLayout>
-                <Frame HasShadow="False" CornerRadius="5" BackgroundColor="{StaticResource PrimaryColor}" Margin="0,20,0,0" Padding="0,15" >
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="To_NewAddress"/>
-                    </Frame.GestureRecognizers>
-                    <Label Text="Add New Address" TextColor="#ffffff" FontFamily="Rubik-Regular" FontSize="18"  Margin="0,0,0,0" 
-                   HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
-                </Frame>
-
-                <StackLayout Margin="0,10" Spacing="0">
-                    <StackLayout Orientation="Horizontal">
-                        <Label Text="Select shipping address"
-                               FontFamily="Rubik-Regular"
+                <StackLayout Margin="0,10,0,0">
+                    <Label Text="Address"
+                               FontFamily="Poppins-Light"
                                FontSize="14"
-                               Margin="0,0,0,5"
-                               TextColor="#1E1C00"/>
+                               Margin="0,0"
+                               TextColor="Black"/>
 
-                        <Label Text="*" TextColor="Red" Margin="0,-5,0,0"/>
-
-                    </StackLayout>
-                    <FlexLayout JustifyContent="SpaceBetween" >
-                        <StackLayout Orientation="Horizontal">
-
-                            <controls:BorderlessPicker Title="Select Address" TextColor="#49454F" Grid.Column="0" VerticalOptions="Center" FontFamily="Rubik-Regular"
-                                            FontSize="16" ItemsSource="{Binding ShippingAddress}" ItemDisplayBinding="{Binding address}" >
-
-                            </controls:BorderlessPicker>
-                        </StackLayout>
-                        <StackLayout Grid.Column="1" VerticalOptions="CenterAndExpand" Margin="0,0,10,0">
-                            <Image Source="downarrow1.png" WidthRequest="12" HeightRequest="12"/>
-                        </StackLayout>
-                    </FlexLayout>
-                    <Line X1="0"
-                          Y1="5"
-                          X2="400"
-                          Y2="5"
-                          Margin="0,5,0,0"
-                          Stroke="#49454F"
-                          StrokeDashArray="0,0"
-                          StrokeDashOffset="2"/>
+                    <Frame Padding="10,0,10,0" BorderColor="#cccccc" HeightRequest="45" Margin="0,0,0,10" HasShadow="False">
+                        <controls:CustomEntry 
+                                    VerticalTextAlignment="Center"
+                                    FontSize="14"
+                                    Text="{Binding Address}"
+                                    Placeholder="Enter address"
+                                    PlaceholderColor="#cccccc"
+                                    TextColor="Black"/>
+                    </Frame>
                 </StackLayout>
+                <StackLayout Margin="0,10,0,0">
+                    <Label Text="City"
+                               FontFamily="Poppins-Light"
+                               FontSize="14"
+                               Margin="0,0"
+                               TextColor="Black"/>
 
-                <Frame BackgroundColor="#ffffff" CornerRadius="5">
-                    <FlexLayout JustifyContent="SpaceBetween">
-                        <StackLayout Orientation="Horizontal">
-                            <Image Source="location1.png" VerticalOptions="StartAndExpand"/>
-                            <StackLayout>
-                                <Label x:Name="selectedName" TextColor="#1E1C00" FontSize="14" FontFamily="Rubik-Regular" VerticalTextAlignment="Center"/>
-                                <Label x:Name="selectedPhone" TextColor="#1E1C00" FontSize="12" FontFamily="Rubik-Regular" VerticalTextAlignment="Center"/>
-                                <Label x:Name="selectedAddress"  TextColor="#1E1C00" FontSize="12" FontFamily="Rubik-Regular" VerticalTextAlignment="Center"/>
-                                <StackLayout Orientation="Horizontal" Spacing="3">
-                                    <Label x:Name="selectedCity" TextColor="#1E1C00" FontSize="12" FontFamily="Rubik-Regular" VerticalTextAlignment="Center"/>
-                                    <Label x:Name="selectedCountry" TextColor="#1E1C00" FontSize="12" FontFamily="Rubik-Regular" VerticalTextAlignment="Center"/>
-                                </StackLayout>
-
-                            </StackLayout>
-                        </StackLayout>
-                    </FlexLayout>
-                </Frame>
+                    <Frame Padding="10,0,10,0" BorderColor="#cccccc" HeightRequest="45" Margin="0,0,0,10" HasShadow="False">
+                        <controls:CustomEntry 
+                                    VerticalTextAlignment="Center"
+                                    FontSize="14"
+                                    Text="{Binding City}"
+                                    Placeholder="Enter city"
+                                    PlaceholderColor="#cccccc"
+                                    TextColor="Black"/>
+                    </Frame>
+                </StackLayout>
 
                 <Frame Padding="10" CornerRadius="5" HasShadow="False" BackgroundColor="#ffffff" BorderColor="#cccccc">
                     <StackLayout>
@@ -91,7 +67,7 @@
 
                                                 <Label Text="Amount:" TextColor="Black" FontSize="14" VerticalTextAlignment="Center" FontFamily="Rubik-Regular"/>
                                                 <Label Text="NGN" TextColor="{StaticResource PrimaryColor}" FontSize="12" VerticalTextAlignment="Center" FontFamily="Rubik-Regular"/>
-                                                <Label Text="{Binding productPrice}" TextColor="{StaticResource PrimaryColor}" FontSize="14" FontFamily="Rubik-Medium"/>
+                                                <Label Text="{Binding price}" TextColor="{StaticResource PrimaryColor}" FontSize="14" FontFamily="Rubik-Medium"/>
                                                 <Label Text=".00" TextColor="{StaticResource PrimaryColor}" FontSize="14" FontFamily="Rubik-Medium"/>
                                             </StackLayout>
                                         </StackLayout>

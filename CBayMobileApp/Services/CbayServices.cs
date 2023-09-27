@@ -471,5 +471,46 @@ namespace CBayMobileApp.Services
         }
 
 
+        public async Task<(GetMyOrderModel ResponseData, ErrorResponseModel ErrorData, int StatusCode)> GetMyOrderAsync()
+        {
+            try
+            {
+                string url = Global.MyOrderUrl;
+                HttpClient client = new HttpClient();
+                client.DefaultRequestHeaders.Add("Authorization", $"Bearer {Helpers.Global.token}");
+                HttpResponseMessage response = null;
+                ErrorResponseModel errorData;
+                response = await client.GetAsync(url);
+                int statusCode = (int)response.StatusCode;
+                int _status = StringHelper.ConvertStatusCode((int)response.StatusCode);
+                string result = await response.Content.ReadAsStringAsync();
+                switch (_status)
+                {
+                    case 200:
+                        var data = JsonConvert.DeserializeObject<GetMyOrderModel>(result);
+                        return (data, null, statusCode);
+                    case 300:
+                        errorData = JsonConvert.DeserializeObject<ErrorResponseModel>(result);
+                        return (null, errorData, statusCode);
+                    case 400:
+                        errorData = JsonConvert.DeserializeObject<ErrorResponseModel>(result);
+                        return (null, errorData, statusCode);
+                    case 500:
+                        errorData = JsonConvert.DeserializeObject<ErrorResponseModel>(result);
+                        return (null, errorData, statusCode);
+                    case 0:
+                        return (null, null, 0);
+                    default:
+                        return (null, null, 0);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return (null, null, 0);
+            }
+        }
+
+
     }
 }

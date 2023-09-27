@@ -8,13 +8,14 @@ namespace CBayMobileApp.Models.Shopping
     {
         public string productID { get; set; }
         public string name { get; set; }
-        public int productPrice { get; set; }
+        public int price { get; set; }
         public int listingPrice { get; set; }
-        public string description { get; set; }
+        public string descriptionHTML { get; set; }
+        public string size { get; set; }
         public bool isVerified { get; set; }
         public string defaultPictureLocation { get; set; }
-        public string otherPictureLocationCSV { get; set; }
-        public string currency { get; set; }
+        public object otherPictureLocationCSV { get; set; }
+        public object currency { get; set; }
         public string categoryID { get; set; }
         public double weightKG { get; set; }
         public bool isSelected { get; set; }

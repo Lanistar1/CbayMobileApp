@@ -26,7 +26,7 @@ namespace CBayMobileApp.Helpers
         public static string AddShippingAddressUrl => $"{BaseUrl}/shopping/address";
         public static string GetMyShippingAddressUrl => $"{BaseUrl}/shopping/addresses";
         public static string PlaceOrderUrl => $"{BaseUrl}/shopping/order";
-
+        public static string MyOrderUrl => $"{BaseUrl}/shopping/orders";
 
 
 
@@ -34,10 +34,6 @@ namespace CBayMobileApp.Helpers
         public static WalletData UserWalletData { get; set; }
         public static string memberID { get; set; }
         public static string FullName { get; set; }
-        public static string Address { get; set; }
-        public static string City { get; set; }
-        public static string Country { get; set; }
-        public static string Phone { get; set; }
         public static string WalletId { get; set; }
         public static int Balance { get; set; }
         public static string ProductQuantity { get; set; }

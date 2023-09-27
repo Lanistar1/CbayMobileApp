@@ -125,7 +125,7 @@ namespace CBayMobileApp.ViewModels.Shopping
 
             ProductImage = ProductDetail.FirstOrDefault().defaultPictureLocation;
             ProductName = ProductDetail.FirstOrDefault().name;
-            ProductPrice = ProductDetail.FirstOrDefault().productPrice;
+            ProductPrice = ProductDetail.FirstOrDefault().price;
             //VendorID = ProductDetail.FirstOrDefault().restuarantID;
             ProductID = ProductDetail.FirstOrDefault().productID;
 
@@ -177,7 +177,7 @@ namespace CBayMobileApp.ViewModels.Shopping
                     quantity = 1,
                     productName = model.name,
                     defaultPictureLocation = model.defaultPictureLocation,
-                    productPrice = model.productPrice
+                    productPrice = model.price
                 });
                 Console.WriteLine("kcsgcahjgha");
 

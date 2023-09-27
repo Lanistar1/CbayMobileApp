@@ -104,19 +104,19 @@ namespace CBayMobileApp.ViewModels.Shopping
                     }
                     else
                     {
-                        await MessagePopup.Instance.Show(ErrorData.errors.FirstOrDefault());
+                        //await MessagePopup.Instance.Show(ErrorData.errors.FirstOrDefault());
                     }
                 }
                 else if (ErrorData != null)
                 {
-                    string message = "Error fetching products detail. Do you want to RETRY?";
-                    await MessagePopup.Instance.Show(
-                        message: message);
+                    //string message = "Error fetching products detail. Do you want to RETRY?";
+                    //await MessagePopup.Instance.Show(
+                    //    message: message);
 
                 }
                 else
                 {
-                    await MessagePopup.Instance.Show(ErrorData.errors.FirstOrDefault());
+                    //await MessagePopup.Instance.Show(ErrorData.errors.FirstOrDefault());
                 }
             }
             catch (Exception ex)

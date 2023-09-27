@@ -5,27 +5,28 @@
              BackgroundColor="White"
              Title="Product detail">
 
-    <StackLayout x:Name="cvBanner" BindableLayout.ItemsSource="{Binding ProductDetail}" Spacing="2" Margin="20,20,20,10" Grid.Row="1">
-        <BindableLayout.ItemTemplate>
-            <DataTemplate>
-                <StackLayout>
-                    <StackLayout Margin="0,0">
-                        <Image Source="cbaydetails.png"/>
-                    </StackLayout>
-                    <FlexLayout JustifyContent="SpaceBetween" Margin="20,10">
-                        <StackLayout>
-                            <Label Text="{Binding name}" TextColor="#212121" FontSize="16" Margin="0,0,0,0" FontFamily="DMSans-Regular" HorizontalTextAlignment="Start"/>
-                            <StackLayout Orientation="Horizontal" Spacing="0" Margin="0,0,0,0">
-                                <Label Text="NGN" TextColor="#212121" FontSize="14" FontFamily="DMSans-Regular"/>
-                                <Label Text="{Binding productPrice}" TextColor="#212121" FontSize="14" FontFamily="DMSans-Regular"/>
-                                <Label Text=".00" TextColor="#212121" FontSize="14" FontFamily="DMSans-Regular"/>
-                            </StackLayout>
+    <ScrollView Margin="20,20,20,30" VerticalScrollBarVisibility="Never">
+        <StackLayout x:Name="cvBanner" BindableLayout.ItemsSource="{Binding ProductDetail}" Spacing="2"  >
+            <BindableLayout.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout>
+                        <StackLayout Margin="0,0">
+                            <Image Source="{Binding defaultPictureLocation}" WidthRequest="200" HeightRequest="200"/>
                         </StackLayout>
-                        <Frame Padding="5" CornerRadius="50" BorderColor="#E7E7E8" HeightRequest="50" WidthRequest="40" HasShadow="False">
-                            <Label Text="Bershka" TextColor="#212121" FontSize="10" Margin="0,0,0,0" FontFamily="DMSans-Regular" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
-                        </Frame>
-                    </FlexLayout>
-                    <Line X1="0"
+                        <FlexLayout JustifyContent="SpaceBetween" Margin="20,10">
+                            <StackLayout>
+                                <Label Text="{Binding name}" TextColor="#212121" FontSize="16" Margin="0,0,0,0" FontFamily="DMSans-Regular" HorizontalTextAlignment="Start"/>
+                                <StackLayout Orientation="Horizontal" Spacing="1" Margin="0,0,0,0">
+                                    <Label Text="NGN" TextColor="#212121" FontSize="14" FontFamily="DMSans-Regular"/>
+                                    <Label Text="{Binding price}" TextColor="#212121" FontSize="14" FontFamily="DMSans-Regular"/>
+                                    <Label Text=".00" TextColor="#212121" FontSize="14" FontFamily="DMSans-Regular"/>
+                                </StackLayout>
+                            </StackLayout>
+                            <Frame Padding="5" CornerRadius="50" BorderColor="#E7E7E8" HeightRequest="50" WidthRequest="40" HasShadow="False">
+                                <Label Text="Bershka" TextColor="#212121" FontSize="10" Margin="0,0,0,0" FontFamily="DMSans-Regular" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                            </Frame>
+                        </FlexLayout>
+                        <Line X1="0"
                           Y1="0"
                           X2="400"
                           Y2="0"
@@ -34,43 +35,44 @@
                           StrokeDashArray="0,0"
                           StrokeDashOffset="2"/>
 
-                    <StackLayout Margin="20,0">
-                        <Label Text="Description" TextColor="#212121" FontSize="16" Margin="0,0,0,0" FontFamily="DMSans-Bold" HorizontalTextAlignment="Start"/>
-                        <Label Text="ies mauris aScelerisque erat rhoncus arcu scelerisque facilisi eu scelerisque congue.
-                               Etiam in curar cursus malesuada. Sit sit orci pharetra enim elementum dictum facilisi et phasellus. Feugiat eu ut lacus diam hac mauris et pellentesque sed." 
+                        <StackLayout Margin="20,0">
+                            <Label Text="Description" TextColor="#212121" FontSize="16" Margin="0,0,0,0" FontFamily="DMSans-Bold" HorizontalTextAlignment="Start"/>
+                            <Label Text="{Binding descriptionHTML}" 
                                TextColor="#212121" FontSize="16" Margin="0,0,0,0" FontFamily="DMSans-Regular" HorizontalTextAlignment="Start"/>
-                    </StackLayout>
-                    <!--<Frame HasShadow="False" CornerRadius="10" BackgroundColor="{StaticResource PrimaryColor}" Padding="0,10" Margin="0,20">
+                        </StackLayout>
+                        <!--<Frame HasShadow="False" CornerRadius="10" BackgroundColor="{StaticResource PrimaryColor}" Padding="0,10" Margin="0,20">
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding Path=BindingContext.NextCommand, Source={x:Reference cvBanner}}" CommandParameter="{Binding .}"/>
                         </Frame.GestureRecognizers>
                         <Label Text="Buy Now" TextColor="#ffffff" FontFamily="Rubik-Regular" FontSize="18"  
                                    HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                     </Frame>-->
-                    <Grid Margin="20,20,20,0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Frame HasShadow="False" CornerRadius="10" BackgroundColor="{StaticResource PrimaryColor}"   Padding="0,10" Grid.Column="0">
-                            <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding Path=BindingContext.AddCartCommand, Source={x:Reference cvBanner}}" CommandParameter="{Binding .}"/>
-                            </Frame.GestureRecognizers>
-                            <Label Text="Add to Cart" TextColor="#ffffff" FontFamily="Rubik-Regular" FontSize="18"  
+                        <Grid Margin="20,20,20,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Frame HasShadow="False" CornerRadius="10" BackgroundColor="{StaticResource PrimaryColor}"   Padding="0,10" Grid.Column="0">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Path=BindingContext.AddCartCommand, Source={x:Reference cvBanner}}" CommandParameter="{Binding .}"/>
+                                </Frame.GestureRecognizers>
+                                <Label Text="Add to Cart" TextColor="#ffffff" FontFamily="Rubik-Regular" FontSize="18"  
                                    HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
-                        </Frame>
-                        <Frame HasShadow="False" CornerRadius="10" BackgroundColor="#EE7617" Padding="0,10" Grid.Column="1">
-                            <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding Path=BindingContext.NextCommand, Source={x:Reference cvBanner}}" CommandParameter="{Binding .}"/>
-                            </Frame.GestureRecognizers>
-                            <Label Text="Buy Now" TextColor="#ffffff" FontFamily="Rubik-Regular" FontSize="18"  
+                            </Frame>
+                            <Frame HasShadow="False" CornerRadius="10" BackgroundColor="#EE7617" Padding="0,10" Grid.Column="1">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Path=BindingContext.NextCommand, Source={x:Reference cvBanner}}" CommandParameter="{Binding .}"/>
+                                </Frame.GestureRecognizers>
+                                <Label Text="Buy Now" TextColor="#ffffff" FontFamily="Rubik-Regular" FontSize="18"  
                                    HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
-                        </Frame>
-                    </Grid>
-                </StackLayout>
-            </DataTemplate>
-        </BindableLayout.ItemTemplate>
-    </StackLayout>
+                            </Frame>
+                        </Grid>
+                    </StackLayout>
+                </DataTemplate>
+            </BindableLayout.ItemTemplate>
+        </StackLayout>
+
+    </ScrollView>
 
 
     <!--<ScrollView Margin="0,20" VerticalScrollBarVisibility="Never">

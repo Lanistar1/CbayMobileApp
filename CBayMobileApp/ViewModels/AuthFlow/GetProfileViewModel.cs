@@ -166,19 +166,19 @@ namespace CBayMobileApp.ViewModels.AuthFlow
                     }
                     else
                     {
-                        await MessagePopup.Instance.Show(ErrorData.errors.FirstOrDefault());
+                        //await MessagePopup.Instance.Show(ErrorData.errors.FirstOrDefault());
                     }
                 }
                 else if (ErrorData != null)
                 {
-                    string message = "Error fetching user detail. Do you want to RETRY?";
-                    await MessagePopup.Instance.Show(
-                        message: message);
+                    //string message = "Error fetching user detail. Do you want to RETRY?";
+                    //await MessagePopup.Instance.Show(
+                    //    message: message);
 
                 }
                 else
                 {
-                    await MessagePopup.Instance.Show(ErrorData.errors.FirstOrDefault());
+                    //await MessagePopup.Instance.Show(ErrorData.errors.FirstOrDefault());
                 }
             }
             catch (Exception ex)

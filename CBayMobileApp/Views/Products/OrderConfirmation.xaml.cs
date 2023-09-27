@@ -29,29 +29,29 @@ namespace CBayMobileApp.Views.Products
         }
 
 
-        private void AddressPicker_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Picker picker = sender as Picker;
-            if (picker.SelectedItem != null)
-            {
-                selectedAddress.Text = (picker.SelectedItem as AddressData).address;
-                Global.Address = selectedAddress.Text;
+        //private void AddressPicker_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    Picker picker = sender as Picker;
+        //    if (picker.SelectedItem != null)
+        //    {
+        //        selectedAddress.Text = (picker.SelectedItem as AddressData).address;
+        //        Global.Address = selectedAddress.Text;
 
-                selectedName.Text = (picker.SelectedItem as AddressData).fullName;
-                Global.FullName = selectedName.Text;
+        //        selectedName.Text = (picker.SelectedItem as AddressData).fullName;
+        //        Global.FullName = selectedName.Text;
 
-                selectedCity.Text = (picker.SelectedItem as AddressData).city;
-                Global.City = selectedCity.Text;
+        //        selectedCity.Text = (picker.SelectedItem as AddressData).city;
+        //        Global.City = selectedCity.Text;
 
-                selectedCountry.Text = (picker.SelectedItem as AddressData).country;
-                Global.Country = selectedCountry.Text;
+        //        selectedCountry.Text = (picker.SelectedItem as AddressData).country;
+        //        Global.Country = selectedCountry.Text;
 
-                selectedPhone.Text = (picker.SelectedItem as AddressData).phone;
-                Global.Phone = selectedPhone.Text;
+        //        selectedPhone.Text = (picker.SelectedItem as AddressData).phone;
+        //        Global.Phone = selectedPhone.Text;
 
 
-                //Global.SelectedCategory = selectedAddress;
-            }
-        }
+        //        //Global.SelectedCategory = selectedAddress;
+        //    }
+        //}
     }
 }

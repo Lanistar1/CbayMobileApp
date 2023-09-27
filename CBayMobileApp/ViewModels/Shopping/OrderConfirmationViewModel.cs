@@ -14,6 +14,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using CBayMobileApp.Views.Identity;
+using CBayMobileApp.Models.AuthFlow;
+using System.Reflection;
+using Xamarin.Essentials;
 
 namespace CBayMobileApp.ViewModels.Shopping
 {
@@ -168,12 +171,123 @@ namespace CBayMobileApp.ViewModels.Shopping
             }
         }
 
+        private ProfileData profileData;
+        public ProfileData ProfileData
+        {
+            get => profileData;
+            set
+            {
+                profileData = value;
+                OnPropertyChanged(nameof(ProfileData));
+            }
+        }
+
+        private string name;
+        public string Name
+        {
+            get => name;
+            set
+            {
+                name = value;
+                OnPropertyChanged(nameof(Name));
+            }
+        }
+
+        private string firstName;
+        public string FirstName
+        {
+            get => firstName;
+            set
+            {
+                firstName = value;
+                OnPropertyChanged(nameof(FirstName));
+            }
+        }
+
+        private string email;
+        public string Email
+        {
+            get => email;
+            set
+            {
+                email = value;
+                OnPropertyChanged(nameof(Email));
+            }
+        }
+
+        private string phoneNumber;
+        public string PhoneNumber
+        {
+            get => phoneNumber;
+            set
+            {
+                phoneNumber = value;
+                OnPropertyChanged(nameof(PhoneNumber));
+            }
+        }
+
+        private string gender;
+        public string Gender
+        {
+            get => gender;
+            set
+            {
+                gender = value;
+                OnPropertyChanged(nameof(Gender));
+            }
+        }
+
+        private string city;
+        public string City
+        {
+            get => city;
+            set
+            {
+                city = value;
+                OnPropertyChanged(nameof(City));
+            }
+        }
+
+        private string address;
+        public string Address
+        {
+            get => address;
+            set
+            {
+                address = value;
+                OnPropertyChanged(nameof(Address));
+            }
+        }
+
+        private string country;
+        public string Country
+        {
+            get => country;
+            set
+            {
+                country = value;
+                OnPropertyChanged(nameof(Country));
+            }
+        }
+
+        private string lastName;
+        public string LastName
+        {
+            get => lastName;
+            set
+            {
+                lastName = value;
+                OnPropertyChanged(nameof(LastName));
+            }
+        }
+
         public OrderConfirmationViewModel(INavigation navigation, List<GetAllProductData> selectedItems)
         {
 
             Navigation = navigation;
 
             Task _tasks = GetMyWalletExecute();
+            Task _tsk = FetchUserProfile();
 
             PlaceOrderCommand = new Command(async () => await PlaceOrderCommandExecute());
 
@@ -181,55 +295,57 @@ namespace CBayMobileApp.ViewModels.Shopping
 
             ProductDetail = new List<GetAllProductData>(SelectedItems);
 
-            ProductPrice = ProductDetail.FirstOrDefault().productPrice;
+            ProductPrice = ProductDetail.FirstOrDefault().price;
             //Global.PriceTag = ProductPrice;
 
         }
 
         public Command PlaceOrderCommand { get; }
-        public Command FilterCommand { get; }
 
-        public Command AddShippingAddressCommand { get; }
-        public Command UpdateShippingAddressCommand { get; }
-
-        public async Task GetMyShippingAddressExecute()
+        private async Task FetchUserProfile()
         {
             try
             {
-                await LoadingPopup.Instance.Show("Loading...");
+                await LoadingPopup.Instance.Show("Loading Profile detail...");
 
-                HttpClient client = new HttpClient();
-
-                string url = Global.GetMyShippingAddressUrl;
-
-                Console.WriteLine(url);
-
-                client.DefaultRequestHeaders.Add("Authorization", $"Bearer {Helpers.Global.token}");
-
-                HttpResponseMessage response = await client.GetAsync(url);
-
-                response = await client.GetAsync(url);
-
-                Console.WriteLine(response);
-
-                string result = await response.Content.ReadAsStringAsync();
-                Console.WriteLine(result);
-                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                var (ResponseData, ErrorData, StatusCode) = await _cbayServices.GetUserProfileAsync();
+                if (ResponseData != null)
                 {
-                    GetMyShippingAddressModel data = JsonConvert.DeserializeObject<GetMyShippingAddressModel>(result);
-                    // Console.WriteLine("passedjiojiojiojio");
-                    Console.WriteLine(data);
+                    if (ResponseData.data != null)
+                    {
+                        ProfileData = ResponseData.data;
 
-                    ShippingAddress = data.data;
+                        Global.UserProfileData = ProfileData;
+
+                        Name = ProfileData.name;
+                        LastName = ProfileData.lastName;
+                        FirstName = ProfileData.firstName;
+                        PhoneNumber = ProfileData.phoneNo;
+                        Email = ProfileData.emailAddress;
+                        Country = ProfileData.country;
+                    }
+                    else
+                    {
+                        //await MessagePopup.Instance.Show(ErrorData.errors.FirstOrDefault());
+                    }
+                }
+                else if (ErrorData != null)
+                {
+                    //string message = "Error fetching user detail. Do you want to RETRY?";
+                    //await MessagePopup.Instance.Show(
+                    //    message: message);
 
                 }
                 else
                 {
-                    Console.WriteLine("Someting went wrong");
+                    //await MessagePopup.Instance.Show(ErrorData.errors.FirstOrDefault());
                 }
             }
             catch (Exception ex)
             {
+                string message = "Error fetching user detail. Do you want to RETRY?";
+                await MessagePopup.Instance.Show(
+                    message: message);
                 Console.WriteLine(ex);
             }
             finally
@@ -343,18 +459,14 @@ namespace CBayMobileApp.ViewModels.Shopping
 
                 }
 
-                var Address = Global.Address;
-                var City = Global.City;
-                var Country = Global.Country;
-                var Phone = Global.Phone;
 
                 OrderShippingAddress shippingAddress = new OrderShippingAddress()
                 {
                     Address = Address,
                     City = City,
-                    Country = "Nigeria",
-                    PhoneNo = Phone,
-                    Name = ""
+                    Country = Country,
+                    PhoneNo = PhoneNumber,
+                    Name = Name
                 };
 
                 Orderdetail orderdetail = new Orderdetail() { ProductID = "8354354347", Quantity = 222 };
@@ -392,9 +504,15 @@ namespace CBayMobileApp.ViewModels.Shopping
                     Application.Current.MainPage = new NavigationPage(new LoginPage());
 
                 }
+                else if (response.StatusCode == System.Net.HttpStatusCode.BadRequest)
+                {
+                    await MessagePopup.Instance.Show("Enter delivery note.");
+
+                }
                 else
                 {
-                    await MessagePopup.Instance.Show("Insufficient wallet balance.");
+                    await MessagePopup.Instance.Show("Something went wrong. Please try again later.");
+
                 }
 
             }

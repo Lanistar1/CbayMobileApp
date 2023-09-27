@@ -25,6 +25,17 @@ namespace CBayMobileApp.ViewModels.Wallets
 
         #region Binding Properties
 
+        private List<GetWalletTransactionData> walletTransaction;
+        public List<GetWalletTransactionData> WalletTransaction
+        {
+            get => walletTransaction;
+            set
+            {
+                walletTransaction = value;
+                OnPropertyChanged(nameof(WalletTransaction));
+            }
+        }
+
         private WalletData walletData;
         public WalletData WalletData
         {
@@ -96,14 +107,14 @@ namespace CBayMobileApp.ViewModels.Wallets
                     }
                     else
                     {
-                        await MessagePopup.Instance.Show(ErrorData.errors.FirstOrDefault());
+                        //await MessagePopup.Instance.Show(ErrorData.errors.FirstOrDefault());
                     }
                 }
                 else if (ErrorData != null)
                 {
-                    string message = "Error fetching user detail. Do you want to RETRY?";
-                    await MessagePopup.Instance.Show(
-                        message: message);
+                    //string message = "Error fetching user detail. Do you want to RETRY?";
+                    //await MessagePopup.Instance.Show(
+                    //    message: message);
 
                 }
                 else
@@ -143,19 +154,19 @@ namespace CBayMobileApp.ViewModels.Wallets
                     }
                     else
                     {
-                        await MessagePopup.Instance.Show(ErrorData.errors.FirstOrDefault());
+                        //await MessagePopup.Instance.Show(ErrorData.errors.FirstOrDefault());
                     }
                 }
                 else if (ErrorData != null)
                 {
-                    string message = "Error fetching user wallet detail. Please try again";
-                    await MessagePopup.Instance.Show(
-                        message: message);
+                    //string message = "Error fetching user wallet detail. Please try again";
+                    //await MessagePopup.Instance.Show(
+                    //    message: message);
 
                 }
                 else
                 {
-                    await MessagePopup.Instance.Show(ErrorData.errors.FirstOrDefault());
+                    //await MessagePopup.Instance.Show(ErrorData.errors.FirstOrDefault());
                 }
             }
             catch (Exception ex)
@@ -182,24 +193,24 @@ namespace CBayMobileApp.ViewModels.Wallets
                 {
                     if (ResponseData != null)
                     {
-
+                        WalletTransaction = ResponseData.data;
 
                     }
                     else
                     {
-                        await MessagePopup.Instance.Show(ErrorData.errors.FirstOrDefault());
+                        //await MessagePopup.Instance.Show(ErrorData.errors.FirstOrDefault());
                     }
                 }
                 else if (ErrorData != null)
                 {
-                    string message = "Error fetching wallet transaction. Please try again";
-                    await MessagePopup.Instance.Show(
-                        message: message);
+                    //string message = "Error fetching wallet transaction. Please try again";
+                    //await MessagePopup.Instance.Show(
+                    //    message: message);
 
                 }
                 else
                 {
-                    await MessagePopup.Instance.Show(ErrorData.errors.FirstOrDefault());
+                    //await MessagePopup.Instance.Show(ErrorData.errors.FirstOrDefault());
                 }
             }
             catch (Exception ex)
