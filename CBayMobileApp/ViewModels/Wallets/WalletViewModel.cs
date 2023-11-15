@@ -119,7 +119,7 @@ namespace CBayMobileApp.ViewModels.Wallets
                 }
                 else
                 {
-                    await MessagePopup.Instance.Show(ErrorData.errors.FirstOrDefault());
+                    //await MessagePopup.Instance.Show(ErrorData.errors.FirstOrDefault());
                 }
             }
             catch (Exception ex)

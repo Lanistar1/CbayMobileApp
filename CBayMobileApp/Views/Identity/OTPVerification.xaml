@@ -19,7 +19,7 @@
                 <ImageButton Clicked="Back" Source="backarrow.png" BackgroundColor="Transparent" WidthRequest="30" HeightRequest="30"/>
             </StackLayout>
             <StackLayout HorizontalOptions="CenterAndExpand" >
-                <Image Source="undraw1.png" WidthRequest="250" HeightRequest="250"/>
+                <Image Source="cbayotp.png" WidthRequest="250" HeightRequest="250"/>
             </StackLayout>
         </StackLayout>
 

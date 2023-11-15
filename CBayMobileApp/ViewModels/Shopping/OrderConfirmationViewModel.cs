@@ -226,6 +226,17 @@ namespace CBayMobileApp.ViewModels.Shopping
             }
         }
 
+        private string phone;
+        public string Phone
+        {
+            get => phone;
+            set
+            {
+                phone = value;
+                OnPropertyChanged(nameof(Phone));
+            }
+        }
+
         private string gender;
         public string Gender
         {
@@ -465,7 +476,7 @@ namespace CBayMobileApp.ViewModels.Shopping
                     Address = Address,
                     City = City,
                     Country = Country,
-                    PhoneNo = PhoneNumber,
+                    PhoneNo = Phone,
                     Name = Name
                 };
 

@@ -75,7 +75,27 @@ namespace CBayMobileApp.ViewModels.Membership
             }
         }
 
+        private string currentPlan;
+        public string CurrentPlan
+        {
+            get => currentPlan;
+            set
+            {
+                currentPlan = value;
+                OnPropertyChanged(nameof(CurrentPlan));
+            }
+        }
 
+        private string refCode;
+        public string RefCode
+        {
+            get => refCode;
+            set
+            {
+                refCode = value;
+                OnPropertyChanged(nameof(RefCode));
+            }
+        }
         #endregion
 
         #region Commands
@@ -144,8 +164,8 @@ namespace CBayMobileApp.ViewModels.Membership
                     {
                         MembershipDetailData = ResponseData.data;
 
-                        JoinedDate = ResponseData.data.refCode;
-                        //Name = ResponseData.data.memberName;
+                        RefCode = ResponseData.data.refCode;
+                        CurrentPlan = ResponseData.data.currentCadre;
 
                         MemberID = ResponseData.data.memberID;
                         Global.memberID = MemberID;

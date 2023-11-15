@@ -150,25 +150,25 @@ namespace CBayMobileApp.ViewModels.Order
                 {
                     GetAllOrder = ResponseData;
 
-                    UserOrder = ResponseData.orderDetails;
+                    //UserOrder = ResponseData.orderDetails;
 
-                    foreach (var item in UserOrder)
-                    {
-                        ProductName = item.productName;
-                        ProductPrice = item.unitPrice;
-                    }
+                    //foreach (var item in UserOrder)
+                    //{
+                    //    ProductName = item.productName;
+                    //    ProductPrice = item.unitPrice;
+                    //}
 
                 }
                 else if (ErrorData != null)
                 {
-                    string message = "Error fetching user order detail. Do you want to RETRY?";
-                    await MessagePopup.Instance.Show(
-                        message: message);
+                    //string message = "Error fetching user order detail. Do you want to RETRY?";
+                    //await MessagePopup.Instance.Show(
+                    //    message: message);
 
                 }
                 else
                 {
-                    await MessagePopup.Instance.Show(ErrorData.errors.FirstOrDefault());
+                    //await MessagePopup.Instance.Show(ErrorData.errors.FirstOrDefault());
                 }
             }
             catch (Exception ex)

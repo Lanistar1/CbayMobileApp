@@ -92,7 +92,7 @@
                       StrokeDashArray="0,0"
                       StrokeDashOffset="2"/>
 
-            <FlexLayout JustifyContent="SpaceBetween" Margin="20,10,20,10">
+            <!--<FlexLayout JustifyContent="SpaceBetween" Margin="20,10,20,10">
                 <FlexLayout.GestureRecognizers>
                     <TapGestureRecognizer />
                 </FlexLayout.GestureRecognizers>
@@ -107,7 +107,7 @@
                       Grid.Row="6"
                       Stroke="#333333"
                       StrokeDashArray="0,0"
-                      StrokeDashOffset="2"/>
+                      StrokeDashOffset="2"/>-->
 
             <!--<Frame BorderColor="{StaticResource SecondaryColor}" CornerRadius="20" HasShadow="False" Margin="0,10" Padding="25,5" HorizontalOptions="CenterAndExpand">
                     <Frame.GestureRecognizers>

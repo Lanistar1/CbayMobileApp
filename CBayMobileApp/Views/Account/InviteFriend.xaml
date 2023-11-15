@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CBayMobileApp.Views.Account.InviteFriend"
+             BackgroundColor="White"
+             Title="Invite friend">
+
+    <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Margin="20">
+        <Label Text="Please tell your friends to sign up with this referral code. " TextColor="#000000" FontSize="15" FontFamily="DMSans-Regular"/>
+
+        <Frame BorderColor="#C4C6CF" BackgroundColor="White" HasShadow="False">
+            <StackLayout>
+                <Label Text="{Binding RefCode}" TextColor="{StaticResource PrimaryColor}" FontSize="18" Margin="0,0,0,0" FontFamily="DMSans-Medium" HorizontalTextAlignment="Center"/>
+            </StackLayout>
+        </Frame>
+    </StackLayout>
+</ContentPage>

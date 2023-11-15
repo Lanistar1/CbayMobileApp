@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CBayMobileApp.Views.Order.MyOrder"
+             Title="My Order"
              BackgroundColor="#FAFBFF">
 
     <Grid Margin="20">
@@ -24,7 +25,7 @@
                             <TapGestureRecognizer Command="{Binding AllOrderCommand}" CommandParameter="{Binding .}"/>
                         </Label.GestureRecognizers>
                     </Label>
-                    <BoxView  x:Name="box_1" HeightRequest="3.5" HorizontalOptions="FillAndExpand" BackgroundColor="#BE023C"></BoxView>
+                    <BoxView  x:Name="box_1" HeightRequest="3.5" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource PrimaryColor}"></BoxView>
                 </StackLayout>
             </Grid>
         </StackLayout>

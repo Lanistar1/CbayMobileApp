@@ -257,6 +257,18 @@ namespace CBayMobileApp.ViewModels.Shopping
                 OnPropertyChanged(nameof(LastName));
             }
         }
+
+        private string phone;
+        public string Phone
+        {
+            get => phone;
+            set
+            {
+                phone = value;
+                OnPropertyChanged(nameof(Phone));
+            }
+        }
+
         public CartOrderConfirmationViewModel(INavigation navigation, ObservableCollection<CartItem> selectedItems)
         {
 
@@ -378,7 +390,7 @@ namespace CBayMobileApp.ViewModels.Shopping
                     Address = Address,
                     City = City,
                     Country = Country,
-                    PhoneNo = PhoneNumber,
+                    PhoneNo = Phone,
                     Name = Name
                 };
 

@@ -22,9 +22,9 @@
                                     <Label Text=".00" TextColor="#212121" FontSize="14" FontFamily="DMSans-Regular"/>
                                 </StackLayout>
                             </StackLayout>
-                            <Frame Padding="5" CornerRadius="50" BorderColor="#E7E7E8" HeightRequest="50" WidthRequest="40" HasShadow="False">
+                            <!--<Frame Padding="5" CornerRadius="50" BorderColor="#E7E7E8" HeightRequest="50" WidthRequest="40" HasShadow="False">
                                 <Label Text="Bershka" TextColor="#212121" FontSize="10" Margin="0,0,0,0" FontFamily="DMSans-Regular" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
-                            </Frame>
+                            </Frame>-->
                         </FlexLayout>
                         <Line X1="0"
                           Y1="0"

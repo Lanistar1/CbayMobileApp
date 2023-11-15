@@ -18,7 +18,6 @@
 
             <StackLayout>
                 <Label Text="Profile" TextColor="#000000" FontSize="18" Margin="0,15,0,7" FontFamily="DMSans-Medium" HorizontalTextAlignment="Start"/>
-
                 <Frame BorderColor="#C4C6CF" BackgroundColor="White" HasShadow="False">
                     <Frame.GestureRecognizers>
                         <TapGestureRecognizer Tapped="To_Membership"/>
@@ -54,6 +53,9 @@
                     </FlexLayout>
                 </Frame>
                 <Frame BorderColor="#C4C6CF" BackgroundColor="White" HasShadow="False">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="To_Order"/>
+                    </Frame.GestureRecognizers>
                     <FlexLayout JustifyContent="SpaceBetween" AlignContent="Center" AlignItems="Center">
                         <StackLayout Orientation="Horizontal">
                             <Image Source="cbayorder.png" Margin="0,0,20,0"/>
@@ -73,6 +75,9 @@
                 <Label Text="Actions" TextColor="#000000" FontSize="18" Margin="0,15,0,7" FontFamily="DMSans-Medium" HorizontalTextAlignment="Start"/>
 
                 <Frame BorderColor="#C4C6CF" BackgroundColor="White" HasShadow="False">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="To_inviteFriend"/>
+                    </Frame.GestureRecognizers>
                     <FlexLayout JustifyContent="SpaceBetween" AlignContent="Center" AlignItems="Center">
                         <StackLayout Orientation="Horizontal">
                             <Image Source="cbaymembership.png" Margin="0,0,20,0"/>
@@ -89,7 +94,7 @@
                 
             </StackLayout>
 
-            <StackLayout>
+            <!--<StackLayout>
                 <Label Text="Settings" TextColor="#000000" FontSize="18" Margin="0,15,0,7" FontFamily="DMSans-Medium" HorizontalTextAlignment="Start"/>
 
                 <Frame BorderColor="#C4C6CF" BackgroundColor="White" HasShadow="False">
@@ -121,12 +126,15 @@
                     </FlexLayout>
                 </Frame>
                
-            </StackLayout>
+            </StackLayout>-->
 
             <StackLayout Margin="0,0,0,40">
                 <Label Text="Legal" TextColor="#000000" FontSize="18" Margin="0,15,0,7" FontFamily="DMSans-Medium" HorizontalTextAlignment="Start"/>
 
                 <Frame BorderColor="#C4C6CF" BackgroundColor="White" HasShadow="False">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="To_terms"/>
+                    </Frame.GestureRecognizers>
                     <FlexLayout JustifyContent="SpaceBetween" AlignContent="Center" AlignItems="Center">
                         <StackLayout Orientation="Horizontal">
                             <Image Source="cbayterms.png" Margin="0,0,20,0"/>
@@ -141,6 +149,9 @@
                     </FlexLayout>
                 </Frame>
                 <Frame  BorderColor="#C4C6CF" BackgroundColor="White" HasShadow="False" Margin="0,-10">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="To_privacypolicy"/>
+                    </Frame.GestureRecognizers>
                     <FlexLayout JustifyContent="SpaceBetween" AlignContent="Center" AlignItems="Center">
                         <StackLayout Orientation="Horizontal">
                             <Image Source="cbaypolicy.png" Margin="0,0,20,0"/>
@@ -154,9 +165,20 @@
                         </StackLayout>
                     </FlexLayout>
                 </Frame>
-
             </StackLayout>
 
+            <Frame  BorderColor="#C4C6CF" BackgroundColor="{StaticResource PrimaryColor}" HasShadow="False" Margin="0,-10" 
+                    HorizontalOptions="CenterAndExpand" Padding="20,10" CornerRadius="10">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="To_logoutpopup"/>
+                </Frame.GestureRecognizers>
+                <StackLayout Orientation="Horizontal">
+                    <Image Source="cbaylogout.png" Margin="0,0,0,0"/>
+                    <StackLayout>
+                        <Label Text="Logout" TextColor="#ffffff" FontSize="16" Margin="0,0,0,0" FontFamily="DMSans-Medium" HorizontalTextAlignment="Center"/>
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
         </StackLayout>
     </ScrollView>
 </ContentPage>

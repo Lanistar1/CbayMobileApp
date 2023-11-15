@@ -173,15 +173,15 @@ namespace CBayMobileApp.ViewModels.AuthFlow
                 }
                 else
                 {
-                    await MessagePopup.Instance.Show(ErrorData.errors.FirstOrDefault());
+                    //await MessagePopup.Instance.Show(ErrorData.errors.FirstOrDefault());
                 }
 
 
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
-                await MessagePopup.Instance.Show("Something went wrong. Please try again later.");
+                //Console.WriteLine(ex);
+                //await MessagePopup.Instance.Show("Something went wrong. Please try again later.");
             }
             finally
             {

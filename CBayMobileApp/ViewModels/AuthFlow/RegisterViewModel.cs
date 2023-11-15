@@ -152,7 +152,6 @@ namespace CBayMobileApp.ViewModels.AuthFlow
 
                     await Navigation.PushAsync(new UpdateProfile());
 
-                    //Application.Current.MainPage = new NavigationPage(new RegisterOption());
                 }
                 else if (ErrorData != null && StatusCode == 401)
                 {

@@ -29,7 +29,7 @@ namespace CBayMobileApp.Views.Identity
 
         private void To_Signup(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new SignupPage());
+            Navigation.PushAsync(new NavigationPage(new SignupPage()));
         }
 
         private void To_Tabbed(object sender, EventArgs e)
