@@ -1,4 +1,5 @@
-﻿using CBayMobileApp.ViewModels.Home;
+﻿using CBayMobileApp.Utils;
+using CBayMobileApp.ViewModels.Home;
 using CBayMobileApp.ViewModels.Wallets;
 using System;
 using System.Collections.Generic;
@@ -25,11 +26,10 @@ namespace CBayMobileApp.Views.Home
             Navigation.PushAsync(new RecentEarning());
         }
 
-        private void To_addMoney(object sender, EventArgs e)
+        private async void To_addMoney(object sender, EventArgs e)
         {
-             Application.Current.MainPage.DisplayAlert("Waiting for payment gateway ", "", "OK");
 
-            //Navigation.PushAsync(new AddMoney());
+            await MessagePopup.Instance.Show("Waiting for payment gateway.");
         }
     }
 }

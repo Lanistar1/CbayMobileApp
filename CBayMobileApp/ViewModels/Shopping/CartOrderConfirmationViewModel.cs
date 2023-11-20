@@ -476,13 +476,11 @@ namespace CBayMobileApp.ViewModels.Shopping
                     // Console.WriteLine("passedjiojiojiojio");
                     Console.WriteLine(data);
 
-
-
-                    var test = data.data.walletID;
+                    var test = data.data.FirstOrDefault().walletID;
                     Global.WalletId = test;
-                    WalletNo = data.data.walletNo;
+                    WalletNo = data.data.FirstOrDefault().walletNo;
 
-                    AvailableBalance = data.data.balance;
+                    AvailableBalance = data.data.FirstOrDefault().balance;
                     Global.Balance = AvailableBalance;
 
                     //await GetMyWalletBalanceExecute(Approval);

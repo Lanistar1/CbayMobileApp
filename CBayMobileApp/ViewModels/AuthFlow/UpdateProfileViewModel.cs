@@ -161,7 +161,7 @@ namespace CBayMobileApp.ViewModels.AuthFlow
 
                     await Navigation.PushAsync(new LoginPage());
                 }
-                else if (ResponseData == null && StatusCode == 200)
+                else if (StatusCode == 200)
                 {
                     await MessagePopup.Instance.Show("Profile updated successfully.");
 
@@ -171,9 +171,15 @@ namespace CBayMobileApp.ViewModels.AuthFlow
                 {
                     await MessagePopup.Instance.Show(ErrorData.errors.FirstOrDefault());
                 }
+                else if (ErrorData != null && StatusCode == 400)
+                {
+                    await MessagePopup.Instance.Show(ErrorData.errors.FirstOrDefault());
+                }
                 else
                 {
-                    //await MessagePopup.Instance.Show(ErrorData.errors.FirstOrDefault());
+                    await MessagePopup.Instance.Show("Profile updated successfully.");
+
+                    await Navigation.PushAsync(new LoginPage());
                 }
 
 

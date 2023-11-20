@@ -25,7 +25,7 @@ namespace CBayMobileApp.ViewModels.Membership
 
             Task _tsks = FetchUserProfile();
 
-            //NextCommand = new Command(async () => await NextCommandExecute());
+            SaveCommand = new Command(async () => await SaveCommandExecute());
 
         }
 
@@ -99,10 +99,29 @@ namespace CBayMobileApp.ViewModels.Membership
         #endregion
 
         #region Commands
+        public Command SaveCommand { get; }
         #endregion
 
 
         #region functions, methods, events and Navigations
+
+        private async Task SaveCommandExecute()
+        {
+            if (!string.IsNullOrWhiteSpace(RefCode))
+            {
+                // Copy the referral code to the clipboard
+                await Clipboard.SetTextAsync(RefCode);
+
+                // Display a message or perform other actions if needed
+                await MessagePopup.Instance.Show("Referral code copied to clipboard");
+            }
+            else
+            {
+                // Handle the case where the referral code is empty or not available
+                await MessagePopup.Instance.Show("Referral code is not available");
+            }
+        }
+
 
         private async Task FetchUserProfile()
         {

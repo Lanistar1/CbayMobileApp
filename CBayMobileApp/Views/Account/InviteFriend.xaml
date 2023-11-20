@@ -6,11 +6,18 @@
              Title="Invite friend">
 
     <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Margin="20">
-        <Label Text="Please tell your friends to sign up with this referral code. " TextColor="#000000" FontSize="15" FontFamily="DMSans-Regular"/>
+        <Label Text="Please tell your friends to sign up with this referral code. " HorizontalTextAlignment="Center" TextColor="#000000" FontSize="15" FontFamily="DMSans-Regular"/>
 
         <Frame BorderColor="#C4C6CF" BackgroundColor="White" HasShadow="False">
-            <StackLayout>
+            <StackLayout Orientation="Horizontal" Spacing="10" HorizontalOptions="CenterAndExpand">
                 <Label Text="{Binding RefCode}" TextColor="{StaticResource PrimaryColor}" FontSize="18" Margin="0,0,0,0" FontFamily="DMSans-Medium" HorizontalTextAlignment="Center"/>
+
+                <Frame BackgroundColor="{StaticResource PrimaryColor}" Padding="20,5" CornerRadius="3">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding SaveCommand}"/>
+                    </Frame.GestureRecognizers>
+                    <Label Text="Copy" TextColor="#ffffff" FontSize="12" Margin="0,0,0,0" FontFamily="DMSans-Medium" HorizontalTextAlignment="Center"/>
+                </Frame>
             </StackLayout>
         </Frame>
     </StackLayout>

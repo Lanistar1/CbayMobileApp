@@ -3,22 +3,22 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CBayMobileApp.Views.Account.Downlines"
              BackgroundColor="White"
-             Title="Downlines">
+             Title="My Downlines">
 
 
-    <StackLayout Margin="20">
+    <StackLayout Margin="30,20">
         <!--<Label Text="My Downlines" TextColor="#000000" FontSize="18" Margin="0,15,0,7" FontFamily="DMSans-Medium" HorizontalTextAlignment="Start"/>-->
 
         <CollectionView x:Name="membership" ItemsSource="{Binding MembershipData}" Margin="0,10">
             <CollectionView.ItemsLayout>
-                <GridItemsLayout VerticalItemSpacing="20" HorizontalItemSpacing="20" Orientation="Vertical" Span="2"/>
+                <GridItemsLayout VerticalItemSpacing="0" HorizontalItemSpacing="20" Orientation="Vertical"/>
             </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Frame  BorderColor="#C4C6CF" BackgroundColor="White" HasShadow="False" Margin="0,-10">
+                    <Frame  BorderColor="#C4C6CF" BackgroundColor="White" HasShadow="False" >
                         <FlexLayout JustifyContent="SpaceBetween" AlignContent="Center" AlignItems="Center">
                             <StackLayout Orientation="Horizontal">
-                                <Image Source="cbaypolicy.png" Margin="0,0,20,0"/>
+                                <Image Source="cbaynavaccount.png" Margin="0,0,0,0"/>
                                 <StackLayout>
                                     <Label Text="{Binding memberName}" TextColor="#000000" FontSize="18" Margin="0,0,0,0" FontFamily="DMSans-Medium" HorizontalTextAlignment="Center"/>
                                 </StackLayout>

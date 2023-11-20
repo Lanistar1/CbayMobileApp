@@ -1,6 +1,7 @@
 ﻿using CBayMobileApp.Helpers;
 using CBayMobileApp.Popup;
 using CBayMobileApp.Utils;
+using CBayMobileApp.Views;
 using CBayMobileApp.Views.Identity;
 using System;
 using System.Collections.Generic;
@@ -117,8 +118,19 @@ namespace CBayMobileApp.ViewModels.AuthFlow
                     Global.token = ResponseData.token;
 
                     Console.WriteLine(ResponseData.token);
+                    if (ResponseData.token == "2FA")
+                    {
 
-                    await Navigation.PushAsync(new OTPVerification());
+                        await Navigation.PushAsync(new OTPVerification());
+                    }
+                    else
+                    {
+                        await MessagePopup.Instance.Show("Login Successful.");
+
+                        Application.Current.MainPage = new NavigationPage(new Tabbed());
+
+                    }
+
                 }
                 else if (ErrorData != null && StatusCode == 401)
                 {
@@ -128,8 +140,6 @@ namespace CBayMobileApp.ViewModels.AuthFlow
                 {
                     await MessagePopup.Instance.Show(ErrorData.errors.FirstOrDefault());
                 }
-
-
             }
             catch (Exception ex)
             {

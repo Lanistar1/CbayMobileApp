@@ -150,9 +150,9 @@ namespace CBayMobileApp.ViewModels.Membership
                 var (ResponseData, ErrorData, StatusCode) = await _cbayServices.GetMembershipAsync();
                 if (ResponseData != null)
                 {
-                    if (ResponseData.downlines != null)
+                    if (ResponseData.data != null)
                     {
-                        MembershipData = ResponseData.downlines;
+                        MembershipData = ResponseData.data.downlines;
 
 
                     }

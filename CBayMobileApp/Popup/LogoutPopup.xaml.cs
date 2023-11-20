@@ -1,5 +1,6 @@
 ﻿using CBayMobileApp.Helpers;
 using CBayMobileApp.Views.Identity;
+using CBayMobileApp.Views.Onboarding;
 using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
 using System;
@@ -32,7 +33,7 @@ namespace CBayMobileApp.Popup
         {
             Global.token = null;
             await PopupNavigation.RemovePageAsync(this);
-            Application.Current.MainPage = new LoginPage();
+            Application.Current.MainPage = new NavigationPage(new LoginPage());
 
         }
     }

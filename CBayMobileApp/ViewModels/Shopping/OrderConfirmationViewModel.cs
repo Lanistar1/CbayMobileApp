@@ -396,11 +396,11 @@ namespace CBayMobileApp.ViewModels.Shopping
 
                     
 
-                    var test = data.data.walletID;
+                    var test = data.data.FirstOrDefault().walletID;
                     Global.WalletId = test;
-                    WalletNo = data.data.walletNo;
+                    WalletNo = data.data.FirstOrDefault().walletNo;
 
-                    AvailableBalance = data.data.balance;
+                    AvailableBalance = data.data.FirstOrDefault().balance;
                     Global.Balance = AvailableBalance;
 
                     //await GetMyWalletBalanceExecute(Approval);
@@ -497,6 +497,7 @@ namespace CBayMobileApp.ViewModels.Shopping
                 client.DefaultRequestHeaders.Add("Authorization", $"Bearer {Helpers.Global.token}");
 
                 HttpResponseMessage response;
+
                 response = await client.PostAsync(url, content);
 
                 string result = await response.Content.ReadAsStringAsync();

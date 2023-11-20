@@ -50,7 +50,7 @@ namespace CBayMobileApp.Views.Account
         {
             string url = $"https://cbays.ng/policy";
 
-            await Launcher.OpenAsync(url);
+            await Navigation.PushAsync(new WebviewPage(url));
         }
 
         private async void To_terms(object sender, EventArgs e)

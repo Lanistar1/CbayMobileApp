@@ -1,5 +1,6 @@
 ﻿using CBayMobileApp.Helpers;
 using CBayMobileApp.Models.AuthFlow;
+using CBayMobileApp.Models.Shopping;
 using CBayMobileApp.Models.Wallet;
 using CBayMobileApp.Popup;
 using CBayMobileApp.Utils;
@@ -36,8 +37,8 @@ namespace CBayMobileApp.ViewModels.Wallets
             }
         }
 
-        private WalletData walletData;
-        public WalletData WalletData
+        private List<WalletData> walletData;
+        public List<WalletData> WalletData
         {
             get => walletData;
             set
@@ -58,8 +59,19 @@ namespace CBayMobileApp.ViewModels.Wallets
             }
         }
 
-        private string walletNo;
-        public string WalletNo
+        private bool walletBonus;
+        public bool WalletBonus
+        {
+            get => walletBonus;
+            set
+            {
+                walletBonus = value;
+                OnPropertyChanged(nameof(WalletBonus));
+            }
+        }
+
+        private int walletNo;
+        public int WalletNo
         {
             get => walletNo;
             set
@@ -69,8 +81,30 @@ namespace CBayMobileApp.ViewModels.Wallets
             }
         }
 
-        private int availableBalance;
-        public int AvailableBalance
+        private string balance;
+        public string Balance
+        {
+            get => balance;
+            set
+            {
+                balance = value;
+                OnPropertyChanged(nameof(Balance));
+            }
+        }
+
+        private string bonusBalance;
+        public string BonusBalance
+        {
+            get => bonusBalance;
+            set
+            {
+                bonusBalance = value;
+                OnPropertyChanged(nameof(BonusBalance));
+            }
+        }
+
+        private string availableBalance;
+        public string AvailableBalance
         {
             get => availableBalance;
             set
@@ -79,6 +113,18 @@ namespace CBayMobileApp.ViewModels.Wallets
                 OnPropertyChanged(nameof(AvailableBalance));
             }
         }
+
+        private List<GetAllProductData> productData;
+        public List<GetAllProductData> ProductData
+        {
+            get => productData;
+            set
+            {
+                productData = value;
+                OnPropertyChanged(nameof(ProductData));
+            }
+        }
+
         #endregion
 
         #region functions, methods, navigations, events
@@ -87,6 +133,8 @@ namespace CBayMobileApp.ViewModels.Wallets
             await FetchWalletDetailAsync();
             await FetchWalletTransactionAsync();
             await FetchUserProfile();
+            await FetchAllProductsAsync();
+
 
         }
 
@@ -150,7 +198,28 @@ namespace CBayMobileApp.ViewModels.Wallets
                         WalletData = ResponseData.data;
                         Global.UserWalletData = WalletData;
 
-                        AvailableBalance = WalletData.balance;
+                        //AvailableBalance = WalletData.FirstOrDefault().balance;
+
+                        List<string> detailLot = new List<string>();
+
+                        foreach (var item in WalletData)
+                        {
+                            AvailableBalance = item.DisplayAmount;
+
+                            detailLot.Add(AvailableBalance);
+
+                            if (item.isCompensation == true)
+                            {
+                                WalletBonus = true;
+                            }
+                            else
+                            {
+                                WalletBonus = false;
+                            }
+                        }
+
+                        Balance = detailLot.FirstOrDefault();
+                        BonusBalance = detailLot.LastOrDefault();
                     }
                     else
                     {
@@ -216,6 +285,50 @@ namespace CBayMobileApp.ViewModels.Wallets
             catch (Exception ex)
             {
                 string message = "Error fetching wallet transaction. Please try again";
+                await MessagePopup.Instance.Show(
+                    message: message);
+                Console.WriteLine(ex);
+            }
+            finally
+            {
+                await LoadingPopup.Instance.Hide();
+            }
+        }
+
+
+        private async Task FetchAllProductsAsync()
+        {
+            try
+            {
+                await LoadingPopup.Instance.Show("Loading Products...");
+
+                var (ResponseData, ErrorData, StatusCode) = await _cbayServices.GetAllProductAsync();
+                if (ResponseData != null)
+                {
+                    if (ResponseData != null)
+                    {
+                        ProductData = ResponseData.data;
+                    }
+                    else
+                    {
+                        //await MessagePopup.Instance.Show(ErrorData.errors.FirstOrDefault());
+                    }
+                }
+                else if (ErrorData != null)
+                {
+                    //string message = "Error fetching products detail. Do you want to RETRY?";
+                    //await MessagePopup.Instance.Show(
+                    //    message: message);
+
+                }
+                else
+                {
+                    //await MessagePopup.Instance.Show(ErrorData.errors.FirstOrDefault());
+                }
+            }
+            catch (Exception ex)
+            {
+                string message = "Error fetching products detail. Do you want to RETRY?";
                 await MessagePopup.Instance.Show(
                     message: message);
                 Console.WriteLine(ex);

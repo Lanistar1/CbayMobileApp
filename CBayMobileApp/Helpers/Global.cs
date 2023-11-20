@@ -31,7 +31,7 @@ namespace CBayMobileApp.Helpers
 
 
         public static ProfileData UserProfileData { get; set; }
-        public static WalletData UserWalletData { get; set; }
+        public static List<WalletData> UserWalletData { get; set; }
         public static string memberID { get; set; }
         public static string FullName { get; set; }
         public static string WalletId { get; set; }
