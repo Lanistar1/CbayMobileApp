@@ -29,9 +29,9 @@ namespace CBayMobileApp.Views.Account
             Navigation.PushAsync(new Downlines());
         }
 
-        private void To_teamDownlines(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new TeamDownline());
-        }
+        //private void To_teamDownlines(object sender, EventArgs e)
+        //{
+        //    Navigation.PushAsync(new TeamDownline());
+        //}
     }
 }

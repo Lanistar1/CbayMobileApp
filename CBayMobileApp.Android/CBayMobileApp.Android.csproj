@@ -75,6 +75,7 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\BorderlessDatePickerRenderer.cs" />
     <Compile Include="Controls\BorderlessPickerRenderer.cs" />
     <Compile Include="Controls\CustomDatePickerRenderer.cs" />
     <Compile Include="Controls\CustomEditorRenderer.cs" />

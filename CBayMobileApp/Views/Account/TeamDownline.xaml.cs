@@ -1,4 +1,7 @@
-﻿using System;
+﻿using CBayMobileApp.Models.Membership;
+using CBayMobileApp.ViewModels.Membership;
+using CBayMobileApp.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,9 +15,13 @@ namespace CBayMobileApp.Views.Account
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TeamDownline : ContentPage
     {
-        public TeamDownline()
+        GetMembershipTeamDownlineViewModel pageViewModel = null;
+
+        public TeamDownline(List<DownlineData> SelectedItems)
         {
+            pageViewModel = new GetMembershipTeamDownlineViewModel(Navigation, SelectedItems);
             InitializeComponent();
+            BindingContext = pageViewModel;
         }
     }
 }

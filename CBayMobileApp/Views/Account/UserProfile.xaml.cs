@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using CBayMobileApp.Views.Identity;
 
 namespace CBayMobileApp.Views.Account
 {
@@ -21,6 +22,11 @@ namespace CBayMobileApp.Views.Account
             pageViewModel = new GetProfileViewModel(Navigation);
             InitializeComponent();
             BindingContext = pageViewModel;
+        }
+
+        private void To_UpdateProfile(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new EditProfile());
         }
     }
 }

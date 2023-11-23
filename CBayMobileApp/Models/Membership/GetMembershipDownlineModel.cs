@@ -19,6 +19,7 @@ namespace CBayMobileApp.Models.Membership
         public List<string> downlines { get; set; }
         public string memberName { get; set; }
         public string memberPhone { get; set; }
+        public bool isSelected { get; set; }
     }
 
 

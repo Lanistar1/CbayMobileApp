@@ -1,6 +1,9 @@
 ﻿using CBayMobileApp.Models.Membership;
+using CBayMobileApp.Models.Shopping;
 using CBayMobileApp.Popup;
 using CBayMobileApp.Utils;
+using CBayMobileApp.Views.Account;
+using CBayMobileApp.Views.Products;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,11 +22,14 @@ namespace CBayMobileApp.ViewModels.Membership
 
             Task _tsk = FetchUserMembership();
 
+            TappedCommand = new Command<DownlineData>(async (model) => await GetTappedExecute(model));
 
         }
 
 
         #region Bindings
+
+        private List<DownlineData> SelectedItems = new List<DownlineData>();
 
         private List<DownlineData> membershipData;
         public List<DownlineData> MembershipData
@@ -137,6 +143,28 @@ namespace CBayMobileApp.ViewModels.Membership
         #endregion
 
         #region Commands
+        public Command TappedCommand { get; }
+        private async Task GetTappedExecute(DownlineData model)
+        {
+            try
+            {
+                var mod = model;
+
+                model.isSelected = model.isSelected ? false : true;
+                if (SelectedItems.Count > 0)
+                {
+                    SelectedItems.Clear();
+                }
+                SelectedItems.Add(model);
+
+                await Navigation.PushAsync(new TeamDownline(SelectedItems), true);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+        }
+
         #endregion
 
 
@@ -145,7 +173,7 @@ namespace CBayMobileApp.ViewModels.Membership
         {
             try
             {
-                await LoadingPopup.Instance.Show("Loading Membership downline...");
+                await LoadingPopup.Instance.Show("Loading downline...");
 
                 var (ResponseData, ErrorData, StatusCode) = await _cbayServices.GetMembershipAsync();
                 if (ResponseData != null)

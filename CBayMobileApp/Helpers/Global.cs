@@ -21,6 +21,7 @@ namespace CBayMobileApp.Helpers
         public static string WalletUrl => $"{BaseUrl}/wallets";
         public static string WalletTransactionUrl => $"{BaseUrl}/wallet/transactions";
         public static string GetMembershipDownlineUrl => $"{BaseUrl}/membership/downlines/{memberID}";
+        public static string GetMembershipSecondDownlineUrl => $"{BaseUrl}/membership/downlines";
         public static string GetMembershipDetailUrl => $"{BaseUrl}/membership/profile";
         public static string GetProductsUrl => $"{BaseUrl}/shopping/products";
         public static string AddShippingAddressUrl => $"{BaseUrl}/shopping/address";
@@ -38,6 +39,8 @@ namespace CBayMobileApp.Helpers
         public static int Balance { get; set; }
         public static string ProductQuantity { get; set; }
         public static int PriceTag { get; set; }
+        public static DateTime DateType { get; set; }
+        public static string GenderType { get; set; }
 
 
         public static ObservableCollection<CartItem> myCarts { get; set; }
