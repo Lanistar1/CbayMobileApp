@@ -554,6 +554,55 @@ namespace CBayMobileApp.Services
             }
         }
 
+        // Forgot password
+
+        public async Task<(UpdateProfileResponseModel ResponseData, ErrorResponseModel ErrorData, int StatusCode)> ResetUserPasswordAsync(string userName)
+        {
+            try
+            {
+                string url = Global.ForgotPasswordUrl;
+
+                var Verify2FAData = new ForgotPasswordRequestModel
+                {
+                    Username = userName
+                };
+                var json = JsonConvert.SerializeObject(Verify2FAData);
+                StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+                ErrorResponseModel errorData;
+
+                HttpClient client = new HttpClient();
+                var response = await client.PostAsync(url, content);
+                int statusCode = (int)response.StatusCode;
+                int _status = StringHelper.ConvertStatusCode((int)response.StatusCode);
+                string result = await response.Content.ReadAsStringAsync();
+                switch (_status)
+                {
+                    case 200:
+                        UpdateProfileResponseModel data = JsonConvert.DeserializeObject<UpdateProfileResponseModel>(result);
+                        return (data, null, statusCode);
+                    case 300:
+                        errorData = JsonConvert.DeserializeObject<ErrorResponseModel>(result);
+                        return (null, errorData, statusCode);
+                    case 400:
+                        errorData = JsonConvert.DeserializeObject<ErrorResponseModel>(result);
+                        return (null, errorData, statusCode);
+                    case 500:
+                        errorData = JsonConvert.DeserializeObject<ErrorResponseModel>(result);
+                        return (null, errorData, statusCode);
+                    case 0:
+                        return (null, null, statusCode);
+                    default:
+                        return (null, null, statusCode);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return (null, null, 0);
+            }
+
+        }
 
     }
 }

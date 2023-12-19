@@ -1,9 +1,7 @@
 ﻿using CBayMobileApp.Models.Membership;
-using CBayMobileApp.Models.Shopping;
 using CBayMobileApp.Popup;
 using CBayMobileApp.Utils;
-using CBayMobileApp.Views.Account;
-using CBayMobileApp.Views.Products;
+using CBayMobileApp.Views.Account.UserDownline;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,13 +12,16 @@ using Xamarin.Forms;
 namespace CBayMobileApp.ViewModels.Membership
 {
 
-    public class GetMemberDownlineViewModel : BaseViewModel
+    public class ThirdDownlineViewModel : BaseViewModel
     {
-        public GetMemberDownlineViewModel(INavigation navigation)
+        public ThirdDownlineViewModel(INavigation navigation, List<DownlineData> selectedItems)
         {
             Navigation = navigation;
 
-            Task _tsk = FetchUserMembership();
+            SelectedMember = selectedItems;
+            MemberID = SelectedMember.FirstOrDefault().memberID;
+
+            Task _tsk = FetchUserMembership(MemberID);
 
             TappedCommand = new Command<DownlineData>(async (model) => await GetTappedExecute(model));
 
@@ -30,6 +31,17 @@ namespace CBayMobileApp.ViewModels.Membership
         #region Bindings
 
         private List<DownlineData> SelectedItems = new List<DownlineData>();
+
+        private List<DownlineData> selectedMember;
+        public List<DownlineData> SelectedMember
+        {
+            get => selectedMember;
+            set
+            {
+                selectedMember = value;
+                OnPropertyChanged(nameof(SelectedMember));
+            }
+        }
 
         private List<DownlineData> membershipData;
         public List<DownlineData> MembershipData
@@ -42,14 +54,14 @@ namespace CBayMobileApp.ViewModels.Membership
             }
         }
 
-        private string name;
-        public string Name
+        private string memberID;
+        public string MemberID
         {
-            get => name;
+            get => memberID;
             set
             {
-                name = value;
-                OnPropertyChanged(nameof(Name));
+                memberID = value;
+                OnPropertyChanged(nameof(MemberID));
             }
         }
 
@@ -64,82 +76,6 @@ namespace CBayMobileApp.ViewModels.Membership
             }
         }
 
-        private string email;
-        public string Email
-        {
-            get => email;
-            set
-            {
-                email = value;
-                OnPropertyChanged(nameof(Email));
-            }
-        }
-
-        private string phoneNumber;
-        public string PhoneNumber
-        {
-            get => phoneNumber;
-            set
-            {
-                phoneNumber = value;
-                OnPropertyChanged(nameof(PhoneNumber));
-            }
-        }
-
-        private string gender;
-        public string Gender
-        {
-            get => gender;
-            set
-            {
-                gender = value;
-                OnPropertyChanged(nameof(Gender));
-            }
-        }
-
-        private double height;
-        public double Height
-        {
-            get => height;
-            set
-            {
-                height = value;
-                OnPropertyChanged(nameof(Height));
-            }
-        }
-
-        private string dOB;
-        public string DOB
-        {
-            get => dOB;
-            set
-            {
-                dOB = value;
-                OnPropertyChanged(nameof(DOB));
-            }
-        }
-
-        private string country;
-        public string Country
-        {
-            get => country;
-            set
-            {
-                country = value;
-                OnPropertyChanged(nameof(Country));
-            }
-        }
-
-        private string pimage;
-        public string PImage
-        {
-            get => pimage;
-            set
-            {
-                pimage = value;
-                OnPropertyChanged(nameof(PImage));
-            }
-        }
         #endregion
 
         #region Commands
@@ -163,7 +99,7 @@ namespace CBayMobileApp.ViewModels.Membership
                 }
                 SelectedItems.Add(model);
 
-                await Navigation.PushAsync(new TeamDownline(SelectedItems), true);
+                await Navigation.PushAsync(new ForthDownline(SelectedItems), true);
             }
             catch (Exception ex)
             {
@@ -172,13 +108,13 @@ namespace CBayMobileApp.ViewModels.Membership
         }
 
 
-        private async Task FetchUserMembership()
+        private async Task FetchUserMembership(string MemberID)
         {
             try
             {
-                await LoadingPopup.Instance.Show("Loading downline...");
+                await LoadingPopup.Instance.Show("Loading Membership downline...");
 
-                var (ResponseData, ErrorData, StatusCode) = await _cbayServices.GetMembershipAsync();
+                var (ResponseData, ErrorData, StatusCode) = await _cbayServices.GetMembershipDownlineAsync(MemberID);
                 if (ResponseData != null)
                 {
                     if (ResponseData.data != null)

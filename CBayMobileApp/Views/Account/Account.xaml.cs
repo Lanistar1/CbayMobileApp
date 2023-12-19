@@ -48,7 +48,9 @@ namespace CBayMobileApp.Views.Account
 
         private async void To_privacypolicy(object sender, EventArgs e)
         {
-            string url = $"https://cbays.ng/policy";
+            //string url = $"https://cbays.ng/policy";
+
+            string url = $"https://www.cbays.ng/privacy";
 
             await Navigation.PushAsync(new WebviewPage(url));
         }
@@ -57,7 +59,9 @@ namespace CBayMobileApp.Views.Account
         {
             string url = $"https://cbays.ng/terms";
 
-            await Launcher.OpenAsync(url);
+            await Navigation.PushAsync(new WebviewPage(url));
+
+            //await Launcher.OpenAsync(url);
         }
 
         private void To_logoutpopup(object sender, EventArgs e)

@@ -1,7 +1,6 @@
 ﻿using CBayMobileApp.Models.Membership;
 using CBayMobileApp.Popup;
 using CBayMobileApp.Utils;
-using CBayMobileApp.Views.Account;
 using CBayMobileApp.Views.Account.UserDownline;
 using System;
 using System.Collections.Generic;
@@ -12,9 +11,10 @@ using Xamarin.Forms;
 
 namespace CBayMobileApp.ViewModels.Membership
 {
-    public class GetMembershipTeamDownlineViewModel : BaseViewModel
+
+    public class FifthDownlineViewModel : BaseViewModel
     {
-        public GetMembershipTeamDownlineViewModel(INavigation navigation, List<DownlineData> selectedItems)
+        public FifthDownlineViewModel(INavigation navigation, List<DownlineData> selectedItems)
         {
             Navigation = navigation;
 
@@ -23,7 +23,7 @@ namespace CBayMobileApp.ViewModels.Membership
 
             Task _tsk = FetchUserMembership(MemberID);
 
-            TappedCommand = new Command<DownlineData>(async (model) => await GetTappedExecute(model));
+            //TappedCommand = new Command<DownlineData>(async (model) => await GetTappedExecute(model));
 
         }
 
@@ -86,26 +86,26 @@ namespace CBayMobileApp.ViewModels.Membership
 
         #region functions, methods, events and Navigations
 
-        private async Task GetTappedExecute(DownlineData model)
-        {
-            try
-            {
-                var mod = model;
+        //private async Task GetTappedExecute(DownlineData model)
+        //{
+        //    try
+        //    {
+        //        var mod = model;
 
-                model.isSelected = model.isSelected ? false : true;
-                if (SelectedItems.Count > 0)
-                {
-                    SelectedItems.Clear();
-                }
-                SelectedItems.Add(model);
+        //        model.isSelected = model.isSelected ? false : true;
+        //        if (SelectedItems.Count > 0)
+        //        {
+        //            SelectedItems.Clear();
+        //        }
+        //        SelectedItems.Add(model);
 
-                await Navigation.PushAsync(new ThirdDownline(SelectedItems), true);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
-            }
-        }
+        //        await Navigation.PushAsync(new ThirdDownline(SelectedItems), true);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine(ex);
+        //    }
+        //}
 
 
         private async Task FetchUserMembership(string MemberID)

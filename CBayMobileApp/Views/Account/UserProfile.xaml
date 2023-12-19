@@ -9,7 +9,7 @@
     <ScrollView Margin="0,20">
         <StackLayout>
             <StackLayout Margin="20,0">
-                <Label Text="First Name"/>
+                <Label Text="First Name" TextColor="Black" FontSize="14"/>
                 <Label Text="{Binding FirstName}" TextColor="Black" FontSize="16"/>
             </StackLayout>
             <Line X1="0"
@@ -23,7 +23,7 @@
                       StrokeDashOffset="2"/>
 
             <StackLayout Margin="20,0">
-                <Label Text="Last Name"/>
+                <Label Text="Last Name" TextColor="Black" FontSize="14"/>
                 <Label Text="{Binding LastName}" TextColor="Black" FontSize="16"/>
             </StackLayout>
             <Line X1="0"
@@ -37,7 +37,7 @@
                       StrokeDashOffset="2"/>
 
             <StackLayout Margin="20,10,20,0">
-                <Label Text="Email"/>
+                <Label Text="Email" TextColor="Black" FontSize="14"/>
                 <Label Text="{Binding Email}" TextColor="Black" FontSize="16"/>
             </StackLayout>
             <Line X1="0"
@@ -51,7 +51,7 @@
                       StrokeDashOffset="2"/>
 
             <StackLayout Margin="20,10,20,0">
-                <Label Text="Phone number"/>
+                <Label Text="Phone number" TextColor="Black" FontSize="14"/>
                 <Label Text="{Binding PhoneNumber}" TextColor="#191919" FontSize="16"/>
             </StackLayout>
             <Line X1="0"
@@ -65,7 +65,7 @@
                       StrokeDashOffset="2"/>
 
             <StackLayout Margin="20,10,20,0">
-                <Label Text="Gender"/>
+                <Label Text="Gender" TextColor="Black" FontSize="14"/>
                 <Label Text="{Binding Gender}" TextColor="#191919" FontSize="16"/>
             </StackLayout>
             <Line X1="0"
@@ -79,7 +79,7 @@
                     StrokeDashOffset="2"/>
 
             <StackLayout Margin="20,10,20,0">
-                <Label Text="Date of Birth"/>
+                <Label Text="Date of Birth" TextColor="Black" FontSize="14"/>
                 <Label Text="{Binding DOB}" TextColor="#191919" FontSize="16"/>
             </StackLayout>
             <Line X1="0"

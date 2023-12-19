@@ -15,8 +15,8 @@ namespace CBayMobileApp.Popup
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SelectItemPickerPopup : PopupPage
     {
-        private TaskCompletionSource<Tuple<string>> _taskCompletionSource;
-        public Task<Tuple<string>> PopupClosedTask => _taskCompletionSource.Task;
+        private TaskCompletionSource<Tuple<string,string>> _taskCompletionSource;
+        public Task<Tuple<string,string>> PopupClosedTask => _taskCompletionSource.Task;
         public static SelectItemPickerPopup Instance { get; private set; }
         public SelectItemPickerPopupViewModel viewModel = null;
         public SelectItemPickerPopup(List<SelectItemModel> items)
@@ -36,13 +36,13 @@ namespace CBayMobileApp.Popup
 
         private async void HandleBackButtonPressed()
         {
-            await SelectItemPickerPopupViewModel.Instance.ClosePopUp(string.Empty);
+            await SelectItemPickerPopupViewModel.Instance.ClosePopUp(string.Empty, string.Empty);
         }
         protected override void OnAppearing()
         {
             base.OnAppearing();
 
-            _taskCompletionSource = new TaskCompletionSource<Tuple<string>>();
+            _taskCompletionSource = new TaskCompletionSource<Tuple<string, string>>();
         }
 
         protected override void OnDisappearing()

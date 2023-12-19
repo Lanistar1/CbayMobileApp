@@ -13,6 +13,9 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Frame  BorderColor="#C4C6CF" BackgroundColor="White" HasShadow="False" >
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Path=BindingContext.TappedCommand, Source={x:Reference membership}}" CommandParameter="{Binding .}"/>
+                        </Frame.GestureRecognizers>
                         <FlexLayout JustifyContent="SpaceBetween" AlignContent="Center" AlignItems="Center">
                             <StackLayout Orientation="Horizontal">
                                 <Image Source="cbaynavaccount.png" Margin="0,0,0,0"/>

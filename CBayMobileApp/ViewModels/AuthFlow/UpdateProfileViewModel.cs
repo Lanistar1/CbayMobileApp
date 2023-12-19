@@ -241,8 +241,8 @@ namespace CBayMobileApp.ViewModels.AuthFlow
 
             List<SelectItemModel> genderTypes = new List<SelectItemModel>()
             {
-                new SelectItemModel(1,"FEMALE"),
-                new SelectItemModel(2,"MALE"),
+                new SelectItemModel("1","FEMALE"),
+                new SelectItemModel("2","MALE"),
                 //new SelectItemModel(3,"Others"),
             };
             var popup = new SelectItemPickerPopup(genderTypes);

@@ -28,7 +28,12 @@ namespace CBayMobileApp.Helpers
         public static string GetMyShippingAddressUrl => $"{BaseUrl}/shopping/addresses";
         public static string PlaceOrderUrl => $"{BaseUrl}/shopping/order";
         public static string MyOrderUrl => $"{BaseUrl}/shopping/orders";
-
+        public static string ForgotPasswordUrl => $"{BaseUrl}/identity/password/initiatereset";
+        public static string WithdrawalUrl => $"{BaseUrl}/wallet/external/transfer";
+        public static string GetBankUrl => $"{BaseUrl}/wallet/external/flutterwave/banks";
+        public static string ValidateAccountUrl => $"{BaseUrl}/wallet/external/account/validate";
+        public static string SearchUrl => $"{BaseUrl}/shopping/search";
+        public static string GetProductByIDUrl => $"{BaseUrl}/shopping/product";
 
 
         public static ProfileData UserProfileData { get; set; }
@@ -41,7 +46,10 @@ namespace CBayMobileApp.Helpers
         public static int PriceTag { get; set; }
         public static DateTime DateType { get; set; }
         public static string GenderType { get; set; }
-
+        public static string bankName { get; set; }
+        public static string bank { get; set; }
+        public static string OpratorId { get; set; }
+        public static string SelectedWallet { get; set; }
 
         public static ObservableCollection<CartItem> myCarts { get; set; }
         public class CartItem

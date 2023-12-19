@@ -95,13 +95,13 @@
                                     <Image Source="{Binding defaultPictureLocation}" WidthRequest="100" HeightRequest="100" HorizontalOptions="StartAndExpand"/>
                                 </StackLayout>
                             </Frame>
-                            <Label Text="{Binding name}" TextColor="#272728" FontSize="14" Margin="10,0,0,0" FontFamily="DMSans-Regular" HorizontalTextAlignment="Start"/>
+                            <Label WidthRequest="100" LineBreakMode="TailTruncation" Text="{Binding name}" TextColor="#272728" FontSize="14" Margin="10,0,0,0" FontFamily="DMSans-Regular" HorizontalTextAlignment="Start"/>
                         </StackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
 
-            <FlexLayout JustifyContent="SpaceBetween" AlignItems="Center" Margin="0,0,0,0">
+            <FlexLayout JustifyContent="SpaceBetween" AlignItems="Center" Margin="0,-100,0,0">
                 <Label Text="Recent Earning" TextColor="#212121" FontSize="16" Margin="0,0,0,0" FontFamily="DMSans-Medium" HorizontalTextAlignment="Center"/>
                 <Label Text="View All" TextColor="{StaticResource PrimaryColor}" FontSize="16" Margin="0,0,0,0" FontFamily="DMSans-Medium" HorizontalTextAlignment="Center">
                     <Label.GestureRecognizers>

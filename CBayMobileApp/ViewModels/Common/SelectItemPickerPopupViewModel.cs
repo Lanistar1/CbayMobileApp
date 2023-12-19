@@ -33,6 +33,18 @@ namespace CBayMobileApp.ViewModels.Common
                 OnPropertyChanged(nameof(SelectedItem));
             }
         }
+
+        private string selectedItemId;
+        public string SelectedItemId
+        {
+            get => selectedItemId;
+            set
+            {
+                selectedItemId = value;
+                OnPropertyChanged(nameof(SelectedItemId));
+            }
+        }
+
         private string searchEntry = string.Empty;
         public string SearchEntry
         {
@@ -62,7 +74,7 @@ namespace CBayMobileApp.ViewModels.Common
 
         public enum EnumInputType { Ok, YesNo, OkCancel, OkCancelWithInput }
         public enum EnumOutputType { Ok, Yes, No, Cancel }
-        public Tuple<string> ReturnValue;
+        public Tuple<string,string> ReturnValue;
 
         public SelectItemPickerPopupViewModel(INavigation navigation, List<SelectItemModel> items)
         {
@@ -80,16 +92,16 @@ namespace CBayMobileApp.ViewModels.Common
             ItemListData = _items.Count >= 1 ? new ObservableCollection<SelectItemModel>(_items) : null;
             SavedItemList = _items;
         }
-        public async Task ClosePopUp(string selectItem)
+        public async Task ClosePopUp(string selectItem, string selectedId)
         {
             if (!string.IsNullOrWhiteSpace(selectItem))
             {
-                ReturnValue = new Tuple<string>(selectItem);
+                ReturnValue = new Tuple<string, string>(selectItem, selectedId);
                 await Rg.Plugins.Popup.Services.PopupNavigation.Instance.PopAsync();
             }
             else
             {
-                ReturnValue = new Tuple<string>(string.Empty);
+                ReturnValue = new Tuple<string, string>(string.Empty, string.Empty);
                 await Rg.Plugins.Popup.Services.PopupNavigation.Instance.PopAsync();
             }
         }
@@ -102,18 +114,20 @@ namespace CBayMobileApp.ViewModels.Common
 
         public async Task CancelCommandExecute()
         {
-            await ClosePopUp(string.Empty);
+            await ClosePopUp(string.Empty, string.Empty);
         }
 
         public async Task OkCommandExecute()
         {
-            await ClosePopUp(SelectedItem);
+            await ClosePopUp(SelectedItem, SelectedItemId);
+
         }
 
         public async Task SelectItemCommandExecute(SelectItemModel model)
         {
             SelectedItem = model.Value;
-            await ClosePopUp(SelectedItem);
+            SelectedItemId = model.Id;
+            await ClosePopUp(SelectedItem, SelectedItemId);
         }
 
         private void SearchBar_TextChanged(string _searchEntry)
