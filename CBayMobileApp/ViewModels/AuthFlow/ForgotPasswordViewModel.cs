@@ -19,7 +19,7 @@ namespace CBayMobileApp.ViewModels.AuthFlow
         {
             Navigation = navigation;
 
-            ForgotPasswordCommand = new Command(async () => await ForgotPasswordCommandExecute(userName));
+            ForgotPasswordCommand = new Command(async () => await ForgotPasswordCommandExecute(UserName));
         }
 
 
@@ -35,7 +35,7 @@ namespace CBayMobileApp.ViewModels.AuthFlow
             }
         }
 
-        private string userName = Global.UserEmail;
+        private string userName;
         public string UserName
         {
             get => userName;
@@ -58,30 +58,33 @@ namespace CBayMobileApp.ViewModels.AuthFlow
 
         #region functions, methods, events and Navigations
 
-        private async Task ForgotPasswordCommandExecute(string userName)
+        private async Task ForgotPasswordCommandExecute(string UserName)
         {
             try
             {
 
                 await LoadingPopup.Instance.Show("Verifying user...");
 
-                var (ResponseData, ErrorData, StatusCode) = await _cbayServices.ResetUserPasswordAsync(userName);
+                var (ResponseData, ErrorData, StatusCode) = await _cbayServices.ResetUserPasswordAsync(UserName);
 
 
                 if (ResponseData != null)
                 {
-                    await MessagePopup.Instance.Show("Password reset link sent to your mail.");
+                    await MessagePopup.Instance.Show("Password reset link has been sent to your mail.");
 
                     Application.Current.MainPage = new NavigationPage(new LoginPage());
                 }
-
                 else if (ErrorData != null && StatusCode == 400)
+                {
+                    await MessagePopup.Instance.Show(ErrorData.errors.FirstOrDefault());
+                }
+                else if (ErrorData != null && StatusCode == 500)
                 {
                     await MessagePopup.Instance.Show(ErrorData.errors.FirstOrDefault());
                 }
                 else
                 {
-                    await MessagePopup.Instance.Show(ErrorData.errors.FirstOrDefault());
+                    await MessagePopup.Instance.Show("Password reset link has been sent to your mail.");
                 }
             }
             catch (Exception ex)

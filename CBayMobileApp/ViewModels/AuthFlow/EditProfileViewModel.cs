@@ -292,11 +292,11 @@ namespace CBayMobileApp.ViewModels.AuthFlow
                 await MessagePopup.Instance.Show("Enter firstname to continue.");
                 return false;
             }
-            if (string.IsNullOrWhiteSpace(Gender))
-            {
-                await MessagePopup.Instance.Show("select gender to continue.");
-                return false;
-            }
+            //if (string.IsNullOrWhiteSpace(Gender))
+            //{
+            //    await MessagePopup.Instance.Show("select gender to continue.");
+            //    return false;
+            //}
             if (string.IsNullOrWhiteSpace(LastName))
             {
                 await MessagePopup.Instance.Show("Enter lastName to continue.");

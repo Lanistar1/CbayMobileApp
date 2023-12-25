@@ -2,6 +2,7 @@
 using CBayMobileApp.Models.Wallet;
 using CBayMobileApp.Popup;
 using CBayMobileApp.Utils;
+using CBayMobileApp.Views;
 using CBayMobileApp.Views.Identity;
 using Newtonsoft.Json;
 using System;
@@ -72,14 +73,25 @@ namespace CBayMobileApp.ViewModels.Wallets
         public Command AcctNumberTextChangedCommand => new Command<string>(async (_acctnumber) => await AcctNumberTextChanged(_acctnumber));
 
 
-        private WalletData walletNo;
-        public WalletData WalletNo
+        private string walletNo;
+        public string WalletNo
         {
             get => walletNo;
             set
             {
                 walletNo = value;
                 OnPropertyChanged(nameof(WalletNo));
+            }
+        }
+
+        private string walletID;
+        public string WalletID
+        {
+            get => walletID;
+            set
+            {
+                walletID = value;
+                OnPropertyChanged(nameof(WalletID));
             }
         }
 
@@ -240,7 +252,7 @@ namespace CBayMobileApp.ViewModels.Wallets
                 double newAmount = double.Parse(Amount);
 
                 WithdrawalRequestModel requestPayload = new WithdrawalRequestModel()
-                { AccountNo = AccountNumber, Amount = newAmount, BankCode = BankCode, FromWalletID = Wallet };
+                { AccountNo = AccountNumber, Amount = newAmount, BankCode = BankCode, FromWalletID = WalletID };
 
                 string payloadJson = JsonConvert.SerializeObject(requestPayload);
 
@@ -261,7 +273,7 @@ namespace CBayMobileApp.ViewModels.Wallets
                 {
                     //await Application.Current.MainPage.DisplayAlert("Withdrawal Successfully", "", "OK");
                     await MessagePopup.Instance.Show("Withdrawal Successfully.");
-                    await Navigation.PopAsync();
+                    Application.Current.MainPage = new NavigationPage(new Tabbed());
                 }
                 else if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
                 {
@@ -270,12 +282,12 @@ namespace CBayMobileApp.ViewModels.Wallets
                 }
                 else if (response.StatusCode == System.Net.HttpStatusCode.BadRequest)
                 {
-                    //await Application.Current.MainPage.DisplayAlert("Withdrawal not successfully ", "Pl", "OK");
+                    await MessagePopup.Instance.Show("Withdrawal not Successful.");
 
                 }
                 else
                 {
-                    await Application.Current.MainPage.DisplayAlert("Something went wrong", "Please try again later", "OK");
+                    await MessagePopup.Instance.Show("Something went wrong. Please try again later.");
                 }
 
             }
@@ -352,6 +364,10 @@ namespace CBayMobileApp.ViewModels.Wallets
                     if (ResponseData != null)
                     {
                         WalletData = ResponseData.data;
+
+                        WalletID = WalletData.FirstOrDefault().walletID;
+                        WalletNo = WalletData.FirstOrDefault().walletNo;
+
                         //Global.UserWalletData = WalletData;
                     }
                     else

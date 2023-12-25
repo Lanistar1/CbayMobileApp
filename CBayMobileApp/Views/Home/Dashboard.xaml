@@ -60,6 +60,9 @@
                 </Frame>
 
                 <Frame Padding="10" BackgroundColor="#E7E7E8" HorizontalOptions="FillAndExpand" CornerRadius="10" Grid.Column="1" HasShadow="False">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="To_WithdrawPage"/>
+                    </Frame.GestureRecognizers>
                     <Label Text="Withdraw" TextColor="#000000" FontSize="16" FontFamily="DMSans-Regular" HorizontalTextAlignment="Center"/>
                 </Frame>
             </Grid>
@@ -105,7 +108,7 @@
                 <Label Text="Recent Earning" TextColor="#212121" FontSize="16" Margin="0,0,0,0" FontFamily="DMSans-Medium" HorizontalTextAlignment="Center"/>
                 <Label Text="View All" TextColor="{StaticResource PrimaryColor}" FontSize="16" Margin="0,0,0,0" FontFamily="DMSans-Medium" HorizontalTextAlignment="Center">
                     <Label.GestureRecognizers>
-                        <TapGestureRecognizer />
+                        <TapGestureRecognizer Tapped="To_recentEarning"/>
                     </Label.GestureRecognizers>
                 </Label>
             </FlexLayout>

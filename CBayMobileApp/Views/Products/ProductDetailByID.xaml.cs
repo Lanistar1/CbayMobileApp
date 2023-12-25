@@ -36,7 +36,7 @@ namespace CBayMobileApp.Views.Products
 
                 var mod = ct;
 
-                //await Navigation.PushAsync(new OrderConfirmationByID(mod), true);
+                await Navigation.PushAsync(new OrderConfirmationByID(mod), true);
             }
             catch (Exception ex)
             {
@@ -57,7 +57,7 @@ namespace CBayMobileApp.Views.Products
                 quantity = 1,
                 productName = ct.ProductByID.name,
                 defaultPictureLocation = ct.ProductByID.defaultPictureLocation,
-                productPrice = ct.ProductByID.productPrice
+                productPrice = ct.ProductByID.price
             });
             Console.WriteLine("kcsgcahjgha");
 

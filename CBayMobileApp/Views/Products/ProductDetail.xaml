@@ -16,10 +16,11 @@
                         <FlexLayout JustifyContent="SpaceBetween" Margin="20,10">
                             <StackLayout>
                                 <Label Text="{Binding name}" TextColor="#212121" FontSize="16" Margin="0,0,0,0" FontFamily="DMSans-Regular" HorizontalTextAlignment="Start"/>
-                                <StackLayout Orientation="Horizontal" Spacing="1" Margin="0,0,0,0">
-                                    <Label Text="NGN" TextColor="#212121" FontSize="14" FontFamily="DMSans-Regular"/>
-                                    <Label Text="{Binding price}" TextColor="#212121" FontSize="14" FontFamily="DMSans-Regular"/>
-                                    <Label Text=".00" TextColor="#212121" FontSize="14" FontFamily="DMSans-Regular"/>
+                                <StackLayout Orientation="Horizontal" Spacing="1" Margin="0,5,0,0">
+                                    <Label Text="Amount: " TextColor="#212121" FontSize="16" FontFamily="DMSans-Medium"/>
+                                    <Label Text="NGN" TextColor="#212121" FontSize="16" FontFamily="DMSans-Medium"/>
+                                    <Label Text="{Binding price}" TextColor="#212121" FontSize="16" FontFamily="DMSans-Medium"/>
+                                    <Label Text=".00" TextColor="#212121" FontSize="16" FontFamily="DMSans-Medium"/>
                                 </StackLayout>
                             </StackLayout>
                             <!--<Frame Padding="5" CornerRadius="50" BorderColor="#E7E7E8" HeightRequest="50" WidthRequest="40" HasShadow="False">

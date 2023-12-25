@@ -1,4 +1,5 @@
 ﻿using CBayMobileApp.ViewModels.Home;
+using CBayMobileApp.ViewModels.Wallets;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace CBayMobileApp.Views.Home
         public RecentEarning()
         {
             InitializeComponent();
-            BindingContext = new RecentEarningViewModel(Navigation);
+            BindingContext = new WalletViewModel(Navigation);
         }
     }
 }

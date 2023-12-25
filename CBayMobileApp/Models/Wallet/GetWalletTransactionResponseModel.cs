@@ -12,14 +12,14 @@ namespace CBayMobileApp.Models.Wallet
         public string transactionID { get; set; }
         public string transactionNo { get; set; }
         public string narration { get; set; }
-        public int amount { get; set; }
+        public double amount { get; set; }
         public string externalRefNo { get; set; }
         public string refWalletNO { get; set; }
         public DateTime transxnDate { get; set; }
         public string transxType { get; set; }
         public string toWalletID { get; set; }
-        public int previousToWalletBalance { get; set; }
-        public int presentToWalletBalance { get; set; }
+        public double previousToWalletBalance { get; set; }
+        public double presentToWalletBalance { get; set; }
         public string fromWalletID { get; set; }
 
         public string newDate
@@ -50,7 +50,7 @@ namespace CBayMobileApp.Models.Wallet
             }
         }
 
-        public int Amount
+        public double Amount
         {
             get
             {

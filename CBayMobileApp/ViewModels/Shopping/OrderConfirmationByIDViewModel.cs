@@ -1,10 +1,10 @@
 ﻿using CBayMobileApp.Helpers;
-using CBayMobileApp.Models.Shopping.Shipping;
 using CBayMobileApp.Models.Shopping;
 using CBayMobileApp.Models.Wallet;
 using CBayMobileApp.Popup;
 using CBayMobileApp.Utils;
 using CBayMobileApp.Views;
+using CBayMobileApp.Views.Identity;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -13,31 +13,30 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
-using CBayMobileApp.Views.Identity;
-using CBayMobileApp.Models.AuthFlow;
-using System.Reflection;
-using Xamarin.Essentials;
+using static Xamarin.Essentials.Permissions;
 
 namespace CBayMobileApp.ViewModels.Shopping
 {
-    public class OrderConfirmationViewModel : BaseViewModel
+    public class OrderConfirmationByIDViewModel : BaseViewModel
     {
-        public List<AddressData> shippingAddress;
-        public List<AddressData> ShippingAddress
+        
+
+
+        public List<WalletData> buyerWalletData;
+        public List<WalletData> BuyerWalletData
         {
-            get => shippingAddress;
+            get => buyerWalletData;
             set
             {
-                shippingAddress = value;
-                OnPropertyChanged(nameof(ShippingAddress));
+                buyerWalletData = value;
+                OnPropertyChanged(nameof(BuyerWalletData));
 
             }
         }
 
 
-
-        public List<GetAllProductData> selectedItems;
-        public List<GetAllProductData> SelectedItems
+        public List<productByIdData> selectedItems;
+        public List<productByIdData> SelectedItems
         {
             get => selectedItems;
             set
@@ -46,8 +45,8 @@ namespace CBayMobileApp.ViewModels.Shopping
             }
         }
 
-        private List<GetAllProductData> productDetail;
-        public List<GetAllProductData> ProductDetail
+        private productByIdData productDetail;
+        public productByIdData ProductDetail
         {
             get => productDetail;
             set
@@ -144,29 +143,6 @@ namespace CBayMobileApp.ViewModels.Shopping
             {
                 quantity = value;
                 OnPropertyChanged(nameof(Quantity));
-            }
-        }
-
-
-        private int availableBalance;
-        public int AvailableBalance
-        {
-            get => availableBalance;
-            set
-            {
-                availableBalance = value;
-                OnPropertyChanged(nameof(AvailableBalance));
-            }
-        }
-
-        private ProfileData profileData;
-        public ProfileData ProfileData
-        {
-            get => profileData;
-            set
-            {
-                profileData = value;
-                OnPropertyChanged(nameof(ProfileData));
             }
         }
 
@@ -269,89 +245,78 @@ namespace CBayMobileApp.ViewModels.Shopping
             }
         }
 
-        private string lastName;
-        public string LastName
+        private int availableBalance;
+        public int AvailableBalance
         {
-            get => lastName;
+            get => availableBalance;
             set
             {
-                lastName = value;
-                OnPropertyChanged(nameof(LastName));
+                availableBalance = value;
+                OnPropertyChanged(nameof(AvailableBalance));
             }
         }
 
-        public OrderConfirmationViewModel(INavigation navigation, List<GetAllProductData> selectedItems)
+        private bool showUncheck;
+        public bool ShowUncheck
+        {
+            get => showUncheck;
+            set
+            {
+                showUncheck = value;
+                OnPropertyChanged(nameof(ShowUncheck));
+            }
+        }
+
+        private bool showCheck;
+        public bool ShowCheck
+        {
+            get => showCheck;
+            set
+            {
+                showCheck = value;
+                OnPropertyChanged(nameof(ShowCheck));
+            }
+        }
+
+        private WalletData walletDetail;
+        public WalletData WalletDetail
+        {
+            get => walletDetail;
+            set
+            {
+                walletDetail = value;
+                OnPropertyChanged(nameof(WalletDetail));
+            }
+        }
+
+       
+
+        public OrderConfirmationByIDViewModel(INavigation navigation, BuyerProductByIDViewModel mod)
         {
 
             Navigation = navigation;
 
             Task _tasks = GetMyWalletExecute();
-            Task _tsk = FetchUserProfile();
+
+            var test = mod;
 
             PlaceOrderCommand = new Command(async () => await PlaceOrderCommandExecute());
 
             SelectedItems = selectedItems;
 
-            ProductDetail = new List<GetAllProductData>(SelectedItems);
+            ProductDetail = test.ProductByID;
 
-            ProductPrice = ProductDetail.FirstOrDefault().price;
+            ProductPrice = ProductDetail.price;
             //Global.PriceTag = ProductPrice;
+            Currency = ProductDetail.currency;
 
         }
 
         public Command PlaceOrderCommand { get; }
-
-        private async Task FetchUserProfile()
-        {
-            try
-            {
-                await LoadingPopup.Instance.Show("Loading Profile detail...");
-
-                var (ResponseData, ErrorData, StatusCode) = await _cbayServices.GetUserProfileAsync();
-                if (ResponseData != null)
-                {
-                    if (ResponseData.data != null)
-                    {
-                        ProfileData = ResponseData.data;
-
-                        Global.UserProfileData = ProfileData;
-
-                        Name = ProfileData.name;
-                        LastName = ProfileData.lastName;
-                        FirstName = ProfileData.firstName;
-                        PhoneNumber = ProfileData.phoneNo;
-                        Email = ProfileData.emailAddress;
-                        Country = ProfileData.country;
-                    }
-                    else
-                    {
-                        //await MessagePopup.Instance.Show(ErrorData.errors.FirstOrDefault());
-                    }
-                }
-                else if (ErrorData != null)
-                {
-                    //string message = "Error fetching user detail. Do you want to RETRY?";
-                    //await MessagePopup.Instance.Show(
-                    //    message: message);
-
-                }
-                else
-                {
-                    //await MessagePopup.Instance.Show(ErrorData.errors.FirstOrDefault());
-                }
-            }
-            catch (Exception ex)
-            {
-                string message = "Error fetching user detail. Do you want to RETRY?";
-                await MessagePopup.Instance.Show(
-                    message: message);
-                Console.WriteLine(ex);
-            }
-            finally
-            {
-                await LoadingPopup.Instance.Hide();
-            }
-        }
+        public Command FilterCommand { get; }
+        public Command TappedCommand { get; }
+        public Command ItemCheckedCommand { get; }
+        public Command ItemChangeCommand { get; }
 
 
         public async Task GetMyWalletExecute()
@@ -382,7 +347,7 @@ namespace CBayMobileApp.ViewModels.Shopping
                     // Console.WriteLine("passedjiojiojiojio");
                     Console.WriteLine(data);
 
-                    
+
 
                     var test = data.data.FirstOrDefault().walletID;
                     Global.WalletId = test;
@@ -441,22 +406,37 @@ namespace CBayMobileApp.ViewModels.Shopping
                 int newQuantity = int.Parse(Quantity);
 
 
+                var ProductID = ProductDetail.productID;
                 List<string> detailLot = new List<string>();
                 var newOrder = new List<Orderdetail>();
 
-                foreach (var item in details)
+                detailLot.Add(ProductID);
+                Orderdetail neworderDetail = new Orderdetail()
                 {
-                    var productID = item.productID;
-                    detailLot.Add(productID);
-                    Orderdetail neworderDetail = new Orderdetail()
-                    {
-                        Quantity = newQuantity,
-                        ProductID = productID,
+                    Quantity = newQuantity,
+                    ProductID = ProductID,
 
-                    };
-                    newOrder.Add(neworderDetail);
+                };
+                newOrder.Add(neworderDetail);
 
-                }
+
+
+                //List<string> detailLot = new List<string>();
+                //var newOrder = new List<Orderdetail>();
+
+                //foreach (var item in details)
+                //{
+                //    var productID = item.productID;
+                //    detailLot.Add(productID);
+                //    Orderdetail neworderDetail = new Orderdetail()
+                //    {
+                //        Quantity = newQuantity,
+                //        ProductID = productID,
+
+                //    };
+                //    newOrder.Add(neworderDetail);
+
+                //}
 
 
                 OrderShippingAddress shippingAddress = new OrderShippingAddress()
@@ -525,6 +505,7 @@ namespace CBayMobileApp.ViewModels.Shopping
                 await LoadingPopup.Instance.Hide();
             }
         }
+
 
     }
 

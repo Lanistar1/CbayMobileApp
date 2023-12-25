@@ -8,15 +8,20 @@
     <ScrollView VerticalScrollBarVisibility="Never">
         <StackLayout Margin="20">
             <StackLayout Margin="0,20,0,5">
-                <Label Text="Sent to"
+                <Label Text="Sent from"
                     FontSize="18"
                     FontFamily="Poppins-Light"
                     Margin="0,0"
                     TextColor="Black"/>
                 <Frame Margin="0,0" CornerRadius="10" HeightRequest="50" HorizontalOptions="Fill" Padding="10,0">
 
-                    <Label Text="{Binding NewwalletNo}" TextColor="#000000" FontFamily="Rubik-Regular" FontSize="18"  Margin="0,0,0,0"
-                       HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                        <Label Text="Wallet No:" TextColor="#333333" FontFamily="Rubik-Regular" FontSize="16"  Margin="0,0,0,0"
+                               HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                        <Label Text="{Binding WalletNo}" TextColor="#000000" FontFamily="Rubik-Regular" FontSize="18"  Margin="0,0,0,0"
+                                HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                    </StackLayout>
+                    
 
                     <!--<Picker x:Name="walletListPicker" ItemsSource="{Binding Wallet}" ItemDisplayBinding="{Binding walletNo}"
                         SelectedIndexChanged="WalletListPicker_SelectedIndexChanged" Title="Select Receiver">

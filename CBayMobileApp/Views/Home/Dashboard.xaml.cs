@@ -1,6 +1,7 @@
 ﻿using CBayMobileApp.Utils;
 using CBayMobileApp.ViewModels.Home;
 using CBayMobileApp.ViewModels.Wallets;
+using CBayMobileApp.Views.Withdraw;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,7 +30,15 @@ namespace CBayMobileApp.Views.Home
         private async void To_addMoney(object sender, EventArgs e)
         {
 
-            await MessagePopup.Instance.Show("Waiting for payment gateway.");
+            //await MessagePopup.Instance.Show("Waiting for payment gateway.");
+            await Navigation.PushAsync(new FundWallet());
+
+        }
+
+        private void To_WithdrawPage(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new WithdrawalPage());
+
         }
     }
 }

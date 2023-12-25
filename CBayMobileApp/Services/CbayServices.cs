@@ -318,7 +318,7 @@ namespace CBayMobileApp.Services
                 switch (_status)
                 {
                     case 200:
-                        var data = JsonConvert.DeserializeObject<GetWalletTransactionResponseModel>(result);
+                        GetWalletTransactionResponseModel data = JsonConvert.DeserializeObject<GetWalletTransactionResponseModel>(result);
                         return (data, null, statusCode);
                     case 300:
                         errorData = JsonConvert.DeserializeObject<ErrorResponseModel>(result);
@@ -556,7 +556,7 @@ namespace CBayMobileApp.Services
 
         // Forgot password
 
-        public async Task<(UpdateProfileResponseModel ResponseData, ErrorResponseModel ErrorData, int StatusCode)> ResetUserPasswordAsync(string userName)
+        public async Task<(UpdateProfileResponseModel ResponseData, ErrorResponseModel ErrorData, int StatusCode)> ResetUserPasswordAsync(string UserName)
         {
             try
             {
@@ -564,7 +564,7 @@ namespace CBayMobileApp.Services
 
                 var Verify2FAData = new ForgotPasswordRequestModel
                 {
-                    Username = userName
+                    Username = UserName
                 };
                 var json = JsonConvert.SerializeObject(Verify2FAData);
                 StringContent content = new StringContent(json, Encoding.UTF8, "application/json");

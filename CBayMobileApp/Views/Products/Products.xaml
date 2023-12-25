@@ -1,21 +1,49 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:CBayMobileApp.Controls"
              x:Class="CBayMobileApp.Views.Products.Products"
              BackgroundColor="White">
 
-    <StackLayout Margin="20">
-        <FlexLayout JustifyContent="SpaceBetween">
-            <StackLayout>
-                <Image Source="cbaysearch.png"/>
-            </StackLayout>
-            <Label Text="Products" TextColor="#000000" FontSize="16" Margin="0,0,0,0" FontFamily="DMSans-Bold" HorizontalTextAlignment="Center"/>
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackLayout Grid.Row="0">
+            <FlexLayout JustifyContent="SpaceBetween">
+                <StackLayout>
+                    <Image Source="cbaysearch.png"/>
+                </StackLayout>
+                <Label Text="Products" TextColor="#000000" FontSize="16" Margin="0,0,0,0" FontFamily="DMSans-Bold" HorizontalTextAlignment="Center"/>
 
-            <StackLayout>
-                <Image Source="cbaycart.png"/>
-            </StackLayout>
-        </FlexLayout>
-        <CollectionView x:Name="cvBanners" ItemsSource="{Binding ProductData}" Margin="0,20">
+                <StackLayout>
+                    <Image Source="cbaycart.png"/>
+                </StackLayout>
+            </FlexLayout>
+            <Frame BorderColor="#000000" HasShadow="False" Padding="20,0" CornerRadius="20" HorizontalOptions="FillAndExpand">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="7*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackLayout>
+                        <Image Source="cbaysearch.png" WidthRequest="20" HeightRequest="20" VerticalOptions="CenterAndExpand" Grid.Column="0"/>
+                    </StackLayout>
+                    <controls:CustomEntry 
+                        FontFamily="Rubik-Regular"
+                        FontSize="16"
+                        Grid.Column="1"
+                        Text="{Binding SearchEntry, Mode=TwoWay}"
+                        Placeholder="Search for..."
+                        PlaceholderColor="#cccccc"
+                        TextColor="Black"/>
+                </Grid>
+
+            </Frame>
+        </StackLayout>
+        
+
+        <CollectionView x:Name="cvBanners" ItemsSource="{Binding ProductData}" Margin="0,20" Grid.Row="1">
             <CollectionView.ItemsLayout>
                 <GridItemsLayout VerticalItemSpacing="10" HorizontalItemSpacing="10" Orientation="Vertical" Span="2"/>
             </CollectionView.ItemsLayout>
@@ -30,11 +58,15 @@
                                 <TapGestureRecognizer Command="{Binding Path=BindingContext.TappedCommand, Source={x:Reference cvBanners}}" CommandParameter="{Binding .}"/>
                             </StackLayout.GestureRecognizers>
                             <Image Source="{Binding defaultPictureLocation}" WidthRequest="100" HeightRequest="100" HorizontalOptions="StartAndExpand"/>
-                            <Label Text="{Binding name}" TextColor="#272728" FontSize="14" Margin="10,0,0,0" FontFamily="DMSans-Regular" HorizontalTextAlignment="Start"/>
-                            <StackLayout Orientation="Horizontal" Spacing="1" Margin="10,0,0,0">
-                                <Label Text="NGN" TextColor="#272728" FontSize="14" FontFamily="DMSans-Regular"/>
-                                <Label Text="{Binding price}" TextColor="#272728" FontSize="14" FontFamily="DMSans-Regular"/>
-                                <Label Text=".00" TextColor="#272728" FontSize="14" FontFamily="DMSans-Regular"/>
+                            <Label WidthRequest="100" LineBreakMode="TailTruncation" Text="{Binding name}" TextColor="#272728" FontSize="14" Margin="0,0,0,0" FontFamily="DMSans-Regular" HorizontalTextAlignment="Start"/>
+                            <StackLayout Orientation="Horizontal" Spacing="1" Margin="0,0,0,0">
+                                <Label Text="NGN" TextColor="#272728" FontSize="16" FontFamily="DMSans-Medium"/>
+                                <Label Text="{Binding price}" TextColor="#272728" FontSize="16" FontFamily="DMSans-Medium"/>
+                                <Label Text=".00" TextColor="#272728" FontSize="16" FontFamily="DMSans-Medium"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" Spacing="1" Margin="0,0,0,0">
+                                <Label Text="PP: " TextColor="#272728" FontSize="16" FontFamily="DMSans-Medium"/>
+                                <Label Text="{Binding pp}" TextColor="#272728" FontSize="16" FontFamily="DMSans-Medium"/>
                             </StackLayout>
                         </StackLayout>
                     </Frame>
@@ -48,7 +80,7 @@
                 </CollectionView.EmptyView>-->
         </CollectionView>
 
-    </StackLayout>
+    </Grid>
     
     
     <!--<Grid Margin="20">

@@ -118,7 +118,7 @@ namespace CBayMobileApp.ViewModels.Shopping
                     quantity = 1,
                     productName = model.name,
                     defaultPictureLocation = model.defaultPictureLocation,
-                    productPrice = model.productPrice
+                    productPrice = model.price
                 });
                 Console.WriteLine("kcsgcahjgha");
 
