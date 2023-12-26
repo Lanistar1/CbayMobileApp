@@ -7,6 +7,7 @@
     <Grid Margin="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
@@ -24,22 +25,22 @@
             <Frame BackgroundColor="{StaticResource PrimaryColor}" HorizontalOptions="FillAndExpand" CornerRadius="10" Margin="0,5" HasShadow="False">
                 <StackLayout>
                     <StackLayout>
-                        <Label Text="WALLET BALANCE" TextColor="#ffffff" FontSize="14" FontFamily="DMSans-Regular" Margin="0,0"/>
+                        <Label Text="WALLET BALANCE" TextColor="#ffffff" FontSize="13" FontFamily="DMSans-Regular" Margin="0,0"/>
 
                         <StackLayout Orientation="Horizontal" Margin="0,-3,0,0" Spacing="0">
                             <StackLayout Orientation="Horizontal" Spacing="0">
                                 <!--<Label Text="NGN" TextColor="#ffffff" FontSize="20" FontFamily="DMSans-Medium"/>-->
-                                <Label Text="{Binding Balance}" TextColor="#ffffff" FontSize="20" FontFamily="DMSans-Medium"/>
+                                <Label Text="{Binding Balance}" TextColor="#ffffff" FontSize="18" FontFamily="DMSans-Medium"/>
                             </StackLayout>
                             <!--<Image Source="cbayeye.png" VerticalOptions="CenterAndExpand" WidthRequest="35" HeightRequest="20" Margin="10,0,0,0"/>-->
                         </StackLayout>
                     </StackLayout>
                     <StackLayout IsVisible="{Binding WalletBonus}" Spacing="0" Margin="0,5,0,0">
-                        <Label Text="WALLET BONUS" TextColor="#ffffff" FontSize="14" FontFamily="DMSans-Regular" Margin="0,0"/>
+                        <Label Text="WALLET BONUS" TextColor="#ffffff" FontSize="13" FontFamily="DMSans-Regular" Margin="0,0"/>
                         <StackLayout Orientation="Horizontal" Margin="0,0,0,0">
                             <StackLayout Orientation="Horizontal" Spacing="0">
                                 <!--<Label Text="NGN" TextColor="#ffffff" FontSize="18" FontFamily="DMSans-Medium"/>-->
-                                <Label Text="{Binding BonusBalance}" TextColor="#ffffff" FontSize="18" FontFamily="DMSans-Medium"/>
+                                <Label Text="{Binding BonusBalance}" TextColor="#ffffff" FontSize="16" FontFamily="DMSans-Medium"/>
                             </StackLayout>
                         </StackLayout>
                     </StackLayout>
@@ -70,7 +71,30 @@
            
         </StackLayout>
 
-        <StackLayout Grid.Row="1" Margin="0,0,0,10" Spacing="0">
+
+        <CollectionView x:Name="cvBanner"    HeightRequest="120"   Grid.Row="1"  ItemsSource="{Binding ProductData}" Margin="0,10,0,0" >
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout VerticalItemSpacing="5" HorizontalItemSpacing="5" Orientation="Horizontal"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout WidthRequest="100">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Path=BindingContext.TappedCommand, Source={x:Reference cvBanner}}" CommandParameter="{Binding .}"/>
+                        </StackLayout.GestureRecognizers>
+                        <Frame Padding="10" HasShadow="False" CornerRadius="10" BackgroundColor="#EFF1F8">
+                            <StackLayout Margin="0,0">
+                                <Image Source="{Binding defaultPictureLocation}" WidthRequest="100" HeightRequest="100" HorizontalOptions="StartAndExpand"/>
+                            </StackLayout>
+                        </Frame>
+                        <Label WidthRequest="100" LineBreakMode="TailTruncation" Text="{Binding name}" TextColor="#272728" FontSize="14" Margin="10,0,0,0" FontFamily="DMSans-Regular" HorizontalTextAlignment="Start"/>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+
+        <StackLayout Grid.Row="2" Margin="0,10,0,10" Spacing="0">
             <!--<Frame Padding="20,15" BackgroundColor="#FFF8F5" HorizontalOptions="FillAndExpand" CornerRadius="10"  Margin="0,10" HasShadow="False">
                 <StackLayout Orientation="Horizontal">
                     <StackLayout Margin="0,0,10,0" VerticalOptions="CenterAndExpand">
@@ -83,28 +107,9 @@
                 </StackLayout>
             </Frame>-->
 
-            <CollectionView x:Name="cvBanner" ItemsSource="{Binding ProductData}" Margin="0,10,0,0" >
-                <CollectionView.ItemsLayout>
-                    <GridItemsLayout VerticalItemSpacing="5" HorizontalItemSpacing="5" Orientation="Horizontal"/>
-                </CollectionView.ItemsLayout>
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <StackLayout WidthRequest="100">
-                            <StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding Path=BindingContext.TappedCommand, Source={x:Reference cvBanner}}" CommandParameter="{Binding .}"/>
-                            </StackLayout.GestureRecognizers>
-                            <Frame Padding="10" HasShadow="False" CornerRadius="10" BackgroundColor="#EFF1F8">
-                                <StackLayout Margin="0,0">
-                                    <Image Source="{Binding defaultPictureLocation}" WidthRequest="100" HeightRequest="100" HorizontalOptions="StartAndExpand"/>
-                                </StackLayout>
-                            </Frame>
-                            <Label WidthRequest="100" LineBreakMode="TailTruncation" Text="{Binding name}" TextColor="#272728" FontSize="14" Margin="10,0,0,0" FontFamily="DMSans-Regular" HorizontalTextAlignment="Start"/>
-                        </StackLayout>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+           
 
-            <FlexLayout JustifyContent="SpaceBetween" AlignItems="Center" Margin="0,-100,0,0">
+            <FlexLayout JustifyContent="SpaceBetween" AlignItems="Center" Margin="0,0,0,0">
                 <Label Text="Recent Earning" TextColor="#212121" FontSize="16" Margin="0,0,0,0" FontFamily="DMSans-Medium" HorizontalTextAlignment="Center"/>
                 <Label Text="View All" TextColor="{StaticResource PrimaryColor}" FontSize="16" Margin="0,0,0,0" FontFamily="DMSans-Medium" HorizontalTextAlignment="Center">
                     <Label.GestureRecognizers>
@@ -123,15 +128,20 @@
                             <!--<Label Text="{Binding newDate}" FontSize="14" TextColor="#000000" FontAttributes="Bold" FontFamily="DMSans-Medium"/>-->
 
                             <FlexLayout JustifyContent="SpaceBetween" VerticalOptions="Center" Margin="0,5">
-                                <StackLayout Orientation="Horizontal" Spacing="10">
-                                    <Image Source="{Binding TransImage}"/>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition  Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image  HeightRequest="20"  Source="{Binding TransImage}"/>
 
-                                    <StackLayout>
-                                        <Label Text="{Binding narration}" FontSize="14" TextColor="#333333" FontAttributes="Bold"/>
+                                    <StackLayout Grid.Column="1">
+                                        <Label Text="{Binding narration}" MaxLines="30" FontSize="14"   TextColor="#333333"  FontAttributes="Bold"/>
                                         <Label Text="{Binding newDate}" FontSize="14" TextColor="#333333"  FontFamily="Poppins-Medium"/>
                                     </StackLayout>
-                                </StackLayout>
-                                <StackLayout Orientation="Horizontal" Spacing="2">
+                                </Grid>
+                                <StackLayout Grid.Column="2"   Orientation="Horizontal" Spacing="2">
                                     <Label Text="₦" FontSize="15" TextColor="{Binding SubColor}" FontAttributes="Bold"/>
                                     <Label Text="{Binding Amount}" FontSize="15" TextColor="{Binding SubColor}" FontAttributes="Bold" FontFamily="Poppins-Medium"/>
                                     <Label Text=".00" FontSize="15" TextColor="{Binding SubColor}" FontAttributes="Bold" FontFamily="Poppins-Medium"/>
@@ -142,7 +152,7 @@
                                   Y1="0"
                                   X2="400"
                                   Y2="0"
-                                  Margin="0,0"
+                                  Margin="3,7,3,0"
                                   Stroke="#524344"
                                   StrokeDashArray="0,0"
                                   StrokeDashOffset="2"/>

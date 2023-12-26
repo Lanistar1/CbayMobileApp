@@ -6,7 +6,9 @@
              Title="Fund Wallet"
              BackgroundColor="White">
 
-
+    <Grid>
+        
+    
     <StackLayout>
         <StackLayout Margin="10,10,10,0">
             <Label Text="Amount(₦)"
@@ -36,5 +38,6 @@
             </Frame>
         </StackLayout>
     </StackLayout>
-
+        <WebView  IsVisible="false" x:Name="wv" Navigated="G_Navigated"></WebView>    
+</Grid>
 </ContentPage>

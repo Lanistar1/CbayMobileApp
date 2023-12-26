@@ -30,6 +30,9 @@ namespace CBayMobileApp.Helpers
         public static string MyOrderUrl => $"{BaseUrl}/shopping/orders";
         public static string ForgotPasswordUrl => $"{BaseUrl}/identity/password/initiatereset";
         public static string WithdrawalUrl => $"{BaseUrl}/wallet/external/transfer";
+
+        public static string FundUrl => $"{BaseUrl}/wallet/fund";
+
         public static string GetBankUrl => $"{BaseUrl}/wallet/external/flutterwave/banks";
         public static string ValidateAccountUrl => $"{BaseUrl}/wallet/external/account/validate";
         public static string SearchUrl => $"{BaseUrl}/shopping/search";
