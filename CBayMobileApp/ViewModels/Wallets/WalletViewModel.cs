@@ -218,8 +218,8 @@ namespace CBayMobileApp.ViewModels.Wallets
                             }
                         }
 
-                        Balance = detailLot.FirstOrDefault();
-                        BonusBalance = detailLot.LastOrDefault();
+                        Balance = walletData.FirstOrDefault(x=>x.isCompensation == false).DisplayAmount;
+                        BonusBalance = walletData.FirstOrDefault(x=>x.isCompensation == true).DisplayAmount;
                     }
                     else
                     {
