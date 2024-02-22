@@ -44,7 +44,7 @@ namespace CBayMobileApp.Helpers
         public static string memberID { get; set; }
         public static string FullName { get; set; }
         public static string WalletId { get; set; }
-        public static int Balance { get; set; }
+        public static double Balance { get; set; }
         public static string ProductQuantity { get; set; }
         public static int PriceTag { get; set; }
         public static DateTime DateType { get; set; }

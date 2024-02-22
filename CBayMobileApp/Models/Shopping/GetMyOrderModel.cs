@@ -14,14 +14,22 @@ namespace CBayMobileApp.Models.Shopping
 
     }
 
-    public class GetMyOrderModel
+    public class  GetMyOrderModelData
     {
         public string orderID { get; set; }
         public List<OrderDetailData> orderDetails { get; set; }
         public ShippingAddressData shippingAddress { get; set; }
         public string deliveryInstruction { get; set; }
         public string orderStatus { get; set; }
+        public  string orderNo { get; set; }
     }
+
+    public class GetMyOrderModel
+    {
+        public  List<GetMyOrderModelData> data { get; set; }
+      
+    }
+
 
     public class ShippingAddressData
     {

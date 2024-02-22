@@ -8,7 +8,7 @@ namespace CBayMobileApp.Models.Wallet
 {
     public class WalletData
     {
-        public int balance { get; set; }
+        public double balance { get; set; }
         public string walletID { get; set; }
         public string walletNo { get; set; }
         public string currency { get; set; }
