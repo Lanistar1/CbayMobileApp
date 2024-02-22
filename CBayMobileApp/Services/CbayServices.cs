@@ -530,8 +530,10 @@ namespace CBayMobileApp.Services
                 switch (_status)
                 {
                     case 200:
+
                         var data = JsonConvert.DeserializeObject<GetMyOrderModel>(result);
                         return (data, null, statusCode);
+
                     case 300:
                         errorData = JsonConvert.DeserializeObject<ErrorResponseModel>(result);
                         return (null, errorData, statusCode);

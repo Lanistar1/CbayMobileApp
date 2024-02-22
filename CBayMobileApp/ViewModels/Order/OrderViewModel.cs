@@ -70,8 +70,8 @@ namespace CBayMobileApp.ViewModels.Order
             }
         }
 
-        private GetMyOrderModel getAllOrder;
-        public GetMyOrderModel GetAllOrder
+        private List<GetMyOrderModelData> getAllOrder;
+        public List<GetMyOrderModelData> GetAllOrder
         {
             get => getAllOrder;
             set
@@ -148,7 +148,7 @@ namespace CBayMobileApp.ViewModels.Order
                 var (ResponseData, ErrorData, StatusCode) = await _cbayServices.GetMyOrderAsync();
                 if (ResponseData != null)
                 {
-                    GetAllOrder = ResponseData;
+                    GetAllOrder = ResponseData.data;
 
                     //UserOrder = ResponseData.orderDetails;
 

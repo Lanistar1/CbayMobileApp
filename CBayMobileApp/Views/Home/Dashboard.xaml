@@ -137,14 +137,14 @@
                                     <Image  HeightRequest="20"  Source="{Binding TransImage}"/>
 
                                     <StackLayout Grid.Column="1">
-                                        <Label Text="{Binding narration}" MaxLines="30" FontSize="14"   TextColor="#333333"  FontAttributes="Bold"/>
+                                        <Label Text="{Binding narration}" MaxLines="28" FontSize="14"   TextColor="#333333"  FontAttributes="Bold"/>
                                         <Label Text="{Binding newDate}" FontSize="14" TextColor="#333333"  FontFamily="Poppins-Medium"/>
                                     </StackLayout>
                                 </Grid>
-                                <StackLayout Grid.Column="2"   Orientation="Horizontal" Spacing="2">
-                                    <Label Text="₦" FontSize="15" TextColor="{Binding SubColor}" FontAttributes="Bold"/>
-                                    <Label Text="{Binding Amount}" FontSize="15" TextColor="{Binding SubColor}" FontAttributes="Bold" FontFamily="Poppins-Medium"/>
-                                    <Label Text=".00" FontSize="15" TextColor="{Binding SubColor}" FontAttributes="Bold" FontFamily="Poppins-Medium"/>
+                                <StackLayout Grid.Column="2"  VerticalOptions="Center"  Margin="12,0,0,0" HorizontalOptions="End"  WidthRequest="200"   Orientation="Horizontal" Spacing="2">
+                                    <Label Text="₦" FontSize="15" HorizontalTextAlignment="End" TextColor="{Binding SubColor}" FontAttributes="Bold"/>
+                                    <Label Text="{Binding FormattedAmount}"   HorizontalTextAlignment="End" FontSize="15" TextColor="{Binding SubColor}" FontAttributes="Bold" FontFamily="Poppins-Medium"/>
+                                   
                                 </StackLayout>
 
                             </FlexLayout>

@@ -245,8 +245,8 @@ namespace CBayMobileApp.ViewModels.Shopping
             }
         }
 
-        private int availableBalance;
-        public int AvailableBalance
+        private double availableBalance;
+        public double AvailableBalance
         {
             get => availableBalance;
             set

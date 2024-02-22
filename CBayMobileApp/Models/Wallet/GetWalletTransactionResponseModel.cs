@@ -16,6 +16,10 @@ namespace CBayMobileApp.Models.Wallet
         public string externalRefNo { get; set; }
         public string refWalletNO { get; set; }
         public DateTime transxnDate { get; set; }
+
+        public string FormattedAmount { get {
+                return this.amount.ToString("C", new System.Globalization.CultureInfo("en-US")).Replace("$", "");
+            } }
         public string transxType { get; set; }
         public string toWalletID { get; set; }
         public double previousToWalletBalance { get; set; }

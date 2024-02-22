@@ -24,10 +24,10 @@
                                 <Label Text="{Binding newDate}" FontSize="14" TextColor="#333333"  FontFamily="Poppins-Medium"/>
                             </StackLayout>
                         </StackLayout>
-                        <StackLayout Orientation="Horizontal" Spacing="2">
+                        <StackLayout Orientation="Horizontal" Spacing="2" Margin="12,0,0,0" WidthRequest="220">
                             <Label Text="₦" FontSize="15" TextColor="{Binding SubColor}" FontAttributes="Bold"/>
-                            <Label Text="{Binding Amount}" FontSize="15" TextColor="{Binding SubColor}" FontAttributes="Bold" FontFamily="Poppins-Medium"/>
-                            <Label Text=".00" FontSize="15" TextColor="{Binding SubColor}" FontAttributes="Bold" FontFamily="Poppins-Medium"/>
+                            <Label Text="{Binding FormattedAmount}" FontSize="15" TextColor="{Binding SubColor}" FontAttributes="Bold" FontFamily="Poppins-Medium"/>
+                            
                         </StackLayout>
 
                     </FlexLayout>
