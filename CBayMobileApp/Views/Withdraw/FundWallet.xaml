@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:controls="clr-namespace:CBayMobileApp.Controls"
+             x:Class="CBayMobileApp.Views.Withdraw.FundWallet"
+             Title="Fund Wallet"
+             BackgroundColor="White">
+
+    <Grid>
+        
+    
+    <StackLayout>
+        <StackLayout Margin="10,10,10,0">
+            <Label Text="Amount(₦)"
+                    FontFamily="Poppins-Light"
+                    FontSize="14"
+                    Margin="10,0"
+                    TextColor="Black"/>
+
+            <Frame Padding="10,0,10,0" BorderColor="#464742" HeightRequest="45" Margin="10,0,10,10" HasShadow="False">
+                <controls:CustomEntry 
+                    VerticalTextAlignment="Center"
+                    FontFamily="Poppins-Light"
+                    FontSize="Small"
+                    Keyboard="Numeric"
+                    x:Name="fundAmount"
+                    Placeholder=""
+                    TextColor="Black"/>
+            </Frame>
+        </StackLayout>
+
+        <StackLayout Margin="0,10,0,0">
+            <Frame Margin="20,0" BackgroundColor="{StaticResource PrimaryColor}" CornerRadius="10" Padding="0,15">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="To_flutterwave"/>
+                </Frame.GestureRecognizers>
+                <Label Text="Submit" HorizontalTextAlignment="Center" TextColor="White" FontSize="16"/>
+            </Frame>
+        </StackLayout>
+    </StackLayout>
+        <WebView  IsVisible="false" x:Name="wv" Navigated="G_Navigated"></WebView>    
+</Grid>
+</ContentPage>

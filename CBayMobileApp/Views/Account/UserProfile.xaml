@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CBayMobileApp.Views.Account.UserProfile"
+             Title="User Profile"
+             BackgroundColor="White">
+
+
+    <ScrollView Margin="0,20">
+        <StackLayout>
+            <StackLayout Margin="20,0">
+                <Label Text="First Name" TextColor="Black" FontSize="14"/>
+                <Label Text="{Binding FirstName}" TextColor="Black" FontSize="16"/>
+            </StackLayout>
+            <Line X1="0"
+                      Y1="0"
+                      X2="400"
+                      Y2="0"
+                      Margin="0,0"
+                      Grid.Row="6"
+                      Stroke="#333333"
+                      StrokeDashArray="0,0"
+                      StrokeDashOffset="2"/>
+
+            <StackLayout Margin="20,0">
+                <Label Text="Last Name" TextColor="Black" FontSize="14"/>
+                <Label Text="{Binding LastName}" TextColor="Black" FontSize="16"/>
+            </StackLayout>
+            <Line X1="0"
+                      Y1="0"
+                      X2="400"
+                      Y2="0"
+                      Margin="0,0"
+                      Grid.Row="6"
+                      Stroke="#333333"
+                      StrokeDashArray="0,0"
+                      StrokeDashOffset="2"/>
+
+            <StackLayout Margin="20,10,20,0">
+                <Label Text="Email" TextColor="Black" FontSize="14"/>
+                <Label Text="{Binding Email}" TextColor="Black" FontSize="16"/>
+            </StackLayout>
+            <Line X1="0"
+                      Y1="0"
+                      X2="400"
+                      Y2="0"
+                      Margin="0,0"
+                      Grid.Row="6"
+                      Stroke="#333333"
+                      StrokeDashArray="0,0"
+                      StrokeDashOffset="2"/>
+
+            <StackLayout Margin="20,10,20,0">
+                <Label Text="Phone number" TextColor="Black" FontSize="14"/>
+                <Label Text="{Binding PhoneNumber}" TextColor="#191919" FontSize="16"/>
+            </StackLayout>
+            <Line X1="0"
+                      Y1="0"
+                      X2="400"
+                      Y2="0"
+                      Margin="0,0"
+                      Grid.Row="6"
+                      Stroke="#333333"
+                      StrokeDashArray="0,0"
+                      StrokeDashOffset="2"/>
+
+            <StackLayout Margin="20,10,20,0">
+                <Label Text="Gender" TextColor="Black" FontSize="14"/>
+                <Label Text="{Binding Gender}" TextColor="#191919" FontSize="16"/>
+            </StackLayout>
+            <Line X1="0"
+                    Y1="0"
+                    X2="400"
+                    Y2="0"
+                    Margin="0,0"
+                    Grid.Row="6"
+                    Stroke="#333333"
+                    StrokeDashArray="0,0"
+                    StrokeDashOffset="2"/>
+
+            <StackLayout Margin="20,10,20,0">
+                <Label Text="Date of Birth" TextColor="Black" FontSize="14"/>
+                <Label Text="{Binding DOB}" TextColor="#191919" FontSize="16"/>
+            </StackLayout>
+            <Line X1="0"
+                    Y1="0"
+                    X2="400"
+                    Y2="0"
+                    Margin="0,0"
+                    Grid.Row="6"
+                    Stroke="#333333"
+                    StrokeDashArray="0,0"
+                    StrokeDashOffset="2"/>
+
+            <Frame BorderColor="{StaticResource PrimaryColor}" CornerRadius="20" HasShadow="False" Margin="0,20,0,0" Padding="25,5" HorizontalOptions="CenterAndExpand">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="To_UpdateProfile"/>
+                </Frame.GestureRecognizers>
+                <Label Text="Edit Profile" TextColor="{StaticResource PrimaryColor}" FontSize="16" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+            </Frame>
+        </StackLayout>
+    </ScrollView>
+
+
+</ContentPage>

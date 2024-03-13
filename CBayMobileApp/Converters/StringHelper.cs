@@ -64,7 +64,7 @@ namespace CBayMobileApp.Converters
         }
         public static string FormatAmountWithNaira(double amount)
         {
-            var amountInNaira = Math.Round(amount, 2).ToString("C", System.Globalization.CultureInfo.GetCultureInfo("en-us")).Replace("$", "N ");
+            var amountInNaira = Math.Round(amount, 2).ToString("C", System.Globalization.CultureInfo.GetCultureInfo("en-us")).Replace("$", "NGN ");
             return amountInNaira;
         }
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CBayMobileApp.ViewModels.AuthFlow;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,9 +13,13 @@ namespace CBayMobileApp.Views.Identity
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginPage : ContentPage
     {
+        LoginViewModel pageViewModel = null;
+
         public LoginPage()
         {
+            pageViewModel = new LoginViewModel(Navigation);
             InitializeComponent();
+            BindingContext = pageViewModel;
         }
 
         private void To_ForgotPassword(object sender, EventArgs e)

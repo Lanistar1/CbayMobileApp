@@ -6,7 +6,8 @@
             xmlns:Pages="clr-namespace:CBayMobileApp.Views.Home" 
             xmlns:Pages1="clr-namespace:CBayMobileApp.Views.Products"
             xmlns:Pages2="clr-namespace:CBayMobileApp.Views.Cart" 
-            xmlns:Pages3="clr-namespace:CBayMobileApp.Views.Account"
+            xmlns:Pages3="clr-namespace:CBayMobileApp.Views.Account" 
+            xmlns:Pages21="clr-namespace:CBayMobileApp.Views.Order"
             android:TabbedPage.ToolbarPlacement="Bottom"
             NavigationPage.HasNavigationBar="False"
             BarBackgroundColor="{StaticResource PrimaryColor}"
@@ -17,6 +18,6 @@
     <!--Pages can be added as references or inline-->
     <Pages:Dashboard Title="Home" IconImageSource="harborActive.png"></Pages:Dashboard>
     <Pages1:Products Title="Products" IconImageSource="newcbay.png"></Pages1:Products>
-    <Pages2:Cart Title="Cart" IconImageSource="cbaynavcart.png"></Pages2:Cart>
+    <Pages21:MyOrder Title="My Order" IconImageSource="cbaynavcart.png"></Pages21:MyOrder>
     <Pages3:Account Title="Account" IconImageSource="cbaynavaccount.png"></Pages3:Account>
 </TabbedPage>

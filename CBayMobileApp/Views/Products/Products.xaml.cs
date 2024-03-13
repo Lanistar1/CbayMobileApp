@@ -1,5 +1,6 @@
 ﻿using CBayMobileApp.ViewModels.Home;
 using CBayMobileApp.ViewModels.Product;
+using CBayMobileApp.ViewModels.Shopping;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,12 +18,12 @@ namespace CBayMobileApp.Views.Products
         public Products()
         {
             InitializeComponent();
-            BindingContext = new ProductsViewModel(Navigation);
+            BindingContext = new GetAllProductViewModel(Navigation);
         }
 
-        private void To_productdetails(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new ProductDetail());
-        }
+        //private void To_productdetails(object sender, EventArgs e)
+        //{
+        //    Navigation.PushAsync(new ProductDetail());
+        //}
     }
 }

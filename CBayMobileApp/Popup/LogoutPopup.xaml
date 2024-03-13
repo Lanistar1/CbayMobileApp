@@ -35,7 +35,7 @@
                     </Frame.GestureRecognizers>
                     <Label Text="Cancel" FontSize="16" FontAttributes="Bold"  TextColor="White" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
                 </Frame>
-                <Frame CornerRadius="5" BackgroundColor="{StaticResource TertiaryColor}" Grid.Column="1" Padding="0" Margin="5,0" HeightRequest="50">
+                <Frame CornerRadius="5" BackgroundColor="{StaticResource PrimaryColor}" Grid.Column="1" Padding="0" Margin="5,0" HeightRequest="50">
                     <Frame.GestureRecognizers>
                         <TapGestureRecognizer Tapped="Confirm"/>
                     </Frame.GestureRecognizers>

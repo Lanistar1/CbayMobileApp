@@ -1,4 +1,7 @@
-﻿using CBayMobileApp.ViewModels.Home;
+﻿using CBayMobileApp.Utils;
+using CBayMobileApp.ViewModels.Home;
+using CBayMobileApp.ViewModels.Wallets;
+using CBayMobileApp.Views.Withdraw;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +19,7 @@ namespace CBayMobileApp.Views.Home
         public Dashboard()
         {
             InitializeComponent();
-            BindingContext = new TransactionViewModel(Navigation);
+            BindingContext = new WalletViewModel(Navigation);
         }
 
         private void To_recentEarning(object sender, EventArgs e)
@@ -24,9 +27,18 @@ namespace CBayMobileApp.Views.Home
             Navigation.PushAsync(new RecentEarning());
         }
 
-        private void To_addMoney(object sender, EventArgs e)
+        private async void To_addMoney(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new AddMoney());
+
+            //await MessagePopup.Instance.Show("Waiting for payment gateway.");
+            await Navigation.PushAsync(new FundWallet());
+
+        }
+
+        private void To_WithdrawPage(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new WithdrawalPage());
+
         }
     }
 }
